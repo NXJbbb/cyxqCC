@@ -391,6 +391,28 @@ textarea:focus{outline:1px solid var(--accLine)}
 .slider{display:flex;align-items:center;gap:12px;margin-top:14px}
 .slider input{flex:1;accent-color:var(--amber);height:22px}
 .slider .lab{font-size:11px;color:var(--dim2);flex:none}
+/* ---------- 自编计划：倒计时 / 沙漏 ---------- */
+.flab{font-size:11px;color:var(--dim2);letter-spacing:.02em;margin-top:4px}
+.clock{display:flex;align-items:center;gap:9px;margin-top:9px;padding:9px 10px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.cd{font-family:var(--serif);font-size:13px;font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--ink);min-width:42px}
+.cd.run{color:var(--amber)}
+.hg{width:18px;height:27px;flex:none}
+.hg .hgo{fill:none;stroke:rgba(232,237,241,.26);stroke-width:1.1}
+.hg .sandTop,.hg .sandBot{fill:rgba(242,166,60,.62);transform-box:fill-box;transform-origin:50% 100%;transition:transform .2s linear}
+.hg .stream{stroke:rgba(242,166,60,.75);stroke-width:.9;opacity:0;transition:opacity .2s}
+.mbtn{background:none;border:1px solid var(--line);color:var(--dim);font-family:var(--sans);font-size:10.5px;padding:4px 8px;cursor:pointer;letter-spacing:.03em}
+.mbtn:hover,.mbtn:active{border-color:var(--accLine);color:var(--amber)}
+.lnk.del{color:rgba(206,124,124,.9)}
+.lnk.del:hover,.lnk.del:active{color:#E89}
+.cheer{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:26px;background:rgba(4,8,12,.62);backdrop-filter:blur(6px);animation:fadein .22s ease-out}
+.cheer-box{width:100%;max-width:320px;background:rgba(13,20,27,.97);border:1px solid var(--accLine);padding:30px 24px 24px;text-align:center;animation:cheerin .28s cubic-bezier(.2,.8,.2,1)}
+.cheer-box .cm{font-size:18px;color:var(--amber);letter-spacing:.2em}
+.cheer-box h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:12px 0 8px;color:var(--ink)}
+.cheer-box p{margin:0 0 20px;font-size:12px;color:var(--dim);line-height:1.75}
+.cheer-btn{width:100%;background:rgba(242,166,60,.12);border:1px solid rgba(242,166,60,.35);color:var(--amber);font-family:var(--sans);font-size:13px;padding:11px;cursor:pointer;letter-spacing:.06em}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes cheerin{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+
 </style>
 </head>
 <body>
@@ -398,38 +420,202 @@ textarea:focus{outline:1px solid var(--accLine)}
 <div id="app"></div>
 <script>
 /* ===== 数据：30 天路径 ===== */
-const DAYS = [
- {w:1,d:1,t:"写下你的创业假设",a:["把你写的那句话改成 20 字以内：谁 + 什么麻烦 + 你怎么解","写下你现在最不确定的三件事","把这句话发给自己，明天再看一遍"]},
- {w:1,d:2,t:"找出你的用户聚集在哪",a:["列出 3 个{users}可能出现的地方","从{where}里先挑 10 个具体的人","记进一张表，不要只留在脑子里"]},
- {w:1,d:3,t:"约第一个 15 分钟访谈",a:["只问：你最近一次遇到这个问题是什么时候","全程不推销你的想法","记原话，不改写成你的说法"]},
- {w:1,d:4,t:"再聊两个人，开始找重复",a:["完成第 2 位访谈","完成第 3 位访谈","把三个人都重复提到的词圈出来"]},
- {w:1,d:5,t:"把「你的问题」换成「他的原话」",a:["用用户的词重写你的假设","删掉所有他们没提过的词","重新发给自己一遍"]},
- {w:1,d:6,t:"去看同行的差评",a:["找到 3 个跟「{field}」同类的产品","只读 1 星和 2 星","抄下最扎心的三句话"]},
- {w:1,d:7,t:"第一次周复盘",a:["写下：我现在最不确定的是什么","写下本周最意外的一句话","决定下周要验证哪一个假设"]},
- {w:2,d:8,t:"定一个能被观察的最小承诺",a:["写下：如果 ___ 成立，说明方向对","标准必须是能被看到的行为","不要写成「感觉挺好」"]},
- {w:2,d:9,t:"做一版一页纸说明",a:["只写四块：问题 / 给谁 / 怎么做 / 要多少钱","一页写完，不配图","发给 1 个外行，看他能不能看懂"]},
- {w:2,d:10,t:"让 5 个人看这一页",a:["每人只问一个问题：你会想试吗","记下谁犹豫了，以及为什么","不解释，不辩护"]},
- {w:2,d:11,t:"做一次付费意愿测试",a:["先不问价格，问「你为这事花过多少钱」","记下他们主动提到的数字","这就是你定价的上限线索"]},
- {w:2,d:12,t:"圈出你的第一批 10 个人",a:["从前面聊过的人里挑最急的 10 个","按「急 / 不急」排个序","写下你打算怎么联系到他们"]},
- {w:2,d:13,t:"写一封三句话的邀请",a:["第一句说他的问题，用他的原话","第二句说你要做什么，一句话","第三句说下一步要他做什么"]},
- {w:2,d:14,t:"第二次周复盘",a:["数一下：有几个人真的回了你","写下最冷的那次拒绝，原因是什么","决定：继续、换人群，还是换问题"]},
- {w:3,d:15,t:"砍到只剩一个功能",a:["列出你打算做的所有事","划掉所有「没有也能用」的","只留一个"]},
- {w:3,d:16,t:"做最糙的版本",a:["文档、表格、微信群都算，不一定要写代码","今天之内能让第一个人用上","不追求好看"]},
- {w:3,d:17,t:"交付给第 1 个真人",a:["亲手把东西给他","看他怎么用，别插嘴","记下他第一处卡住的地方"]},
- {w:3,d:18,t:"只修那一个卡点",a:["只修今天看到的那一处","不要顺手加新功能","再给他用一次"]},
- {w:3,d:19,t:"收第一笔钱，哪怕 1 块钱",a:["把价格明确说出来","用能留痕的方式收","记下对方第一反应的原话"]},
- {w:3,d:20,t:"算一遍你自己的账",a:["一个客户要花你多少小时","你一个月最多能服务几个","这个数够不够养活你"]},
- {w:3,d:21,t:"第三次周复盘",a:["有没有人付钱，几个","他们为什么付，原话是什么","下周重点是复购还是拉新"]},
- {w:4,d:22,t:"找到第 2、第 3 个付费的人",a:["从同一批人里找","用同样的方式交付","记录每次实际花了多少时间"]},
- {w:4,d:23,t:"写一版能重复交付的流程",a:["把交付拆成 5 步以内","每步写一句怎么算做完","下次照着做一遍"]},
- {w:4,d:24,t:"找出你最贵的那一步",a:["标出最耗时间的一步","想一个能砍掉它一半时间的办法","明天就试"]},
- {w:4,d:25,t:"写清楚你的「不做清单」",a:["列出你被诱惑但决定不做的事","每条写一句为什么不做","放在每天都看得见的地方"]},
- {w:4,d:26,t:"找一个人跟你一起干",a:["写清楚你要他做什么，不是「合伙人」三个字","说清现在能给什么、给不了什么","约一次 30 分钟的见面"]},
- {w:4,d:27,t:"把这个月的账算清",a:["收入、支出、投入小时数","折算成你的时薪","和上班比一比"]},
- {w:4,d:28,t:"决定：继续、调整，还是停",a:["写下支持继续的三条证据","写下反对的三条证据","给自己一个明确的答案"]},
- {w:4,d:29,t:"写下第二个月的三件事",a:["只有三件","每件写成一周内能验证的动作","定好检查的时间"]},
- {w:4,d:30,t:"把这一页留给下个月的自己",a:["写下你现在相信的一句话","写下你还没解决的问题","写下你要感谢的一个人"]}
-];
+/* ===== 数据：30 天路径 · 按行业各一套 ===== */
+/* 每条 = [周, 标题, 任务1, 任务2, 任务3]；同一套顺序不变，内容按行业换 */
+const PATHS={
+local:[
+[1,"先把「谁」弄清楚","写下你的店替谁解决什么问题，20 字以内；把门口三公里内的 3 个小区或写字楼名字写下来；把这句话念给 2 个老客听，问他们听不听得懂"],
+[1,"站在门口数人流","在店门口站 30 分钟，数路过的人，记下几点人最多；问 3 个老客「你上次为什么来」；把答案记在手机备忘录里，别只记在脑子里"],
+[1,"私聊 10 个老客","从微信里挑 10 个老客，一个一个私聊，只问一句「如果店里有 __，你会不会用」；不要群发；记下谁秒回、谁不回"],
+[1,"问 5 个没来过的人","找隔壁店顾客、邻居、快递员问 5 个人：这件事你平时怎么解决、花多少钱；只记原话，不解释你的想法"],
+[1,"换成顾客自己的词","用他们说过的词重写你的招牌一句话；把现在的价目表拍下来发给 10 个老客；问「哪个价格你会犹豫」"],
+[1,"去 3 家同行各买一次","挑 3 家不同街区的同类店，各买一份；记下价格、出餐时间、排队时长；顺手抄下 3 句顾客抱怨"],
+[1,"第一次复盘","写下这周有几个人真说「会买」；写下最扎心的一句话；把结论贴到收银台后面"],
+[2,"定一个能数出来的目标","写下「一周内 __ 个老客回头」这样的数字；只写能被数出来的，不写「感觉不错」；贴在手机备忘录首页"],
+[2,"写一页纸的卖法","只写四行：卖什么、多少钱、几点到几点、怎么订；发一次朋友圈，不刷屏；问 2 个朋友看不看得懂"],
+[2,"做一次预售，先收钱","挑 1 个单品做预售，先付钱后交付；至少推给 20 个老客；记下几个人真的转了钱"],
+[2,"摸清价格上限","问每个下单的人「你最多愿意为这个花多少」；把低于成本的项目直接划掉；记下他们主动提到的数字"],
+[2,"圈出最可能复购的 10 个人","从聊过的人里挑 10 个最常来的；按「一周来几次」排个序；写下你打算怎么联系到他们"],
+[2,"写一条三句话的群消息","第一句说他的麻烦，用他的原话；第二句说你怎么解，一句话；第三句说今晚几点前下单"],
+[2,"第二次复盘","数一下预售收了几单、退了几单；写下最冷的那次拒绝，原因是什么；决定下周先补哪个环节"],
+[3,"只留一个单品","列出你现在能做的东西，全部划掉，只留一个；这一个必须 10 分钟内能出；写在菜单最上面"],
+[3,"今天做一次小批量","只做 20 份，别多做；把成本算到每份多少；当天卖完或送完，不留到第二天"],
+[3,"亲手交给第一个下单的人","当面给，看他怎么吃、怎么拿；不要插嘴解释；记下他第一处皱眉的地方"],
+[3,"只修那一处","只改口味、分量或包装里最影响体验的一处；不要顺手加新品；再给同一个人试一次"],
+[3,"正式收第一笔钱","把价格写在明处，不再说「随便给」；用能留痕的方式收；记下对方第一反应的原话"],
+[3,"算你自己的账","一份的毛利是多少；一天最多能出几份；减去房租、水电、人工还剩多少"],
+[3,"第三次复盘","这周几单、几次差评；哪个时段最好卖；最贵的成本是哪一项"],
+[4,"做一张周卡","找 3 个愿意每周固定来的人；设计一个比单次便宜一点的周卡；记下他们最在意的是价格还是时间"],
+[4,"把流程写成 5 步","从接单到交付拆成 5 步以内；每步写一句「怎么算做完」；照着做一遍，看哪步卡住"],
+[4,"砍掉最贵的那一步","标出最耗时间的一步，比如备料或配送；想一个能省一半时间的办法；明天就试"],
+[4,"写「不做清单」","列出你被诱惑但决定不做的事，比如上外卖平台、做夜宵；每条写一句为什么不做"],
+[4,"找一个能搭手的人","写清楚他每天几点做什么，不是「合伙人」三个字；说清现在能给什么、给不了什么；先试一周"],
+[4,"把这个月的账算清","流水、原料、房租、人工；折算成你自己的时薪；和上班比一比"],
+[4,"决定：加、换、还是停","写下支持继续的三条证据；写下反对的三条证据；给自己一个明确的答案"],
+[4,"写下个月的三件事","只写三件；每件写成一周内能验证的动作；定好检查的日期"],
+[4,"留一页给下个月的自己","写下你现在相信的一句话；写下你还没解决的问题；写下你要感谢的一个老客"]
+],
+ecom:[
+[1,"先算清你卖的是什么","写下你卖什么、卖给谁、凭什么买你的，一句话；列出 3 个同类店铺；把这句话发给 2 个买过同类东西的人"],
+[1,"只读差评","找同类卖得最好的 5 个商品，只读 1 星和 2 星；抄 10 条原话；圈出重复出现的词"],
+[1,"算一单到底赚多少","挑 1 个 SKU，写出进货价、邮费、包装、平台佣金；算出卖一单净赚多少；低于 5 元的先标红"],
+[1,"问 5 个真实买家","问上次买多少钱、为什么换别家、最不满意哪一点；不要问「你觉得我这个怎么样」；只记原话"],
+[1,"改标题和主图卖点","用差评里的原话改标题和主图上的三行字；把改前改后截图存下来；找 1 个人对比看哪版更想点"],
+[1,"去比三家供应商","问起订量、账期、能不能退换、发货要几天；把三家条件写成一张表；先别下大单"],
+[1,"第一次复盘","哪个卖点被提到最多；你现在最不确定的是价格还是人群；下周先验证哪一个"],
+[2,"定一个能被数的目标","写下「一周内 10 单真实成交」这种数字；不许自己下单凑数；写在手机首页"],
+[2,"做一版预售页","只放价格、交付时间、退货规则；不写形容词；发给 3 个人看，问他们敢不敢下单"],
+[2,"找 20 个目标人群","从群、私聊、评论区里找 20 个真买过同类的人；一个一个发，不群发；记下谁回了"],
+[2,"记下三种反应","多少人问价、多少人砍价、多少人直接付；把砍价的人的砍法记下来；这就是你的定价线索"],
+[2,"圈出最急的 10 个人","按「最近就在找这个东西」排序；写下你打算怎么触达；先联系前 3 个"],
+[2,"写三句话的私信","第一句：我看到你在找 __；第二句：我这有 __；第三句：现在下单 __ 元，几天到"],
+[2,"第二次复盘","咨询几个、成交几个、退几个；最冷的那次拒绝说了什么；决定下周靠价格还是靠信任"],
+[3,"只留一个 SKU","别铺货，别做多规格；只留卖得最动的那一个；其他先下架"],
+[3,"小批量试，不囤货","用一件代发或先拿 10 件；把成本压到能承受的量；记下补货要几天"],
+[3,"亲手打包第一单","自己打包，计时；拍一张发货前的照片；记下打包用了多少分钟"],
+[3,"只改一处","只改包装、赠品或发货时效里最影响评价的那一处；别改价格；再看新评价"],
+[3,"收第一笔钱","把价格明确说出来，不打折；走能留痕的渠道；记下对方付款前问的那句话"],
+[3,"算一遍你的账","单件毛利、退货率、一天能发几单；平台费占多少；这个数够不够养活你"],
+[3,"第三次复盘","几单、几退、差评说了什么；哪句话最能让人下单；下周重点是复购还是拉新"],
+[4,"找 3 个复购客户","从买过的人里挑 3 个；做一个小额复购优惠；记下他们为什么愿意再买一次"],
+[4,"把发货写成 5 步","接单、核对、打包、发货、售后，每步一句完成标准；照着做 3 单"],
+[4,"砍掉最贵的一环","邮费、包装、客服里最贵的是哪个；试一个更便宜的替代；只试一周"],
+[4,"写「不做清单」","不接超 7 天的预售、不做 9.9 包邮爆款、不碰侵权品；每条写一句为什么"],
+[4,"找一个人帮你","打包或客服挑一样交出去；写清楚每天做什么、错怎么算；先试一周"],
+[4,"把这个月的账算清","流水、货款、平台费、退货损失；折算成你的时薪；和上班比一比"],
+[4,"决定：换品、换平台，还是停","写下继续的三条证据；写下反对的三条证据；给自己一个明确答案"],
+[4,"写下个月的三件事","只写三件；每件一周内能验证；定好检查日期"],
+[4,"留一页给下个月的自己","写一句你现在相信的话；写一个还没解决的问题；写一个帮过你的客户"]
+],
+content:[
+[1,"先定你拍给谁看","写清你做给谁看、帮他解决什么，一句话；找 3 个同类账号，记下他们的粉丝量；把这句话发给 2 个老粉"],
+[1,"刷 30 条同赛道内容","只刷你这一个方向；记下重复出现的 5 个痛点；抄 3 个高赞开头，不改写"],
+[1,"今天发第一条","手机竖屏拍 30 秒，讲一个具体场景，不念稿；今天之内发出去；不追画质"],
+[1,"去评论区找人说话","找 10 个在同类视频下留言的人，私信问一句「你现在怎么解决」；不要发广告；记下谁回了"],
+[1,"用他们的词写简介","把账号简介改成他说过的话；删掉所有他没提过的词；截个图存下来"],
+[1,"看自己的数据","看第一条的完播、点赞、评论；找出被划走的位置；抄 3 条同行的高赞结构"],
+[1,"第一次复盘","有没有人主动问「怎么买 / 多少钱」；最意外的一条评论是什么；下周换哪个选题"],
+[2,"定一个能数的目标","写下「7 天发 5 条，其中 1 条必须带来咨询」；写在手机首页；不发就不算"],
+[2,"一次写 5 个选题","每条只讲一个问题；每条写成开头一句 + 三个点；挑出最想看的那个先拍"],
+[2,"连发 3 条","固定同一个时间段发；三条同一个形式；不要一天换一个风格"],
+[2,"看哪条评论最多","把评论最多的那条拆开看：开头、节奏、结尾；记下它为什么留人"],
+[2,"圈出 10 个常来的人","从评论区挑 10 个反复出现的人；单独记名字；想清楚他们为什么关注你"],
+[2,"写一句引导","在视频末尾加一句「想要 __ 的，评论区说一声」；只加一句；测有没有人接"],
+[2,"第二次复盘","涨了几个粉、几个私信；哪条最没用；决定继续这个形式还是换"],
+[3,"只做一种形式","口播、图文、剧情挑一个；其他全停；把形式固定下来再谈优化"],
+[3,"做一条能收钱的内容","直接讲你的服务、课或咨询；说清做什么、多少钱、怎么找；别绕"],
+[3,"把第一个私信的人聊透","问他现在卡在哪、愿不愿意付钱；记下他犹豫的原话；不要催单"],
+[3,"只改那一处","只改开头三秒或价格说明；别重做整条；同样的选题再发一次"],
+[3,"收第一笔钱","哪怕 1 元咨询；说清包含什么、多长时间；走能留痕的渠道"],
+[3,"算一遍你的账","一条内容花几小时；一周能做几条；单价多少才够这个时间"],
+[3,"第三次复盘","几条内容带来几个咨询；哪条转化最好；最花时间的是写还是剪"],
+[4,"同样的交付做 3 次","用同一个模板做 3 次；记下每次省了多少时间；把可复用的部分留下来"],
+[4,"写交付流程 5 步","从接单到交付收尾；每步一句完成标准；照着做一遍"],
+[4,"砍掉最耗时的环节","写稿、拍摄、剪辑里最久的是哪个；试一个提速办法，比如先写提纲再拍"],
+[4,"写「不做清单」","不追热点、不接低价单、不做搬运；每条一句为什么"],
+[4,"找一个人搭手","剪辑或写稿交出去一样；写清标准；先试两条"],
+[4,"把这个月的账算清","收入、设备、软件、你的小时数；折算成时薪；和上班比一比"],
+[4,"决定：换选题、换平台，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周内能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个一直给你留言的人"]
+],
+tool:[
+[1,"一句话说清谁会用","写下「谁在什么场景下会打开它」，不出现术语；列出 3 个类似产品；念给 3 个外行听"],
+[1,"去看别人怎么硬扛","找 3 个正在用表格、微信群、纸质本子硬扛的人；看他实际操作一遍；记下每一步点哪里"],
+[1,"把操作拆成 5 步","按你看到的顺序写成 5 步；标出最烦的那一步；问他们这一步一周要做几次"],
+[1,"再找 2 个人验证","只验证那一步是不是所有人都烦；不问「你觉得我的想法怎么样」；记原话"],
+[1,"用大白话重写产品描述","不用 SaaS、赋能、闭环这类词；写成一页纸；发给 1 个不懂技术的人看"],
+[1,"读同类产品的差评","找 3 个同类工具的 1 星评价；抄 3 条最扎心的；记下他们最后换成了什么"],
+[1,"第一次复盘","几个人说「这个我确实烦」；你现在最不确定的是人群还是功能；下周先验证哪个"],
+[2,"定一个能数的目标","写下「一周内 5 个人愿意留联系方式试用」；写在手机首页；不达标就回第一步"],
+[2,"写一页纸说明","解决什么、怎么用、要多久上手；只写一页，不配图；发给 3 个人"],
+[2,"让 10 个人看这一页","每人只问一句「你会用吗」；记下谁犹豫；把他们卡住的那个词圈出来"],
+[2,"改掉让人卡住的词","把那个词换成人话；同一页再发一遍；看犹豫的人有没有变少"],
+[2,"圈出 5 个最急的人","按「现在就在被这事折磨」排；写下怎么联系；先联系前 2 个"],
+[2,"写三句话的邀请","我看到你在用表格硬扛；我做了一个 __；想请你试 10 分钟，不行就算"],
+[2,"第二次复盘","几个人答应试、几个人真试了；没试的人说了什么；决定先改说明还是先改功能"],
+[3,"只做一个功能","不做登录、不做后台、不做多端；只留解决那一步的功能；其他全砍"],
+[3,"用表格手工交付一版","今天就能让他用上；不写代码也行；你手工填数据，让他先用一周"],
+[3,"陪第一个人用一遍","看，不插嘴；记下他第一处卡住的地方；记下他哪句说「这个麻烦」"],
+[3,"只修那一处","只改那一处；不加新功能；再给同一个人用一次"],
+[3,"收第一笔钱或拿到明确承诺","哪怕 1 元；或者让他说清「下个月我还用」；记下他为什么愿意"],
+[3,"算一遍你的账","一个人要花你多少小时支持；你最多能服务几个；这个数够不够"],
+[3,"第三次复盘","几个人真用了第二次；最费你时间的是答疑还是整理数据；下周先省哪块"],
+[4,"找 3 个每周都用的人","从试过的人里挑 3 个；记下他们各自的用法差异；别急着统一"],
+[4,"写使用说明 5 步","从打开到拿到结果；每步一句话；让别人照着走一遍，不许你在旁边提示"],
+[4,"自动化最费时的一步","答疑、整理数据、发结果挑一个；想一个半自动办法；先试一周"],
+[4,"写「不做清单」","不做 App、不做小程序、不做多端同步；每条一句为什么"],
+[4,"找一个人帮你做客服","写清回答哪些问题、哪些必须问你；先试一周"],
+[4,"把这个月的账算清","投入小时、收的钱、服务器和工具成本；折算时薪；和上班比一比"],
+[4,"决定：继续手工、做正式版，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个真的用了的人"]
+],
+service:[
+[1,"先说清你卖的是什么","写下帮谁解决什么、要多久、多少钱；列 3 个同行；念给 3 个人听，问他们听不听得懂"],
+[1,"把问过你的人找出来","翻聊天记录，找过去说过「能不能帮我弄一下」的人；数一数到底有几个；写进一张表"],
+[1,"私聊其中 5 个","只问「你上次是怎么解决的、花了多少钱」；不推销；记下他们当时找了谁"],
+[1,"问 2 个没找过你的人","问他们遇到这事找谁、为什么没找你；只听，不解释；记原话"],
+[1,"用他们的词写介绍","把介绍改成他们说过的说法；删掉所有形容词；发给 2 个老客户看"],
+[1,"看同行的报价和差评","找 3 个同行，记下报价和交付周期；只读差评；抄 3 句抱怨"],
+[1,"第一次复盘","几个人说「最近正好需要」；最扎心的一句是什么；下周先联系谁"],
+[2,"定一个能数的目标","写下「一周内接 2 单」；哪怕低价也接；写在手机首页"],
+[2,"写一页服务说明","做什么、不做什么、多久、多少钱；写清边界，这比写优点重要；发给 3 个人"],
+[2,"发出去一次","发到 3 个群或朋友圈，一天只发一次；别配长文；留下联系方式"],
+[2,"记下三种反应","几个来问、几个问价后没回、几个直接定；把没回的追问一句为什么"],
+[2,"圈出 5 个最可能下单的","按「急不急」排；写下怎么开口；先联系前 2 个"],
+[2,"写三句话的邀约","你要的是 __ 吗；我可以 __；什么时候方便开始"],
+[2,"第二次复盘","几个真下单；没下单的人卡在价格还是信任；下周先补哪一个"],
+[3,"只留一个服务套餐","砍掉所有加项；一个价格、一个交付周期；写在报价单最上面"],
+[3,"把交付清单定死","列出交付物和截止时间；写进报价里；不接受「顺便再帮我弄一下」"],
+[3,"亲手做完第一单","全程自己来，计时；记下每一步花了多久；记下客户问得最多的问题"],
+[3,"只改最卡的一步","只改沟通或交付里最影响体验的一处；别加新服务；再问客户一次感受"],
+[3,"收第一笔钱，别打折","明确报价，不打折也不送；走能留痕的方式；记下对方付款前说的话"],
+[3,"算一遍你的账","一单几小时；一周最多接几单；单价多少才够这个时间"],
+[3,"第三次复盘","客户最不满意哪一点；返工几次；哪一步最容易被拖"],
+[4,"找 2 个复购或转介绍","问老客户「你身边还有谁需要」；给一个明确的转介绍理由；记下谁真的介绍了"],
+[4,"写一份交付 SOP","5 步以内；每步一句完成标准；下次照着做一遍，看哪步卡住"],
+[4,"把最耗时的一步外包或模板化","写模板、做清单、找人代做挑一个；试一单看省了多少时间"],
+[4,"写「不做清单」","不接急单、不做免费试做、不接超出能力的活；每条一句为什么"],
+[4,"找一个帮手","学徒或兼职都可以；写清他做什么、你怎么验收；先试一周"],
+[4,"把这个月的账算清","收入、成本、你的小时数；折算时薪；和上班比一比"],
+[4,"决定：提价、扩品类，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周内能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个回头找你的人"]
+],
+other:[
+[1,"写下你的创业假设","把你写的那句话改成 20 字以内：谁 + 什么麻烦 + 你怎么解；写下你现在最不确定的三件事；把这句话发给自己，明天再看一遍"],
+[1,"找出你的用户聚集在哪","列出 3 个{users}可能出现的地方；从{where}里先挑 10 个具体的人；记进一张表，不要只留在脑子里"],
+[1,"约第一个 15 分钟访谈","只问：你最近一次遇到这个问题是什么时候；全程不推销你的想法；记原话，不改写成你的说法"],
+[1,"再聊两个人，开始找重复","完成第 2 位访谈；完成第 3 位访谈；把三个人都重复提到的词圈出来"],
+[1,"把「你的问题」换成「他的原话」","用用户的词重写你的假设；删掉所有他们没提过的词；重新发给自己一遍"],
+[1,"去看同行的差评","找到 3 个跟「{field}」同类的产品；只读 1 星和 2 星；抄下最扎心的三句话"],
+[1,"第一次周复盘","写下：我现在最不确定的是什么；写下本周最意外的一句话；决定下周要验证哪一个假设"],
+[2,"定一个能被观察的最小承诺","写下：如果 ___ 成立，说明方向对；标准必须是能被看到的行为；不要写成「感觉挺好」"],
+[2,"做一版一页纸说明","只写四块：问题 / 给谁 / 怎么做 / 要多少钱；一页写完，不配图；发给 1 个外行，看他能不能看懂"],
+[2,"让 5 个人看这一页","每人只问一个问题：你会想试吗；记下谁犹豫了，以及为什么；不解释，不辩护"],
+[2,"做一次付费意愿测试","先不问价格，问「你为这事花过多少钱」；记下他们主动提到的数字；这就是你定价的上限线索"],
+[2,"圈出你的第一批 10 个人","从前面聊过的人里挑最急的 10 个；按「急 / 不急」排个序；写下你打算怎么联系到他们"],
+[2,"写一封三句话的邀请","第一句说他的问题，用他的原话；第二句说你要做什么，一句话；第三句说下一步要他做什么"],
+[2,"第二次周复盘","数一下：有几个人真的回了你；写下最冷的那次拒绝，原因是什么；决定：继续、换人群，还是换问题"],
+[3,"砍到只剩一个功能","列出你打算做的所有事；划掉所有「没有也能用」的；只留一个"],
+[3,"做最糙的版本","文档、表格、微信群都算，不一定要写代码；今天之内能让第一个人用上；不追求好看"],
+[3,"交付给第 1 个真人","亲手把东西给他；看他怎么用，别插嘴；记下他第一处卡住的地方"],
+[3,"只修那一个卡点","只修今天看到的那一处；不要顺手加新功能；再给他用一次"],
+[3,"收第一笔钱，哪怕 1 块钱","把价格明确说出来；用能留痕的方式收；记下对方第一反应的原话"],
+[3,"算一遍你自己的账","一个客户要花你多少小时；你一个月最多能服务几个；这个数够不够养活你"],
+[3,"第三次周复盘","有没有人付钱，几个；他们为什么付，原话是什么；下周重点是复购还是拉新"],
+[4,"找到第 2、第 3 个付费的人","从同一批人里找；用同样的方式交付；记录每次实际花了多少时间"],
+[4,"写一版能重复交付的流程","把交付拆成 5 步以内；每步写一句怎么算做完；下次照着做一遍"],
+[4,"找出你最贵的那一步","标出最耗时间的一步；想一个能砍掉它一半时间的办法；明天就试"],
+[4,"写清楚你的「不做清单」","列出你被诱惑但决定不做的事；每条写一句为什么不做；放在每天都看得见的地方"],
+[4,"找一个人跟你一起干","写清楚你要他做什么，不是「合伙人」三个字；说清现在能给什么、给不了什么；约一次 30 分钟的见面"],
+[4,"把这个月的账算清","收入、支出、投入小时数；折算成你的时薪；和上班比一比"],
+[4,"决定：继续、调整，还是停","写下支持继续的三条证据；写下反对的三条证据；给自己一个明确的答案"],
+[4,"写下第二个月的三件事","只有三件；每件写成一周内能验证的动作；定好检查的时间"],
+[4,"把这一页留给下个月的自己","写下你现在相信的一句话；写下你还没解决的问题；写下你要感谢的一个人"]
+]
+};
 
 const WEEK_TITLE = {
  1:"把模糊的想法，变成能被验证的假设",
@@ -440,35 +626,35 @@ const WEEK_TITLE = {
 
 /* ===== 行业初判（按你填的词做规则匹配，不是真行业报告） ===== */
 const JRULES=[
- {k:"本地 / 门店生意",
+ {k:"本地 / 门店生意", key:"local",
   ks:["门店","实体店","开店","摆摊","餐饮","小吃","奶茶","咖啡","美甲","理发","健身","家政","宠物店","装修","汽修","生鲜","水果","饭店","早餐","面馆","洗衣","社区","小区","同城","本地","上门"],
   note:"本地生意靠复购和转介绍，拉新最贵。",
   where:"你店门口三公里内的人，和已经来过的老客",
   why:"先找已经认识你的人，成交最快、成本最低。",
   first:"把最近 10 个老客叫出来，问清他们为什么来第二次。",
   risk:"别先扩店、别先投广告，房租和人手是硬成本。"},
- {k:"电商 / 卖货",
+ {k:"电商 / 卖货", key:"ecom",
   ks:["电商","淘宝","拼多多","抖店","带货","选品","货源","供应链","跨境","亚马逊","进货","厂家","1688","卖货","预售","一件代发"],
   note:"卖货的生死线是「有没有人愿意为这个价格付钱」，不是货有多好。",
   where:"已经买过同类产品的人，和他们的差评区",
   why:"差评里写的是真需求，好评里写的是客套话。",
   first:"挑 1 个 SKU，去同类产品的差评里抄 10 条原话。",
   risk:"别先囤货压货，先用预售测有没有人要。"},
- {k:"内容 / 自媒体",
+ {k:"内容 / 自媒体", key:"content",
   ks:["自媒体","内容","博主","短视频","小红书","抖音","公众号","播客","账号","视频","IP","涨粉","剪辑","直播"],
   note:"内容生意的第一步不是涨粉，是「有没有人愿意为你掏钱」。",
   where:"同类账号的评论区，和你身边已经遇到这个问题的人",
   why:"评论区里全是真实的人，而且已经聚在一处。",
   first:"找 3 个同类账号，只看差评和高赞，抄下 3 句最扎心的话。",
   risk:"别先买设备、别先做长视频，先用手机拍 3 条。"},
- {k:"软件 / 工具",
+ {k:"软件 / 工具", key:"tool",
   ks:["软件","工具","小程序","系统","SaaS","AI","代码","开发","平台","插件","网站","程序","算法","模型","App"],
   note:"工具类最大的坑是「做了一个没人用的东西」，所以前两周不写代码。",
   where:"正在被这个问题折磨、并且已经在用笨办法（表格、微信群）的人",
   why:"已经在用笨办法的人，才是真的有需求的人。",
   first:"找到 3 个正在用笨办法的人，看他们现在到底怎么解决。",
   risk:"别先写代码，先用表格或文档手工交付一遍。"},
- {k:"服务 / 手艺",
+ {k:"服务 / 手艺", key:"service",
   ks:["课程","咨询","培训","辅导","代做","设计","剪辑","写作","外包","接单","家教","摄影","手作","维修","私教","教练","策划","陪","跑腿"],
   note:"服务生意最容易起步，今天就能接第一单。",
   where:"过去问过你「能不能帮我弄一下」的那些人",
@@ -476,7 +662,7 @@ const JRULES=[
   first:"把过去问过你的人找出来，数一数到底有几个。",
   risk:"别先做作品集、别先想定价，先接一单完整做完。"}
 ];
-const OTHER={k:"还没定型",
+const OTHER={k:"还没定型", key:"other",
   note:"你填的这件事还没落到具体行业，我先按通用路径给你排。",
   where:"离你最近、最容易被找到的 10 个人",
   why:"先找最容易找到的人，验证成本最低。",
@@ -488,6 +674,11 @@ function judge(){
   let best=null,bs=0;
   JRULES.forEach(r=>{const sc=r.ks.filter(k=>txt.indexOf(k)>=0).length; if(sc>bs){bs=sc;best=r;}});
   return best||OTHER;
+}
+/* 当前行业对应的一套 30 天 */
+function dlist(){
+  const p=PATHS[judge().key]||PATHS.other;
+  return p.map((r,i)=>({w:r[0],d:i+1,t:r[1],a:[r[2],r[3],r[4]]}));
 }
 const esc=t=>String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 function fill(t){
@@ -791,8 +982,9 @@ function onboard(){
 function today(){
   const day=currentDay(), cc=completedCount();
   const allDone=cc>=30;
-  const week=DAYS[day-1].w;
-  const d=DAYS[day-1];
+  const L=dlist();
+  const week=L[day-1].w;
+  const d=L[day-1];
   const doneN=[0,1,2].filter(i=>isDone(day,i)).length;
 
   let body="";
@@ -842,7 +1034,7 @@ function path(){
   let html="";
   [1,2,3,4].forEach(w=>{
     html+=`<div class="week"><div class="week-hd"><div class="wnum">第 ${w} 周</div><h3>${WEEK_TITLE[w]}</h3></div>`;
-    DAYS.filter(x=>x.w===w).forEach(dd=>{
+    dlist().filter(x=>x.w===w).forEach(dd=>{
       const dn=dayDone(dd.d), now=dd.d===day;
       html+=`<div class="day${dn?" done":""}${now?" now":""}${S.open===dd.d?" open":""}" data-act="day" data-d="${dd.d}">
         <div class="day-hd">
@@ -860,10 +1052,9 @@ function path(){
       <div class="meta">30 天路径 · ${esc(a.field||"通用路径")}</div>
       <h1>你在这条路上<br>走到了第 ${day} 天</h1>
     </div><button class="lnk" data-act="tab" data-v="mine" style="margin-top:2px">自编计划</button></div>
-    <p class="lede">顺序是刻意的：先确认有人要，再决定做什么，最后才谈收钱。<b>跳过任何一步，后面都会返工。</b></p>
+    <p class="lede">这 30 天是按「${esc(judge().k)}」这一类行业排的，不是通用模板：每一步在你这个行当里都做得到。<b>顺序不变——先确认有人要，再决定做什么，最后才谈收钱。</b></p>
     ${html}
-    <div class="btn-line" data-act="tab" data-v="mine" style="text-align:center;margin-top:26px">自己排一个计划（年 / 月 / 日）</div>
-    <div class="mini" style="margin-top:10px">系统这 30 天不会变。觉得哪几天不适合你，就在自己的计划里另排。</div>
+    <div class="mini" style="margin-top:24px">这 30 天是按你这个行业排的，不会因为换方向就变。自己另排的事在「自编计划」里，单独一页。</div>
   </div>${tabbar("path")}`;
 }
 
@@ -892,7 +1083,7 @@ function planet(){
 }
 
 function me(){
-  const day=currentDay(), cc=completedCount(), week=DAYS[day-1].w;
+  const day=currentDay(), cc=completedCount(), week=dlist()[day-1].w;
   const a=AP().ans, bg=bgState();
   const rows=[
    ["一句话",a.goal||"—"],["行业",a.field||"—"],["谁会付钱",a.users||"—"],
@@ -915,11 +1106,11 @@ function me(){
           </button>
           <div class="pacts">
             <button class="lnk" data-act="renameplan" data-id="${p.id}">改名</button>
-            ${cur?"":`<button class="lnk" data-act="delplan" data-id="${p.id}">删除</button>`}
+            <button class="lnk del" data-act="delplan" data-id="${p.id}">删除</button>
           </div>
         </div>`}).join("")}</div>
       <button class="btn-line" data-act="newplan" style="text-align:center">开始一个新计划（当前这份自动存档）</button>
-      <div class="mini">每份计划分开存着：问诊答案、30 天打卡、周复盘都不会被清掉。换方向不等于从头再来。</div>
+      <div class="mini">每份计划分开存着：问诊答案、30 天打卡、周复盘都不会被清掉。换方向不等于从头再来。<br>要删只删那一份，用每行右边的「删除」。</div>
     </section>`:""}
     <section class="sec">
       <div class="sec-hd"><h2>问诊结果</h2><div class="note">${S.onboarded?"":"未完成"}</div></div>
@@ -958,11 +1149,6 @@ function me(){
       <div class="mini">iPhone：用 Safari 打开 → 底部「分享」→ 添加到主屏幕。<br>安卓：用 Chrome 打开 → 右上角菜单 → 添加到主屏幕。<br>在微信里打开的话，先点右上角「···」选「在浏览器打开」，再加桌面。</div>
       <div class="mini">朋友打开后，数据存在他自己的手机里，和你的互不影响。</div>
     </section>
-    <section class="sec">
-      <div class="sec-hd"><h2>重置</h2></div>
-      <div class="mini">这里删的是这台设备上的全部数据，所有计划一起没。只想换方向的话，用上面「开始一个新计划」，旧的那份会留着。</div>
-      <button class="btn-line" data-act="reset">清除我的数据</button>
-    </section>
   </div>${tabbar("me")}`;
 }
 
@@ -972,6 +1158,7 @@ function render(){
   if(!S.booted) return boot();
   if(v==="start") return onboard();
   if(v==="path") return path();
+  if(v==="mine/new") return mineNew();
   if(v==="mine") return mine();
   if(v==="planet") return planet();
   if(v==="me") return me();
@@ -980,6 +1167,65 @@ function render(){
 
 /* ===== 自编计划：自己排的任务，按年 / 月 / 日 ===== */
 const MSCOPE=[["day","按日"],["month","按月"],["year","按年"]];
+/* ===== 自编计划：倒计时 + 动态沙漏 ===== */
+const TIMERS={};
+let cdLoop=null;
+function fmtCd(sec){const t=Math.max(0,Math.round(sec||0));const m=Math.floor(t/60),q=t%60;return String(m).padStart(2,"0")+":"+String(q).padStart(2,"0");}
+function fmtDur(sec){const t=Math.max(0,Math.round(sec||0));const m=Math.floor(t/60),q=t%60;
+  if(m&&q) return m+" 分 "+q+" 秒"; if(m) return m+" 分钟"; return q+" 秒";}
+function cdState(id){
+  const it=(AP().mine||[]).find(x=>x.id===id);
+  if(!it||!it.sec) return null;
+  let st=TIMERS[id];
+  if(!st){ st=TIMERS[id]={left:(it.left!=null&&it.left>0)?it.left:it.sec,running:false}; }
+  return {it,st};
+}
+function paintCd(id){
+  const o=cdState(id); if(!o) return;
+  const {it,st}=o;
+  const left=st.running?Math.max(0,(st.endAt-Date.now())/1000):st.left;
+  const cd=document.getElementById("cd-"+id);
+  if(cd){cd.textContent=fmtCd(left);cd.classList.toggle("run",!!st.running);}
+  const r=it.sec?Math.min(1,Math.max(0,left/it.sec)):0;
+  const tp=document.getElementById("hgt-"+id), bt=document.getElementById("hgb-"+id), sm=document.getElementById("hgs-"+id);
+  if(tp) tp.style.transform="scaleY("+r.toFixed(3)+")";
+  if(bt) bt.style.transform="scaleY("+(1-r).toFixed(3)+")";
+  if(sm) sm.style.opacity=(st.running&&r>0)?"1":"0";
+  const btn=document.querySelector('[data-act="cdrun"][data-id="'+id+'"]');
+  if(btn) btn.textContent=st.running?"暂停":(left>=it.sec-0.05?"开始":"继续");
+}
+function cdTick(){
+  let any=false;
+  Object.keys(TIMERS).forEach(id=>{
+    const st=TIMERS[id];
+    if(!st||!st.running) return;
+    any=true;
+    if(st.endAt-Date.now()<=0){
+      st.running=false; st.left=0;
+      const it=(AP().mine||[]).find(x=>x.id===id);
+      if(it){ it.left=0; it.done=true; save(); }
+      paintCd(id);
+      cheer(it?it.title:"");
+    } else paintCd(id);
+  });
+  if(!any && cdLoop){clearInterval(cdLoop);cdLoop=null;}
+}
+function ensureLoop(){ if(cdLoop) return; cdLoop=setInterval(cdTick,200); }
+function cheer(title){
+  const old=document.querySelector(".cheer"); if(old) old.remove();
+  const w=document.createElement("div");
+  w.className="cheer";
+  w.innerHTML=`<div class="cheer-box"><div class="cm">✦</div><h3>你很棒，继续加油！</h3>
+    <p>「${esc(title||"这一条")}」时间到了，已经帮你记成完成。</p>
+    <button class="cheer-btn" data-act="cheerclose">知道了</button></div>`;
+  w.addEventListener("click",e=>{
+    if(e.target===w||(e.target.closest&&e.target.closest('[data-act="cheerclose"]'))) closeCheer();
+  });
+  document.body.appendChild(w);
+}
+function closeCheer(){ const w=document.querySelector(".cheer"); if(w) w.remove(); render(); }
+
+
 const isoDay=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
 const isoMonth=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");};
 function mineLabel(it){
@@ -987,39 +1233,78 @@ function mineLabel(it){
   if(it.scope==="month"){const q=(it.due||"").split("-");return q.length===2?(+q[0])+" 年 "+(+q[1])+" 月":"未定月份";}
   const q=(it.due||"").split("-");return q.length===3?(+q[1])+" 月 "+(+q[2])+" 日":"未定日期";
 }
+/* ===== 自编计划：列表单独一页（表单在另一页，不混在一起） ===== */
+function mineRow(it){
+  const dur = it.sec ? `<div class="clock">
+      <span class="cd" id="cd-${it.id}">${fmtCd(it.left!=null&&it.left>0?it.left:it.sec)}</span>
+      <svg class="hg" viewBox="0 0 21 30" aria-hidden="true">
+        <path class="hgo" d="M3 2.5h15l-7.5 12z"/>
+        <path class="hgo" d="M3 27.5h15l-7.5-12z"/>
+        <path class="sandTop" id="hgt-${it.id}" d="M2.8 2.5h15.4l-7.7 12.2z"/>
+        <path class="sandBot" id="hgb-${it.id}" d="M2.8 27.5h15.4l-7.7-12.2z"/>
+        <line class="stream" id="hgs-${it.id}" x1="10.5" y1="14.6" x2="10.5" y2="16"/>
+      </svg>
+      <button class="mbtn" data-act="cdrun" data-id="${it.id}">开始</button>
+      <button class="mbtn" data-act="cdreset" data-id="${it.id}">重置</button>
+    </div>` : "";
+  return `<div class="mrow${it.done?" on":""}">
+    <button class="mbox" data-act="togglemine" data-id="${it.id}">${it.done?"✓":""}</button>
+    <div class="mt">
+      <div class="mtitle">${esc(it.title)}</div>
+      <div class="mtmeta">${mineLabel(it)}${it.sec?" · 时长 "+fmtDur(it.sec):""}</div>
+      ${dur}
+    </div>
+    <button class="lnk" data-act="delmine" data-id="${it.id}">删除</button>
+  </div>`;
+}
 function mine(){
-  const p=AP(), list=(p.mine||[]).slice(), ms=S.ms||"day";
+  const p=AP(), list=(p.mine||[]).slice();
   const GRP=[["day","按日"],["month","按月"],["year","按年"]];
-  const sorted=g=>list.filter(x=>x.scope===g).sort((x,y)=>(x.due||"").localeCompare(y.due||""));
   const secs=GRP.map(([k,n])=>{
-    const items=sorted(k); if(!items.length) return "";
+    const items=list.filter(x=>x.scope===k).sort((x,y)=>(x.due||"").localeCompare(y.due||""));
+    if(!items.length) return "";
     return `<section class="sec"><div class="sec-hd"><h2>${n}</h2><div class="note">${items.filter(x=>x.done).length}/${items.length}</div></div>
-      ${items.map(it=>`<div class="mrow${it.done?" on":""}">
-        <button class="mbox" data-act="togglemine" data-id="${it.id}">${it.done?"✓":""}</button>
-        <div class="mt"><div class="mtitle">${esc(it.title)}</div><div class="mtmeta">${mineLabel(it)}</div></div>
-        <button class="lnk" data-act="delmine" data-id="${it.id}">删除</button>
-      </div>`).join("")}</section>`;
+      ${items.map(mineRow).join("")}</section>`;
   }).join("");
+  const total=list.length, donen=list.filter(x=>x.done).length;
   app.innerHTML=`<div class="shell">
     <div class="top"><div>
-      <div class="meta">我的节奏 · 第 ${currentDay()} 天</div>
+      <div class="meta">自编计划 · 第 ${currentDay()} 天</div>
       <h1>你自己排的事</h1>
-      <div class="sub">系统的 30 天不动。这里放你自己安排的任务，按年、按月、按日都行。</div>
+      <div class="sub">系统那 30 天不动。这里只放你自己安排的事，${total?"已完成 "+donen+" / "+total:"一条都还没有"}。</div>
+    </div><button class="lnk" data-act="tab" data-v="mine/new" style="margin-top:2px">加一条</button></div>
+    ${secs||`<section class="sec"><div class="note" style="padding:18px 0">还没有自己排的任务。点右上角「加一条」开始排。</div></section>`}
+    <div class="mini" style="margin-top:22px">排了时长的那几条，点「开始」就会倒计时，旁边的沙漏跟着漏，漏完会提醒你。</div>
+  </div>${tabbar("path")}`;
+  list.forEach(it=>{ if(it.sec) paintCd(it.id); });
+}
+
+/* ===== 自编计划：新建单独一页 ===== */
+function mineNew(){
+  const ms=S.ms||"day";
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">自编计划 · 新的一条</div>
+      <h1>排一件事，<br>可以精确到秒</h1>
+      <div class="sub">自己排的不会跟系统的 30 天混在一起，写完整条就回到列表。</div>
     </div></div>
     <section class="sec">
-      <div class="sec-hd"><h2>加一条</h2><div class="note">先选颗粒度</div></div>
+      <div class="sec-hd"><h2>先选颗粒度</h2><div class="note">按日 / 按月 / 按年</div></div>
       <div class="mseg">${MSCOPE.map(([k,n])=>`<button class="${ms===k?"on":""}" data-act="mscope" data-v="${k}">${n}</button>`).join("")}</div>
       <div class="mform">
         <input type="text" id="mtitle" placeholder="${ms==="year"?"比如：这一年把店开成两家":ms==="month"?"比如：这个月把证照和卫生许可办下来":"比如：今天把营业执照的材料准备好"}">
         ${ms==="day"?`<input type="date" id="mdue" value="${S.mday||isoDay()}">`
           :ms==="month"?`<div class="mrow2"><input type="number" id="myear" value="${S.myear||new Date().getFullYear()}" min="2020" max="2100"><select id="mmon">${[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>`<option value="${m}"${m===(+S.mmon||new Date().getMonth()+1)?" selected":""}>${m} 月</option>`).join("")}</select></div>`
           :`<input type="number" id="mdue" value="${S.myear||new Date().getFullYear()}" min="2020" max="2100" placeholder="哪一年">`}
-        <button class="btn-line" data-act="addmine">加上这条</button>
+        <div class="flab">要花多久（可以只填分，秒最多 59）</div>
+        <div class="mrow2">
+          <input type="number" id="mdmin" min="0" max="600" step="1" value="${S.mdmin==null?"":S.mdmin}" placeholder="分">
+          <input type="number" id="mdsec" min="0" max="59" step="1" value="${S.mdsec==null?"":S.mdsec}" placeholder="秒">
+        </div>
+        <button class="btn-line" data-act="addmine">加上这条，回列表</button>
       </div>
-      <div class="mini">想不起写什么也没关系，写完一条就会显示在下面，随时能删。</div>
+      <div class="mini">不填时长也行，那样就是一条普通待办；填了就多一个倒计时和沙漏。</div>
     </section>
-    ${secs||`<section class="sec"><div class="note" style="padding:18px 0">还没有自己排的任务。</div></section>`}
-    <div class="btn-line" data-act="tab" data-v="path" style="text-align:center;margin-top:26px">回到 30 天路径</div>
   </div>${tabbar("path")}`;
 }
 
@@ -1053,12 +1338,17 @@ app.addEventListener("click",e=>{
     }
     if(!t.trim()){alert("先写一句要做的事。");return;}
     if(sc!=="year"&&!due){alert("选一个日期。");return;}
+    const mins=Math.max(0,Math.floor(+(document.getElementById("mdmin")||{}).value||0));
+    const secs=Math.max(0,Math.min(59,Math.floor(+(document.getElementById("mdsec")||{}).value||0)));
+    const dur=mins*60+secs;
+    S.mdmin=mins; S.mdsec=secs;
     if(sc==="day") S.mday=due;
     if(sc==="month"){const q=due.split("-");S.myear=+q[0];S.mmon=+q[1];}
     if(sc==="year") S.myear=+due||S.myear;
     p.mine.push({id:"m"+Date.now().toString(36)+Math.random().toString(36).slice(2,4),
-      title:t.trim().slice(0,60),scope:sc,due:sc==="year"?(due||String(new Date().getFullYear())):due,done:false,created:Date.now()});
-    save();render();return;
+      title:t.trim().slice(0,60),scope:sc,due:sc==="year"?(due||String(new Date().getFullYear())):due,
+      done:false,created:Date.now(),sec:dur,left:dur});
+    save();location.hash="#/mine";render();return;
   }
   if(act==="togglemine"){
     const p=AP(), it=p.mine.find(x=>x.id===el.dataset.id);
@@ -1071,6 +1361,23 @@ app.addEventListener("click",e=>{
     if(!confirm("删掉「"+it.title+"」？")) return;
     p.mine=p.mine.filter(x=>x.id!==it.id);save();render();return;
   }
+  if(act==="cdrun"){
+    const o=cdState(el.dataset.id); if(!o) return;
+    const {it,st}=o;
+    if(st.running){
+      st.left=Math.max(0,(st.endAt-Date.now())/1000); st.running=false;
+      it.left=Math.round(st.left); save(); paintCd(it.id); return;
+    }
+    if(st.left<=0) st.left=it.sec;
+    st.endAt=Date.now()+st.left*1000; st.running=true;
+    paintCd(it.id); ensureLoop(); return;
+  }
+  if(act==="cdreset"){
+    const o=cdState(el.dataset.id); if(!o) return;
+    const {it,st}=o;
+    st.running=false; st.left=it.sec; it.left=it.sec; save(); paintCd(it.id); return;
+  }
+  if(act==="cheerclose"){ closeCheer(); return; }
   if(act==="boot-start"){S.booted=true;save();location.hash="#/start";S.step=0;render();return;}
   if(act==="boot-skip"){S.booted=true;save();location.hash="#/today";render();return;}
   if(act==="chip"){AP().ans[el.dataset.k]=el.dataset.v;save();render();return;}
@@ -1085,7 +1392,7 @@ app.addEventListener("click",e=>{
   if(act==="re-onb"){S.step=0;S.showDiag=false;save();location.hash="#/start";render();return;}
   if(act==="save"){
     const ta=document.getElementById("rv");
-    if(ta){const week=DAYS[currentDay()-1].w;AP().review["w"+week]=ta.value;save();}
+    if(ta){const week=dlist()[currentDay()-1].w;AP().review["w"+week]=ta.value;save();}
     el.textContent="已保存";el.style.color="#6FD9BE";el.style.borderColor="rgba(111,217,190,.4)";return;
   }
   if(act==="newplan"){
@@ -1110,10 +1417,17 @@ app.addEventListener("click",e=>{
   if(act==="delplan"){
     const p=S.plans.find(x=>x.id===el.dataset.id);
     if(!p) return;
-    if(!confirm("删除「"+p.name+"」？这份的打卡和复盘会一起没，其他计划不受影响。")) return;
+    const cur=p.id===S.activeId;
+    const msg=cur
+      ? "这是当前正在走的计划。删掉它，这份的问诊答案、30 天打卡、周复盘会一起没，不能恢复。\n\n确定删除「"+p.name+"」？"
+      : "删除「"+p.name+"」？这份的打卡和复盘会一起没，其他计划不受影响。";
+    if(!confirm(msg)) return;
     S.plans=S.plans.filter(x=>x.id!==p.id);
     if(!S.plans.length){const np=newPlan();S.plans=[np];S.activeId=np.id;S.onboarded=false;S.step=0;}
     else if(!S.plans.find(x=>x.id===S.activeId)){S.activeId=S.plans[S.plans.length-1].id;}
+    const ap=AP();
+    S.onboarded=Object.keys(ap.ans||{}).length>0;
+    S.justDone=0;S.open=0;S.showDiag=false;
     save();render();return;
   }
   if(act==="switchplan"){
@@ -1131,15 +1445,6 @@ app.addEventListener("click",e=>{
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(u).then(done).catch(()=>{fallbackCopy(u);done();});
     }else{fallbackCopy(u);done();}
-    return;
-  }
-  if(act==="reset"){
-    if(confirm("删除这台设备上的全部数据？"+(S.plans.length>1?"（共 "+S.plans.length+" 份计划）":"")+"所有打卡和复盘都会一起消失，不可恢复。")){
-      try{localStorage.removeItem(KEY)}catch(err){}
-      idbDel().catch(()=>{});
-      if(bgURL){URL.revokeObjectURL(bgURL);bgURL=null;}
-      S=DEF();location.hash="#/today";render();
-    }
     return;
   }
   if(act==="group"){alert("原型阶段还没有群。这里会放一个真实的群二维码。");return;}
