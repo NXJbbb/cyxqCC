@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070D13">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="创业星球">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<title>创业星球 · 原型</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23070D13' stroke='%23F2A63C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3.6' fill='%23F2A63C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+<style>
+:root{
+  --bg:#070D13;
+  --panel:#0C151D;
+  --panel2:#101B25;
+  --line:rgba(232,237,241,.10);
+  --line2:rgba(232,237,241,.055);
+  --ink:#E8EDF1;
+  --dim:#8A98A5;
+  --dim2:#5A6875;
+  --amber:#F2A63C;
+  --amber-d:#B87A22;
+  --mint:#6FD9BE;
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg)}
+body{
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:
+    radial-gradient(620px 380px at 78% -8%, rgba(242,166,60,.13), transparent 62%),
+    radial-gradient(520px 420px at 6% 8%, rgba(111,217,190,.05), transparent 66%);
+  pointer-events:none;
+  z-index:0;
+}
+#app{position:relative;z-index:1}
+.shell{max-width:460px;margin:0 auto;padding:0 22px 108px;min-height:100vh}
+.serif{font-family:var(--serif)}
+
+/* ---------- 顶部 ---------- */
+.top{padding:30px 0 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.top .meta{font-size:11.5px;color:var(--dim2);letter-spacing:.06em;margin-bottom:10px}
+.top h1{
+  font-family:var(--serif);font-weight:600;font-size:29px;line-height:1.28;
+  margin:0;letter-spacing:-.01em;
+}
+.top .sub{font-size:12.5px;color:var(--dim);margin-top:9px;line-height:1.6;max-width:220px}
+
+/* ---------- 轨道环 ---------- */
+.ring{flex:none;width:104px;height:104px;position:relative;margin-top:2px}
+.ring svg{display:block;width:104px;height:104px}
+.ring .core{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0;
+}
+.ring .core b{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1;color:var(--ink)}
+.ring .core span{font-size:9.5px;color:var(--dim2);letter-spacing:.08em;margin-top:4px}
+
+/* ---------- 通用区块 ---------- */
+.sec{margin-top:38px}
+.sec-hd{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+.sec-hd h2{font-family:var(--serif);font-weight:600;font-size:15.5px;margin:0;letter-spacing:.01em}
+.sec-hd .note{font-size:11px;color:var(--dim2)}
+
+/* ---------- 任务 ---------- */
+.tasks{margin-top:2px}
+.task{display:flex;gap:13px;align-items:flex-start;padding:17px 0 16px;border-bottom:1px solid var(--line2);cursor:pointer;transition:opacity .18s}
+.task:active{opacity:.6}
+.task .no{font-family:var(--serif);font-size:12.5px;color:var(--dim2);width:15px;flex:none;padding-top:3px}
+.task .body{flex:1;min-width:0}
+.task .body p{margin:0;font-size:14.5px;line-height:1.62;color:var(--ink);transition:color .18s}
+.task .box{
+  width:19px;height:19px;flex:none;border:1px solid rgba(232,237,241,.22);
+  display:grid;place-items:center;margin-top:2px;transition:border-color .18s,background .18s;
+}
+.task .box svg{width:11px;height:11px;opacity:0;transition:opacity .18s}
+.task.on .box{border-color:var(--mint);background:rgba(111,217,190,.10)}
+.task.on .box svg{opacity:1}
+.task.on .body p{color:var(--dim2);text-decoration:line-through;text-decoration-color:rgba(140,155,168,.5);text-decoration-thickness:1px}
+
+/* ---------- 完成态 ---------- */
+.finish{
+  margin-top:26px;border:1px solid rgba(111,217,190,.28);background:rgba(111,217,190,.05);
+  padding:18px 18px 17px;display:flex;gap:13px;align-items:flex-start;
+}
+.finish .mark{color:var(--mint);font-size:13px;font-family:var(--serif);flex:none;padding-top:1px}
+.finish .txt{font-size:13px;line-height:1.7;color:#CFE9E2}
+.finish .txt b{font-family:var(--serif);font-size:15px;display:block;margin-bottom:5px;color:#EAF7F4;font-weight:600}
+
+/* ---------- 诊断 ---------- */
+.diag{border:1px solid var(--line);background:linear-gradient(180deg,rgba(242,166,60,.06),rgba(242,166,60,.015));padding:20px 18px 16px;margin-top:26px}
+.diag .tag{font-size:10.5px;color:var(--amber);letter-spacing:.12em;margin-bottom:12px}
+.diag p{margin:0 0 9px;font-size:13px;line-height:1.72;color:#D6DDE3}
+.diag p b{color:var(--amber);font-weight:500}
+.diag button{
+  margin-top:8px;background:none;border:0;padding:6px 0;color:var(--dim);
+  font-family:var(--sans);font-size:11.5px;cursor:pointer;letter-spacing:.04em;
+}
+
+/* ---------- 今日一句 ---------- */
+.intel{margin-top:2px}
+.intel .row{padding:17px 0 15px;border-bottom:1px solid var(--line2)}
+.intel .tag{display:inline-block;font-size:10.5px;color:var(--dim);border:1px solid var(--line);padding:2px 7px;margin-bottom:9px;letter-spacing:.05em}
+.intel h3{font-family:var(--serif);font-weight:600;font-size:14px;margin:0 0 6px;line-height:1.5}
+.intel p{margin:0;font-size:12.8px;line-height:1.72;color:var(--dim)}
+.intel .src{display:block;margin-top:8px;font-size:10.5px;color:var(--dim2)}
+
+/* ---------- 路径 ---------- */
+.week{margin-top:30px}
+.week-hd{display:flex;align-items:baseline;gap:11px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.week-hd .wnum{font-family:var(--serif);font-size:12px;color:var(--amber);letter-spacing:.04em}
+.week-hd h3{font-family:var(--serif);font-weight:600;font-size:15px;margin:0}
+.day{border-bottom:1px solid var(--line2);cursor:pointer}
+.day-hd{display:flex;gap:13px;align-items:baseline;padding:13px 0}
+.day-hd .dn{font-family:var(--serif);font-size:12px;color:var(--dim2);width:26px;flex:none}
+.day-hd .dt{font-size:13.5px;line-height:1.55;flex:1;color:var(--ink)}
+.day-hd .st{font-size:10px;flex:none;color:var(--dim2);letter-spacing:.04em}
+.day.now .day-hd .dn,.day.now .day-hd .dt{color:var(--amber)}
+.day.now .day-hd .st{color:var(--amber)}
+.day.done .day-hd .dt{color:var(--dim2)}
+.day.done .day-hd .st{color:var(--mint)}
+.day .sub{padding:0 0 15px 39px;display:none}
+.day.open .sub{display:block}
+.day .sub .t{display:flex;gap:9px;padding:6px 0;font-size:12.5px;line-height:1.6;color:var(--dim)}
+.day .sub .t i{font-style:normal;color:var(--dim2);flex:none;font-size:11px}
+.day .sub .t.on{color:var(--dim2);text-decoration:line-through;text-decoration-color:rgba(140,155,168,.4)}
+
+/* ---------- 星球 ---------- */
+.lede{font-size:13px;line-height:1.75;color:var(--dim);margin:16px 0 0;max-width:340px}
+.lede b{color:var(--ink);font-weight:500}
+.people{margin-top:26px}
+.person{display:flex;gap:13px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line2)}
+.person .av{width:32px;height:32px;flex:none;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:12px;color:var(--dim)}
+.person .who{flex:1;min-width:0}
+.person .who strong{display:block;font-size:13px;font-weight:500}
+.person .who span{font-size:11px;color:var(--dim2)}
+.person .pct{font-family:var(--serif);font-size:11px;color:var(--dim)}
+.notice{border:1px solid var(--line);padding:19px 17px 15px;margin-top:30px}
+.notice .tag{font-size:10.5px;color:var(--amber);letter-spacing:.12em;margin-bottom:11px}
+.notice h3{font-family:var(--serif);font-weight:600;font-size:14px;margin:0 0 8px}
+.notice p{margin:0 0 8px;font-size:12.5px;line-height:1.75;color:var(--dim)}
+.btn-line{
+  display:block;width:100%;margin-top:12px;background:none;border:1px solid var(--line);
+  color:var(--dim);font-family:var(--sans);font-size:12.5px;padding:12px;cursor:pointer;letter-spacing:.04em;
+}
+.btn-line:active{background:rgba(232,237,241,.04)}
+.mseg{display:flex;margin-top:16px;border:1px solid var(--line)}
+.mseg button{flex:1;background:none;border:0;border-right:1px solid var(--line);padding:11px 0;
+ font-family:var(--sans);font-size:12.5px;color:var(--dim2);cursor:pointer}
+.mseg button:last-child{border-right:0}
+.mseg button.on{background:var(--accSoft);color:var(--amber)}
+.mform{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.mform input{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+ font-family:var(--sans);font-size:13.5px;padding:12px;border-radius:0;-webkit-appearance:none;appearance:none}
+.mform input:focus{outline:1px solid var(--accLine)}
+.mrow2{display:flex;gap:10px}
+.mrow2 input{flex:1.2;min-width:0}
+.mform select{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+ font-family:var(--sans);font-size:13.5px;padding:12px;border-radius:0;-webkit-appearance:none;appearance:none}
+.mform select:focus{outline:1px solid var(--accLine)}
+.mrow{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--line2)}
+.mbox{width:20px;height:20px;flex:none;border:1px solid var(--line);background:none;color:var(--amber);
+ font-size:12px;line-height:1;cursor:pointer;margin-top:2px}
+.mrow .mt{flex:1;min-width:0}
+.mtitle{font-size:13.5px;line-height:1.55}
+.mtmeta{font-size:11px;color:var(--dim2);margin-top:4px}
+.mrow.on .mtitle{color:var(--dim2);text-decoration:line-through}
+.mrow .lnk{flex:none;align-self:center}
+
+/* ---------- 我的 ---------- */
+.profile{margin-top:2px}
+.prow{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:13px 0;border-bottom:1px solid var(--line2);font-size:12.5px}
+.prow .k{color:var(--dim2);flex:none;line-height:1.75}
+.prow .v{color:var(--ink);text-align:right;flex:1;min-width:0;line-height:1.7;word-break:break-word}
+.grid30{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;margin-top:18px}
+.g30{aspect-ratio:1/1;border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--serif);font-size:9px;color:var(--dim2)}
+.g30.done{background:rgba(242,166,60,.16);border-color:rgba(242,166,60,.4);color:var(--amber)}
+.g30.now{border-color:var(--amber);color:var(--amber)}
+textarea{
+  width:100%;min-height:112px;margin-top:14px;background:var(--panel);
+  border:1px solid var(--line);color:var(--ink);font-family:var(--sans);font-size:13px;
+  line-height:1.7;padding:13px;resize:vertical;border-radius:0;
+}
+textarea:focus{outline:1px solid rgba(242,166,60,.5);outline-offset:0}
+.save{width:100%;margin-top:10px;background:rgba(242,166,60,.11);border:1px solid rgba(242,166,60,.35);color:var(--amber);font-family:var(--sans);font-size:12.5px;padding:12px;cursor:pointer;letter-spacing:.06em}
+.save:active{background:rgba(242,166,60,.18)}
+.mini{font-size:10.5px;color:var(--dim2);margin-top:9px;line-height:1.7}
+.plans{display:flex;flex-direction:column}
+.planrow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;
+  border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;width:100%}
+.planrow:last-child{border-bottom:0}
+.planrow .pl{min-width:0}
+.planrow .pn{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);line-height:1.4}
+.planrow .pm{font-size:11px;color:var(--dim2);margin-top:5px;letter-spacing:.02em}
+.planrow .pa{font-size:12px;color:var(--amber);flex:none}
+.pill{flex:none;font-size:10px;padding:1px 6px;border:1px solid var(--accLine);color:var(--amber);letter-spacing:.04em}
+.planrow .pin{flex:1;min-width:0;background:none;border:0;padding:0;text-align:left;cursor:pointer}
+.pacts{display:flex;gap:14px;flex:none}
+.lnk{background:none;border:0;padding:0;color:var(--dim2);font-size:11px;cursor:pointer;font-family:var(--sans)}
+.lnk:active{color:var(--amber)}
+textarea.ans{width:100%;margin-top:24px;background:var(--panel);border:1px solid var(--line);
+ color:var(--ink);padding:16px;font-family:var(--sans);font-size:15px;line-height:1.75;
+ resize:none;min-height:104px;border-radius:0}
+textarea.ans::placeholder{color:var(--dim2)}
+textarea.ans:focus{outline:1px solid var(--accLine)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{background:none;border:1px solid var(--line);color:var(--dim);font-size:12px;padding:8px 11px;
+ line-height:1.2;cursor:pointer;font-family:var(--sans);text-align:left}
+.chip:active{border-color:var(--accLine);color:var(--amber)}
+
+/* ---------- 底部导航 ---------- */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:8;background:rgba(7,13,19,.9);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tabbar .inner{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);padding:9px 14px calc(9px + env(safe-area-inset-bottom))}
+.tab{background:none;border:0;padding:6px 0 2px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:var(--dim2);font-family:var(--sans);font-size:10.5px;letter-spacing:.02em}
+.tab svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.4}
+.tab.on{color:var(--amber)}
+
+/* ---------- 问诊 ---------- */
+.onb{max-width:460px;margin:0 auto;padding:34px 24px calc(34px + env(safe-area-inset-bottom));min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.onb .steps{display:flex;gap:6px;margin-bottom:34px}
+.onb .steps i{height:2px;flex:1;background:var(--line);transition:background .3s}
+.onb .steps i.on{background:var(--amber)}
+.onb .qno{font-family:var(--serif);font-size:11px;color:var(--dim2);letter-spacing:.1em;margin-bottom:14px}
+.onb h2{font-family:var(--serif);font-weight:600;font-size:23px;line-height:1.42;margin:0 0 26px;letter-spacing:-.01em}
+.onb h2 em{font-style:normal;color:var(--amber)}
+.opt{display:flex;justify-content:space-between;gap:14px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:17px 0 16px;color:var(--ink);font-family:var(--sans);font-size:14.5px;cursor:pointer;transition:padding-left .18s,color .18s}
+.opt:active{padding-left:4px}
+.opt.on{border-top-color:rgba(242,166,60,.42)}
+.opt.on .lab{color:var(--amber)}
+.opt .lab{flex:1;line-height:1.5}
+.opt .desc{font-size:11px;color:var(--dim2);flex:none;max-width:130px;text-align:right;line-height:1.5}
+.opt .mk{width:14px;flex:none;color:var(--amber);font-size:11px;opacity:0}
+.opt.on .mk{opacity:1}
+.onb .hint{font-size:11px;color:var(--dim2);line-height:1.7;margin-top:20px;max-width:290px}
+.onb .foot{margin-top:28px;display:flex;gap:10px}
+.onb .foot button{flex:1;padding:14px;font-family:var(--sans);font-size:13px;letter-spacing:.06em;cursor:pointer;border-radius:0}
+.onb .ghost{background:none;border:1px solid var(--line);color:var(--dim)}
+.onb .go{background:var(--amber);border:1px solid var(--amber);color:#120A00;font-weight:500}
+.onb .go[disabled]{background:rgba(242,166,60,.22);border-color:transparent;color:rgba(242,166,60,.5);cursor:default}
+
+/* ---------- 开场 ---------- */
+.boot{max-width:460px;margin:0 auto;padding:0 26px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.boot .mark{width:56px;height:56px;margin-bottom:28px}
+.boot h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.3;margin:0 0 16px;letter-spacing:-.01em}
+.boot h1 em{font-style:normal;color:var(--amber)}
+.boot p{font-size:13.5px;line-height:1.8;color:var(--dim);margin:0 0 10px;max-width:300px}
+.boot .cta{margin-top:34px;display:flex;flex-direction:column;gap:10px}
+.boot .cta button{padding:15px;font-family:var(--sans);font-size:13.5px;letter-spacing:.04em;cursor:pointer;border-radius:0}
+.boot .primary{background:var(--amber);border:1px solid var(--amber);color:#120A00;font-weight:500}
+.boot .secondary{background:none;border:1px solid var(--line);color:var(--dim)}
+.boot .foot{margin-top:28px;font-size:10.5px;color:var(--dim2);line-height:1.7}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style id="theme-vars">
+/* ===== 主题变量：默认「深空」 ===== */
+:root{
+  --bg:#070D13;
+  --panel:#0C151D; --panel2:#101B25;
+  --line:rgba(232,237,241,.10); --line2:rgba(232,237,241,.055);
+  --ink:#E8EDF1; --dim:#8A98A5; --dim2:#5A6875;
+  --amber:#F2A63C; --amber-d:#B87A22; --mint:#6FD9BE;
+  --mintSoft:rgba(111,217,190,.10);
+  --accSoft:rgba(242,166,60,.11); --accSoft2:rgba(242,166,60,.18);
+  --accLine:rgba(242,166,60,.35);
+  --accGlow:rgba(242,166,60,.13); --accGlow2:rgba(111,217,190,.05);
+  --boxline:rgba(232,237,241,.22);
+  --bar:rgba(7,13,19,.90);
+  --onAcc:#120A00;
+  --finishBg:rgba(111,217,190,.05); --finishLine:rgba(111,217,190,.28);
+  --finishInk:#CFE9E2; --finishTitle:#EAF7F4;
+  --gridDone:rgba(242,166,60,.16); --gridDoneLine:rgba(242,166,60,.40);
+  --diagFrom:rgba(242,166,60,.06); --diagTo:rgba(242,166,60,.015);
+  --dotIdle:rgba(232,237,241,.20); --dotIdle2:rgba(232,237,241,.07); --accHalo:rgba(242,166,60,.16);
+}
+html[data-theme="night"]{
+  --bg:#0A1020;
+  --panel:#0F1830; --panel2:#131E3A;
+  --line:rgba(230,234,243,.10); --line2:rgba(230,234,243,.055);
+  --ink:#E7EBF5; --dim:#8D97AE; --dim2:#5C6680;
+  --amber:#E9B75F; --amber-d:#A87B2E; --mint:#78D8C3;
+  --mintSoft:rgba(120,216,195,.10);
+  --accSoft:rgba(233,183,95,.11); --accSoft2:rgba(233,183,95,.18);
+  --accLine:rgba(233,183,95,.35);
+  --accGlow:rgba(233,183,95,.13); --accGlow2:rgba(120,216,195,.06);
+  --boxline:rgba(230,234,243,.22);
+  --bar:rgba(10,16,32,.90);
+  --onAcc:#14100A;
+  --finishBg:rgba(120,216,195,.05); --finishLine:rgba(120,216,195,.28);
+  --finishInk:#CFE7E3; --finishTitle:#EAF7F5;
+  --gridDone:rgba(233,183,95,.16); --gridDoneLine:rgba(233,183,95,.40);
+  --diagFrom:rgba(233,183,95,.06); --diagTo:rgba(233,183,95,.015);
+  --dotIdle:rgba(230,234,243,.20); --dotIdle2:rgba(230,234,243,.07); --accHalo:rgba(233,183,95,.16);
+}
+html[data-theme="sand"]{
+  --bg:#F3EDE3;
+  --panel:#FAF6EF; --panel2:#FDFAF5;
+  --line:rgba(42,33,24,.13); --line2:rgba(42,33,24,.07);
+  --ink:#241C13; --dim:#5E5245; --dim2:#7E7160;
+  --amber:#B2661A; --amber-d:#8A4E11; --mint:#1E7F68;
+  --mintSoft:rgba(30,127,104,.10);
+  --accSoft:rgba(178,102,26,.09); --accSoft2:rgba(178,102,26,.16);
+  --accLine:rgba(178,102,26,.30);
+  --accGlow:rgba(178,102,26,.10); --accGlow2:rgba(30,127,104,.06);
+  --boxline:rgba(36,28,19,.20);
+  --bar:rgba(243,237,227,.93);
+  --onAcc:#FFF7ED;
+  --finishBg:rgba(30,127,104,.07); --finishLine:rgba(30,127,104,.22);
+  --finishInk:#1B4B3F; --finishTitle:#0D3229;
+  --gridDone:rgba(178,102,26,.13); --gridDoneLine:rgba(178,102,26,.33);
+  --diagFrom:rgba(178,102,26,.07); --diagTo:rgba(178,102,26,.02);
+  --dotIdle:rgba(36,28,19,.24); --dotIdle2:rgba(36,28,19,.10); --accHalo:rgba(178,102,26,.18);
+}
+html[data-theme="mist"]{
+  --bg:#E9EFF1;
+  --panel:#F4F8F9; --panel2:#FAFCFD;
+  --line:rgba(23,38,42,.13); --line2:rgba(23,38,42,.07);
+  --ink:#16262A; --dim:#4C6065; --dim2:#6C8085;
+  --amber:#A5620C; --amber-d:#7E4A08; --mint:#12685B;
+  --mintSoft:rgba(18,104,91,.10);
+  --accSoft:rgba(165,98,12,.09); --accSoft2:rgba(165,98,12,.16);
+  --accLine:rgba(165,98,12,.30);
+  --accGlow:rgba(165,98,12,.09); --accGlow2:rgba(18,104,91,.05);
+  --boxline:rgba(22,38,42,.20);
+  --bar:rgba(233,239,241,.93);
+  --onAcc:#FFF8F0;
+  --finishBg:rgba(18,104,91,.07); --finishLine:rgba(18,104,91,.22);
+  --finishInk:#1A4A42; --finishTitle:#0C2E29;
+  --gridDone:rgba(165,98,12,.13); --gridDoneLine:rgba(165,98,12,.33);
+  --diagFrom:rgba(165,98,12,.07); --diagTo:rgba(165,98,12,.02);
+  --dotIdle:rgba(22,38,42,.24); --dotIdle2:rgba(22,38,42,.10); --accHalo:rgba(165,98,12,.18);
+}
+
+/* ===== 原先写死的颜色改为跟随主题 ===== */
+body::before{
+  background:
+    radial-gradient(620px 380px at 78% -8%, var(--accGlow), transparent 62%),
+    radial-gradient(520px 420px at 6% 8%, var(--accGlow2), transparent 66%);
+  transition:opacity .3s;
+}
+body.photo::before{opacity:0}
+.task .box{border-color:var(--boxline)}
+.task.on .box{background:var(--mintSoft)}
+.finish{border-color:var(--finishLine);background:var(--finishBg)}
+.finish .txt{color:var(--finishInk)}
+.finish .txt b{color:var(--finishTitle)}
+.diag{background:linear-gradient(180deg,var(--diagFrom),var(--diagTo))}
+.diag p{color:var(--ink)}
+.save{background:var(--accSoft);border-color:var(--accLine);color:var(--amber)}
+.save:active{background:var(--accSoft2)}
+.g30.done{background:var(--gridDone);border-color:var(--gridDoneLine);color:var(--amber)}
+.opt.on{border-top-color:var(--accLine)}
+.tabbar{background:var(--bar)}
+.onb .go{background:var(--amber);border-color:var(--amber);color:var(--onAcc)}
+.onb .go[disabled]{background:var(--accSoft);border-color:transparent;color:var(--dim2)}
+.boot .primary{background:var(--amber);border-color:var(--amber);color:var(--onAcc)}
+textarea:focus{outline:1px solid var(--accLine)}
+.diag button:hover{color:var(--ink)}
+
+/* ===== 自定义背景层 ===== */
+#bgwrap{position:fixed;inset:0;z-index:0;pointer-events:none}
+#bgimg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;display:none}
+#bgscrim{position:absolute;inset:0;background:var(--bg);opacity:0}
+
+/* ===== 背景设置 ===== */
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:18px}
+.sw{background:none;border:0;padding:0;cursor:pointer;display:flex;flex-direction:column;gap:7px;text-align:left}
+.sw .shade{position:relative;width:100%;aspect-ratio:1/1;border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(128,128,128,.14)}
+.sw .shade .dot{position:absolute;right:7px;bottom:7px;width:8px;height:8px;border-radius:50%}
+.sw b{font-family:var(--sans);font-size:11px;font-weight:400;color:var(--dim2);letter-spacing:.02em}
+.sw.on b{color:var(--amber)}
+.sw.on .shade{outline:2px solid var(--amber);outline-offset:2px}
+.bgrow{margin-top:20px;display:flex;flex-direction:column;gap:9px}
+.bgrow .muted{font-size:11px;color:var(--dim2);line-height:1.7}
+.slider{display:flex;align-items:center;gap:12px;margin-top:14px}
+.slider input{flex:1;accent-color:var(--amber);height:22px}
+.slider .lab{font-size:11px;color:var(--dim2);flex:none}
+</style>
+</head>
+<body>
+<div id="bgwrap" aria-hidden="true"><div id="bgimg"></div><div id="bgscrim"></div></div>
+<div id="app"></div>
+<script>
+/* ===== 数据：30 天路径 ===== */
+const DAYS = [
+ {w:1,d:1,t:"写下你的创业假设",a:["把你写的那句话改成 20 字以内：谁 + 什么麻烦 + 你怎么解","写下你现在最不确定的三件事","把这句话发给自己，明天再看一遍"]},
+ {w:1,d:2,t:"找出你的用户聚集在哪",a:["列出 3 个{users}可能出现的地方","从{where}里先挑 10 个具体的人","记进一张表，不要只留在脑子里"]},
+ {w:1,d:3,t:"约第一个 15 分钟访谈",a:["只问：你最近一次遇到这个问题是什么时候","全程不推销你的想法","记原话，不改写成你的说法"]},
+ {w:1,d:4,t:"再聊两个人，开始找重复",a:["完成第 2 位访谈","完成第 3 位访谈","把三个人都重复提到的词圈出来"]},
+ {w:1,d:5,t:"把「你的问题」换成「他的原话」",a:["用用户的词重写你的假设","删掉所有他们没提过的词","重新发给自己一遍"]},
+ {w:1,d:6,t:"去看同行的差评",a:["找到 3 个跟「{field}」同类的产品","只读 1 星和 2 星","抄下最扎心的三句话"]},
+ {w:1,d:7,t:"第一次周复盘",a:["写下：我现在最不确定的是什么","写下本周最意外的一句话","决定下周要验证哪一个假设"]},
+ {w:2,d:8,t:"定一个能被观察的最小承诺",a:["写下：如果 ___ 成立，说明方向对","标准必须是能被看到的行为","不要写成「感觉挺好」"]},
+ {w:2,d:9,t:"做一版一页纸说明",a:["只写四块：问题 / 给谁 / 怎么做 / 要多少钱","一页写完，不配图","发给 1 个外行，看他能不能看懂"]},
+ {w:2,d:10,t:"让 5 个人看这一页",a:["每人只问一个问题：你会想试吗","记下谁犹豫了，以及为什么","不解释，不辩护"]},
+ {w:2,d:11,t:"做一次付费意愿测试",a:["先不问价格，问「你为这事花过多少钱」","记下他们主动提到的数字","这就是你定价的上限线索"]},
+ {w:2,d:12,t:"圈出你的第一批 10 个人",a:["从前面聊过的人里挑最急的 10 个","按「急 / 不急」排个序","写下你打算怎么联系到他们"]},
+ {w:2,d:13,t:"写一封三句话的邀请",a:["第一句说他的问题，用他的原话","第二句说你要做什么，一句话","第三句说下一步要他做什么"]},
+ {w:2,d:14,t:"第二次周复盘",a:["数一下：有几个人真的回了你","写下最冷的那次拒绝，原因是什么","决定：继续、换人群，还是换问题"]},
+ {w:3,d:15,t:"砍到只剩一个功能",a:["列出你打算做的所有事","划掉所有「没有也能用」的","只留一个"]},
+ {w:3,d:16,t:"做最糙的版本",a:["文档、表格、微信群都算，不一定要写代码","今天之内能让第一个人用上","不追求好看"]},
+ {w:3,d:17,t:"交付给第 1 个真人",a:["亲手把东西给他","看他怎么用，别插嘴","记下他第一处卡住的地方"]},
+ {w:3,d:18,t:"只修那一个卡点",a:["只修今天看到的那一处","不要顺手加新功能","再给他用一次"]},
+ {w:3,d:19,t:"收第一笔钱，哪怕 1 块钱",a:["把价格明确说出来","用能留痕的方式收","记下对方第一反应的原话"]},
+ {w:3,d:20,t:"算一遍你自己的账",a:["一个客户要花你多少小时","你一个月最多能服务几个","这个数够不够养活你"]},
+ {w:3,d:21,t:"第三次周复盘",a:["有没有人付钱，几个","他们为什么付，原话是什么","下周重点是复购还是拉新"]},
+ {w:4,d:22,t:"找到第 2、第 3 个付费的人",a:["从同一批人里找","用同样的方式交付","记录每次实际花了多少时间"]},
+ {w:4,d:23,t:"写一版能重复交付的流程",a:["把交付拆成 5 步以内","每步写一句怎么算做完","下次照着做一遍"]},
+ {w:4,d:24,t:"找出你最贵的那一步",a:["标出最耗时间的一步","想一个能砍掉它一半时间的办法","明天就试"]},
+ {w:4,d:25,t:"写清楚你的「不做清单」",a:["列出你被诱惑但决定不做的事","每条写一句为什么不做","放在每天都看得见的地方"]},
+ {w:4,d:26,t:"找一个人跟你一起干",a:["写清楚你要他做什么，不是「合伙人」三个字","说清现在能给什么、给不了什么","约一次 30 分钟的见面"]},
+ {w:4,d:27,t:"把这个月的账算清",a:["收入、支出、投入小时数","折算成你的时薪","和上班比一比"]},
+ {w:4,d:28,t:"决定：继续、调整，还是停",a:["写下支持继续的三条证据","写下反对的三条证据","给自己一个明确的答案"]},
+ {w:4,d:29,t:"写下第二个月的三件事",a:["只有三件","每件写成一周内能验证的动作","定好检查的时间"]},
+ {w:4,d:30,t:"把这一页留给下个月的自己",a:["写下你现在相信的一句话","写下你还没解决的问题","写下你要感谢的一个人"]}
+];
+
+const WEEK_TITLE = {
+ 1:"把模糊的想法，变成能被验证的假设",
+ 2:"找到那几个人，听他们到底怎么说",
+ 3:"做一个能被收钱的最小东西",
+ 4:"收到钱之后，决定继续还是换"
+};
+
+/* ===== 行业初判（按你填的词做规则匹配，不是真行业报告） ===== */
+const JRULES=[
+ {k:"本地 / 门店生意",
+  ks:["门店","实体店","开店","摆摊","餐饮","小吃","奶茶","咖啡","美甲","理发","健身","家政","宠物店","装修","汽修","生鲜","水果","饭店","早餐","面馆","洗衣","社区","小区","同城","本地","上门"],
+  note:"本地生意靠复购和转介绍，拉新最贵。",
+  where:"你店门口三公里内的人，和已经来过的老客",
+  why:"先找已经认识你的人，成交最快、成本最低。",
+  first:"把最近 10 个老客叫出来，问清他们为什么来第二次。",
+  risk:"别先扩店、别先投广告，房租和人手是硬成本。"},
+ {k:"电商 / 卖货",
+  ks:["电商","淘宝","拼多多","抖店","带货","选品","货源","供应链","跨境","亚马逊","进货","厂家","1688","卖货","预售","一件代发"],
+  note:"卖货的生死线是「有没有人愿意为这个价格付钱」，不是货有多好。",
+  where:"已经买过同类产品的人，和他们的差评区",
+  why:"差评里写的是真需求，好评里写的是客套话。",
+  first:"挑 1 个 SKU，去同类产品的差评里抄 10 条原话。",
+  risk:"别先囤货压货，先用预售测有没有人要。"},
+ {k:"内容 / 自媒体",
+  ks:["自媒体","内容","博主","短视频","小红书","抖音","公众号","播客","账号","视频","IP","涨粉","剪辑","直播"],
+  note:"内容生意的第一步不是涨粉，是「有没有人愿意为你掏钱」。",
+  where:"同类账号的评论区，和你身边已经遇到这个问题的人",
+  why:"评论区里全是真实的人，而且已经聚在一处。",
+  first:"找 3 个同类账号，只看差评和高赞，抄下 3 句最扎心的话。",
+  risk:"别先买设备、别先做长视频，先用手机拍 3 条。"},
+ {k:"软件 / 工具",
+  ks:["软件","工具","小程序","系统","SaaS","AI","代码","开发","平台","插件","网站","程序","算法","模型","App"],
+  note:"工具类最大的坑是「做了一个没人用的东西」，所以前两周不写代码。",
+  where:"正在被这个问题折磨、并且已经在用笨办法（表格、微信群）的人",
+  why:"已经在用笨办法的人，才是真的有需求的人。",
+  first:"找到 3 个正在用笨办法的人，看他们现在到底怎么解决。",
+  risk:"别先写代码，先用表格或文档手工交付一遍。"},
+ {k:"服务 / 手艺",
+  ks:["课程","咨询","培训","辅导","代做","设计","剪辑","写作","外包","接单","家教","摄影","手作","维修","私教","教练","策划","陪","跑腿"],
+  note:"服务生意最容易起步，今天就能接第一单。",
+  where:"过去问过你「能不能帮我弄一下」的那些人",
+  why:"他们已经用行动证明愿意为这件事找人。",
+  first:"把过去问过你的人找出来，数一数到底有几个。",
+  risk:"别先做作品集、别先想定价，先接一单完整做完。"}
+];
+const OTHER={k:"还没定型",
+  note:"你填的这件事还没落到具体行业，我先按通用路径给你排。",
+  where:"离你最近、最容易被找到的 10 个人",
+  why:"先找最容易找到的人，验证成本最低。",
+  first:"把这件事写成一句别人能听懂的话，念给 3 个人听。",
+  risk:"别急着定方向，先把「给谁、解决什么」说清楚。"};
+function judge(){
+  const a=AP().ans;
+  const txt=[a.field,a.goal,a.users,a.assets].filter(Boolean).join(" ");
+  let best=null,bs=0;
+  JRULES.forEach(r=>{const sc=r.ks.filter(k=>txt.indexOf(k)>=0).length; if(sc>bs){bs=sc;best=r;}});
+  return best||OTHER;
+}
+const esc=t=>String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+function fill(t){
+  const a=AP().ans, j=judge();
+  return String(t)
+    .replace(/{field}/g,esc(a.field||"你选的这个行业"))
+    .replace(/{users}/g,esc(a.users||"你的目标人群"))
+    .replace(/{where}/g,esc(j.where))
+    .replace(/{first}/g,esc(j.first));
+}
+
+/* ===== 数据：问诊 ===== */
+const QS = [
+ {k:"goal", t:"你要做的这件事，一句话说清楚",
+  hint:"先说个大概。写不准也没关系，第 1 天还会让你改。",
+  ph:"比如：帮小区里没时间做饭的上班族，每天吃上一顿家常菜",
+  ex:["帮 ___ 的人解决 ___","我想做 ___","身边有人一直在抱怨 ___"]},
+ {k:"field", t:"这件事属于哪个行业？",
+  hint:"越具体越好。写「宠物殡葬」比写「服务业」有用得多。",
+  ph:"比如：社区团购 / 宠物殡葬 / AI 简历辅导 / 小区早餐店",
+  ex:["本地门店、社区小店","电商、卖货","内容、自媒体","软件、工具","课程、手艺、接单"]},
+ {k:"users", t:"谁会为这件事掏钱？",
+  hint:"写具体的人。写「25–35 岁刚生完孩子的妈妈」比「所有女性」有用。",
+  ph:"比如：住在附近、下班晚、不会做饭的两个人家庭",
+  ex:["我店里的老客","同城三公里内的人","某个群里的同行","刷到我视频的人"]},
+ {k:"assets", t:"你手上已经有什么？",
+  hint:"钱、时间、手艺、人脉、老客户、场地，有几个写几个。",
+  ph:"比如：三万多启动资金、会做饭、小区群里有两百人",
+  ex:["有一点存款，不多","会这门手艺","认识几个同行","有一个现成的群或账号"]},
+ {k:"hours", t:"每周能真正投入多少小时？",
+  hint:"按你下周真能挤出来的时间算，不要按理想状态算。",
+  ph:"比如：工作日晚上两小时，周末各半天",
+  ex:["不到 5 小时","5–15 小时","15 小时以上","只有周末"]},
+ {k:"fear", t:"你现在最怕的是什么？",
+  hint:"说出来。路径会绕开它，或者让你先拿到答案。",
+  ph:"比如：怕做出来没人要",
+  ex:["做出来没人要","不知道该怎么做","没资源、没人帮","自己坚持不下去"]}
+];
+
+/* ===== 数据：本周精选（示例内容） ===== */
+const INTEL = [
+ {tag:"方法",t:"第一版产品该有多糙",p:"只要能让一个真人真的用上，糙就是对的。打磨发生在有人付钱之后——在那之前，你修的每一个细节都可能是错的方向。",s:"示例内容 · 原型占位，v1 每周人工精选 3 条"},
+ {tag:"观察",t:"「挺好的」为什么是坏信号",p:"所有反馈都说「挺好的」，通常意味着对方不会为它花钱。真正的验证是行为：他有没有回复、有没有来、有没有付钱。",s:"示例内容 · 原型占位，v1 每周人工精选 3 条"},
+ {tag:"行业",t:"先找需求密度最高的地方",p:"同一个问题，在一千人里出现十次，和在某个人群里出现三百次，后者更容易做起来。先挑人，再挑事。",s:"示例内容 · 原型占位，v1 每周人工精选 3 条"}
+];
+
+/* ===== 数据：星球（示例） ===== */
+const PEOPLE = [
+ {n:"第 0041 号",d:"本地服务 · 第 12 天",p:"8/30"},
+ {n:"第 0137 号",d:"内容 / 自媒体 · 第 21 天",p:"19/30"},
+ {n:"第 0218 号",d:"电商 · 第 6 天",p:"5/30"},
+ {n:"第 0302 号",d:"软件 / 工具 · 第 30 天",p:"30/30"}
+];
+
+/* ===== 状态 ===== */
+const KEY="cyxq_proto_v1";
+const DEF=()=>({booted:false,onboarded:false,step:0,ans:{},done:{},review:{},showDiag:false,justDone:0,open:0,openDiag:false,bg:{theme:"space",photo:false,scrim:.80}});
+let S=(()=>{try{const r=localStorage.getItem(KEY);return r?Object.assign(DEF(),JSON.parse(r)):DEF()}catch(e){return DEF()}})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const app=document.getElementById("app");
+
+/* ===== 计划：多份并存，旧的另存归档，不清空 ===== */
+const newPlan=()=>({id:"p"+Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+  name:"未命名的计划",created:Date.now(),ans:{},done:{},review:{},mine:[],closed:false,closedAt:null});
+const shortName=t=>{let v=String(t||"未命名的计划").trim();return v.length>14?v.slice(0,14)+"…":v;};
+const planName=(ans,dups)=>shortName(ans&&(ans.field||ans.goal)||"未命名的计划")+(dups>0?" · 第 "+(dups+1)+" 份":"");
+const AP=()=>{
+  if(!Array.isArray(S.plans)||!S.plans.length){
+    const p=newPlan(); p.ans=S.ans||{}; p.done=S.done||{}; p.review=S.review||{};
+    p.name=planName(p.ans,0); S.plans=[p]; S.activeId=p.id;
+  }
+  return S.plans.find(x=>x.id===S.activeId)||S.plans[S.plans.length-1];
+};
+function pDone(p,d,i){return !!(p.done[d]&&p.done[d][i]);}
+function pDayDone(p,d){return [0,1,2].every(i=>pDone(p,d,i));}
+function pCompleted(p){let c=0;for(let d=1;d<=30;d++)if(pDayDone(p,d))c++;return c;}
+const fmtDate=ts=>{const t=new Date(ts||Date.now());return t.getFullYear()+"."+(t.getMonth()+1)+"."+t.getDate();};
+
+(function migrate(){
+  if(Array.isArray(S.plans)&&S.plans.length) return;
+  const p=newPlan();
+  p.ans=S.ans||{}; p.done=S.done||{}; p.review=S.review||{};
+  p.name=planName(p.ans,0);
+  S.plans=[p]; S.activeId=p.id;
+  delete S.ans; delete S.done; delete S.review;
+  save();
+})();
+(S.plans||[]).forEach(p=>{if(!Array.isArray(p.mine)) p.mine=[];});
+S.onboarded=Object.keys(AP().ans).length>0;
+
+
+/* ===== 背景与主题 ===== */
+const THEMES=[
+ {k:"space",n:"深空",bg:"#070D13",dot:"#F2A63C"},
+ {k:"night",n:"夜航",bg:"#0A1020",dot:"#E9B75F"},
+ {k:"sand",n:"暖沙",bg:"#F3EDE3",dot:"#B2661A"},
+ {k:"mist",n:"雾青",bg:"#E9EFF1",dot:"#A5620C"}
+];
+const BGDEF={theme:"space",photo:false,scrim:.80};
+const bgState=()=>Object.assign({},BGDEF,S.bg||{});
+let bgURL=null;
+
+function idbOpen(){
+  return new Promise((res,rej)=>{
+    const r=indexedDB.open("cyxq_bg",1);
+    r.onupgradeneeded=()=>{ if(!r.result.objectStoreNames.contains("kv")) r.result.createObjectStore("kv"); };
+    r.onsuccess=()=>res(r.result);
+    r.onerror=()=>rej(r.error);
+  });
+}
+async function idbPut(v){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{const t=db.transaction("kv","readwrite");t.objectStore("kv").put(v,"bg");t.oncomplete=()=>res(true);t.onerror=()=>rej(t.error);});
+}
+let bgObj=false;
+async function idbGet(){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{const t=db.transaction("kv","readonly");const q=t.objectStore("kv").get("bg");q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);});
+}
+async function idbDel(){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{const t=db.transaction("kv","readwrite");t.objectStore("kv").delete("bg");t.oncomplete=()=>res(true);t.onerror=()=>rej(t.error);});
+}
+
+function applyBg(){
+  const bg=bgState();
+  document.documentElement.setAttribute("data-theme",bg.theme);
+  const img=document.getElementById("bgimg"), scrim=document.getElementById("bgscrim");
+  if(!img||!scrim) return;
+  if(bg.photo&&bgURL){
+    img.style.backgroundImage='url("'+bgURL+'")';
+    img.style.display="block";
+    scrim.style.opacity=String(bg.scrim);
+    document.body.classList.add("photo");
+  }else{
+    img.style.display="none";
+    img.style.backgroundImage="none";
+    scrim.style.opacity="0";
+    document.body.classList.remove("photo");
+  }
+}
+
+const BGDATA_KEY="cyxq_bg_data";
+function fileToDataURL(file,max,quality){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>{
+      const im=new Image();
+      im.onload=()=>{
+        try{
+          const k=Math.min(1,(max||1400)/Math.max(im.width,im.height));
+          const c=document.createElement("canvas");
+          c.width=Math.round(im.width*k); c.height=Math.round(im.height*k);
+          c.getContext("2d").drawImage(im,0,0,c.width,c.height);
+          res(c.toDataURL("image/jpeg",quality||0.72));
+        }catch(e){rej(e);}
+      };
+      im.onerror=()=>rej(new Error("image"));
+      im.src=r.result;
+    };
+    r.onerror=()=>rej(r.error);
+    r.readAsDataURL(file);
+  });
+}
+async function loadBgImage(){
+  try{
+    const blob=await idbGet();
+    if(blob){
+      if(bgURL&&bgObj) URL.revokeObjectURL(bgURL);
+      bgURL=URL.createObjectURL(blob); bgObj=true;
+      applyBg(); return;
+    }
+  }catch(e){}
+  try{
+    const d=localStorage.getItem(BGDATA_KEY);
+    if(d){bgURL=d;bgObj=false;applyBg();}
+  }catch(e){}
+}
+
+async function handleUpload(file){
+  if(!file) return;
+  if(!/^image\//.test(file.type)){ alert("只能选图片：JPG、PNG 或 GIF。"); return; }
+  if(file.size>12*1024*1024){ alert("这张图超过 12MB，手机上会卡。换一张小一点的。"); return; }
+  try{
+    await idbPut(file);
+    if(bgURL&&bgObj) URL.revokeObjectURL(bgURL);
+    bgURL=URL.createObjectURL(file); bgObj=true;
+    try{localStorage.removeItem(BGDATA_KEY);}catch(e){}
+    S.bg=Object.assign(bgState(),{photo:true});
+    save(); applyBg(); render(); return;
+  }catch(e){}
+  try{
+    const data=await fileToDataURL(file,1400,0.72);
+    localStorage.setItem(BGDATA_KEY,data);
+    if(bgURL&&bgObj) URL.revokeObjectURL(bgURL);
+    bgURL=data; bgObj=false;
+    S.bg=Object.assign(bgState(),{photo:true});
+    save(); applyBg(); render();
+  }catch(e2){
+    alert("这张图存不进这台设备的本地存储，换一张小一点的试试。");
+  }
+}
+
+const CHECK='<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 6.2 L4.6 9.3 L10.5 2.8" fill="none" stroke="#6FD9BE" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const ICON={
+ today:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="2.6"/></svg>',
+ path:'<svg viewBox="0 0 24 24"><path d="M12 3.5v17"/><circle cx="12" cy="6.5" r="1.9"/><circle cx="12" cy="17.5" r="1.9"/></svg>',
+ planet:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.8"/><ellipse cx="12" cy="12" rx="10" ry="3.6" transform="rotate(-18 12 12)"/></svg>',
+ me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3"/><path d="M4.6 20.6c1.5-3.9 4-5.9 7.4-5.9s5.9 2 7.4 5.9"/></svg>'
+};
+
+/* ===== 逻辑 ===== */
+const isDone=(d,i)=>pDone(AP(),d,i);
+const dayDone=d=>pDayDone(AP(),d);
+function completedCount(){return pCompleted(AP());}
+function currentDay(){for(let d=1;d<=30;d++)if(!dayDone(d))return d;return 30;}
+function toggle(d,i){
+  const p=AP();
+  p.done[d]=p.done[d]||[false,false,false];
+  p.done[d][i]=!p.done[d][i];
+  if(dayDone(d)){S.justDone=d;S.showDiag=false;}
+  save();render();
+}
+
+function ringSVG(day,allDone){
+  let out='<circle cx="52" cy="52" r="40" fill="none" stroke="var(--dotIdle2)" stroke-width="1"/>';
+  for(let i=1;i<=30;i++){
+    const a=(-90+(i-1)*12)*Math.PI/180;
+    const cx=(52+40*Math.cos(a)).toFixed(2), cy=(52+40*Math.sin(a)).toFixed(2);
+    if(dayDone(i)) out+=`<circle cx="${cx}" cy="${cy}" r="2.7" fill="var(--amber-d)"/>`;
+    else if(i===day&&!allDone) out+=`<circle cx="${cx}" cy="${cy}" r="5.2" fill="var(--accHalo)"/><circle cx="${cx}" cy="${cy}" r="3.4" fill="var(--amber)"/>`;
+    else out+=`<circle cx="${cx}" cy="${cy}" r="2.1" fill="var(--dotIdle)"/>`;
+  }
+  return `<svg viewBox="0 0 104 104" role="img" aria-label="30 天轨道进度">${out}</svg>`;
+}
+
+function greet(){
+  const h=new Date().getHours();
+  if(h<5) return "还没睡";
+  if(h<11) return "早上好";
+  if(h<14) return "中午好";
+  if(h<18) return "下午好";
+  return "晚上好";
+}
+
+function diagLines(){
+  const a=AP().ans, j=judge(), out=[];
+  if(a.goal) out.push(`你写的是：<b>${esc(a.goal)}</b>。我把它读成「<b>${j.k}</b>」这一类。${j.note}`);
+  else out.push(`你填的这件事，我读成「<b>${j.k}</b>」。${j.note}`);
+  out.push(`先去找谁：<b>${esc(a.users||j.where)}</b>。${j.why}`);
+  out.push(`第一周只做一件事：${j.first}`);
+  out.push(`要绕开的坑：${j.risk}${a.hours?" 按你写的「"+esc(a.hours)+"」，强度我按这个压着排；跟不上就把每天三件砍成一件。":""}`);
+  if(a.fear) out.push(`你最怕的「${esc(a.fear)}」，前两周就会拿到答案——不是靠想，是靠问真人。`);
+  return out;
+}
+
+/* ===== 视图 ===== */
+function tabbar(v){
+  const T=[["today","今天"],["path","路径"],["me","我的"]];
+  return `<nav class="tabbar"><div class="inner">${T.map(([k,n])=>
+    `<button class="tab${v===k?" on":""}" data-act="tab" data-v="${k}">${ICON[k]}<span>${n}</span></button>`).join("")}</div></nav>`;
+}
+
+function boot(){
+  app.innerHTML=`<div class="boot">
+    <svg class="mark" viewBox="0 0 104 104" aria-hidden="true">
+      <circle cx="52" cy="52" r="40" fill="none" stroke="var(--dotIdle)" stroke-width="1.2"/>
+      <circle cx="52" cy="52" r="30" fill="none" stroke="var(--dotIdle2)" stroke-width="1"/>
+      <circle cx="52" cy="12" r="6" fill="var(--amber)"/>
+      <circle cx="52" cy="52" r="16" fill="none" stroke="var(--accLine)" stroke-width="1"/>
+      <circle cx="52" cy="52" r="4.5" fill="var(--amber)"/>
+    </svg>
+    <h1>创业者不缺<em>信息</em>，<br>缺的是第一步。</h1>
+    <p>创业星球把你「不知道从哪开始」这件事，拆成 30 天、每天三件具体的小事。</p>
+    <p>不承诺你成功，只保证你每天知道该干什么。</p>
+    <div class="cta">
+      <button class="primary" data-act="boot-start">开始，先回答 6 个问题</button>
+      <button class="secondary" data-act="boot-skip">先随便看看</button>
+    </div>
+    <div class="foot">这是一版可交互原型。数据存在你自己的浏览器里，换个设备就没了。</div>
+  </div>`;
+}
+
+function onboard(){
+  const i=S.step, q=QS[i], cur=AP().ans[q.k]||"";
+  const can=String(cur).trim().length>0;
+  app.innerHTML=`<div class="onb">
+    <div class="steps">${QS.map((_,n)=>`<i class="${n<=i?"on":""}"></i>`).join("")}</div>
+    <div class="qno">问题 ${i+1} / ${QS.length}</div>
+    <h2>${q.t}</h2>
+    <textarea class="ans" id="qa" data-k="${q.k}" rows="3" placeholder="${esc(q.ph)}">${esc(cur)}</textarea>
+    ${q.ex?`<div class="chips">${q.ex.map(x=>`<button class="chip" data-act="chip" data-k="${q.k}" data-v="${esc(x)}">${esc(x)}</button>`).join("")}</div>`:""}
+    <div class="hint">${q.hint}</div>
+    <div class="foot">
+      ${i>0?`<button class="ghost" data-act="back">上一个</button>`:""}
+      <button class="go" data-act="next" ${can?"":"disabled"}>${i===QS.length-1?"生成我的路径":"下一个"}</button>
+    </div>
+  </div>`;
+}
+
+function today(){
+  const day=currentDay(), cc=completedCount();
+  const allDone=cc>=30;
+  const week=DAYS[day-1].w;
+  const d=DAYS[day-1];
+  const doneN=[0,1,2].filter(i=>isDone(day,i)).length;
+
+  let body="";
+  if(allDone){
+    body=`<section class="sec"><div class="finish" style="margin-top:0">
+      <div class="mark">✓</div>
+      <div class="txt"><b>30 天，走完了</b>你已经拿到了一份别人给不了你的东西：关于你自己这件事的一手答案。接下来是第二个月的三件事。</div>
+    </div>
+    <div class="btn-line" data-act="tab" data-v="path" style="text-align:center">回看这 30 天</div>
+    <div class="btn-line" data-act="tab" data-v="me" style="text-align:center">写下这次复盘</div>
+    <div class="btn-line" data-act="newplan" style="text-align:center">把这份存下来，开始下一个计划</div>
+    <p class="mini" style="margin-top:22px;line-height:1.9">下一份从问诊重新开始，这一份会留在「我的计划」里，30 天的打卡和每周复盘都还在。</p></section>`;
+  } else {
+    body=`
+    ${(S.showDiag&&S.onboarded)?`<div class="diag"><div class="tag">开场诊断</div>
+      ${diagLines().map(x=>`<p>${x}</p>`).join("")}
+      <button data-act="savediag">知道了，开始第 1 天</button></div>`:""}
+    ${(S.justDone&&S.justDone<day)?`<div class="finish"><div class="mark">✓</div>
+      <div class="txt"><b>第 ${S.justDone} 天，完成了</b>累计 ${cc} 天。下一组已经放在下面。</div></div>`:""}
+    <section class="sec">
+      <div class="sec-hd"><h2>今日任务</h2><div class="note">${doneN} / 3</div></div>
+      <div class="tasks">${d.a.map((t,i)=>`
+        <div class="task${isDone(day,i)?" on":""}" data-act="task" data-d="${day}" data-i="${i}">
+          <div class="no">${i+1}</div>
+          <div class="body"><p>${fill(t)}</p></div>
+          <div class="box">${CHECK}</div>
+        </div>`).join("")}</div>
+    </section>
+    <p class="mini" style="margin-top:26px;line-height:1.8">做完这三件就可以关掉了。这里不打算占用你更多时间。</p>`;
+  }
+
+  app.innerHTML=`<div class="shell">
+    <div class="top">
+      <div>
+        <div class="meta">${greet()} · 第 ${day} 天 / 30</div>
+        <h1>${allDone?"你已经走完了":"今天只做三件事"}</h1>
+        <div class="sub">${allDone?"30 天走完 · 该做第二次选择了":"第 "+week+" 周 · "+(WEEK_TITLE[week]||"")}</div>
+      </div>
+      <div class="ring">${ringSVG(day,allDone)}<div class="core"><b>${allDone?30:day}</b><span>/ 30 天</span></div></div>
+    </div>
+    ${body}
+  </div>${tabbar("today")}`;
+}
+
+function path(){
+  const day=currentDay(), a=AP().ans;
+  let html="";
+  [1,2,3,4].forEach(w=>{
+    html+=`<div class="week"><div class="week-hd"><div class="wnum">第 ${w} 周</div><h3>${WEEK_TITLE[w]}</h3></div>`;
+    DAYS.filter(x=>x.w===w).forEach(dd=>{
+      const dn=dayDone(dd.d), now=dd.d===day;
+      html+=`<div class="day${dn?" done":""}${now?" now":""}${S.open===dd.d?" open":""}" data-act="day" data-d="${dd.d}">
+        <div class="day-hd">
+          <div class="dn">D${dd.d}</div>
+          <div class="dt">${fill(dd.t)}</div>
+          <div class="st">${dn?"已完成":now?"今天":""}</div>
+        </div>
+        <div class="sub">${dd.a.map((t,i)=>`<div class="t${isDone(dd.d,i)?" on":""}"><i>${i+1}</i><span>${fill(t)}</span></div>`).join("")}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">30 天路径 · ${esc(a.field||"通用路径")}</div>
+      <h1>你在这条路上<br>走到了第 ${day} 天</h1>
+    </div><button class="lnk" data-act="tab" data-v="mine" style="margin-top:2px">自编计划</button></div>
+    <p class="lede">顺序是刻意的：先确认有人要，再决定做什么，最后才谈收钱。<b>跳过任何一步，后面都会返工。</b></p>
+    ${html}
+    <div class="btn-line" data-act="tab" data-v="mine" style="text-align:center;margin-top:26px">自己排一个计划（年 / 月 / 日）</div>
+    <div class="mini" style="margin-top:10px">系统这 30 天不会变。觉得哪几天不适合你，就在自己的计划里另排。</div>
+  </div>${tabbar("path")}`;
+}
+
+function planet(){
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">星球 · 同路人</div>
+      <h1>一个人走得快，<br>但容易走错方向</h1>
+    </div></div>
+    <p class="lede">v1 阶段，星球只做两件事：<b>让同一天进来的人彼此看得见</b>，<b>把每周的复盘摊开</b>。不做信息流，也不做关注。</p>
+    <section class="sec">
+      <div class="sec-hd"><h2>和你进度相近的人</h2><div class="note">示例数据</div></div>
+      <div class="people">${PEOPLE.map(p=>`
+        <div class="person"><div class="av">${p.n.replace(/\D/g,"").slice(-2)}</div>
+          <div class="who"><strong>${p.n}</strong><span>${p.d}</span></div>
+          <div class="pct">${p.p}</div></div>`).join("")}</div>
+    </section>
+    <div class="notice">
+      <div class="tag">关于这里为什么不能发帖</div>
+      <h3>不是没做，是资质上做不了</h3>
+      <p>微信小程序个人主体不开放「社交-社区/论坛」类目，用户发帖需要企业主体和内容安全能力。</p>
+      <p>所以 v1 把真正的交流放在微信群里，这里只负责「看得见彼此的进度」。</p>
+      <button class="btn-line" data-act="group">加入星球群（原型未接）</button>
+    </div>
+  </div>${tabbar("planet")}`;
+}
+
+function me(){
+  const day=currentDay(), cc=completedCount(), week=DAYS[day-1].w;
+  const a=AP().ans, bg=bgState();
+  const rows=[
+   ["一句话",a.goal||"—"],["行业",a.field||"—"],["谁会付钱",a.users||"—"],
+   ["手上有什么",a.assets||"—"],["每周投入",a.hours||"—"],["最怕的事",a.fear||"—"]
+  ];
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">我的 · 第 ${day} 天</div>
+      <h1>你自己的档案</h1>
+      <div class="sub">累计完成 ${cc} / 30 天</div>
+    </div></div>
+    ${(S.onboarded||S.plans.length>1)?`<section class="sec">
+      <div class="sec-hd"><h2>我的计划</h2><div class="note">${S.plans.length} 份</div></div>
+      <div class="plans">${S.plans.slice().sort((x,y)=>y.created-x.created).map(p=>{
+        const cur=p.id===S.activeId, c=pCompleted(p);
+        return `<div class="planrow">
+          <button class="pin" data-act="switchplan" data-id="${p.id}">
+            <div class="pn">${esc(p.name)}${cur?'<span class="pill">当前</span>':''}</div>
+            <div class="pm">${p.closed?"已存档":(c>=30?"已走完":"进行中")} · 完成 ${c}/30 · ${fmtDate(p.created)}</div>
+          </button>
+          <div class="pacts">
+            <button class="lnk" data-act="renameplan" data-id="${p.id}">改名</button>
+            ${cur?"":`<button class="lnk" data-act="delplan" data-id="${p.id}">删除</button>`}
+          </div>
+        </div>`}).join("")}</div>
+      <button class="btn-line" data-act="newplan" style="text-align:center">开始一个新计划（当前这份自动存档）</button>
+      <div class="mini">每份计划分开存着：问诊答案、30 天打卡、周复盘都不会被清掉。换方向不等于从头再来。</div>
+    </section>`:""}
+    <section class="sec">
+      <div class="sec-hd"><h2>问诊结果</h2><div class="note">${S.onboarded?"":"未完成"}</div></div>
+      <div class="profile">${rows.map(([k,v])=>`<div class="prow"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`).join("")}</div>
+      ${S.onboarded?"":`<div class="btn-line" data-act="re-onb" style="text-align:center">去做一次问诊</div>`}
+    </section>
+    <section class="sec">
+      <div class="sec-hd"><h2>背景</h2><div class="note">不习惯纯黑就换一个</div></div>
+      <div class="themes">${THEMES.map(t=>`
+        <button class="sw${bg.theme===t.k?" on":""}" data-act="theme" data-v="${t.k}">
+          <div class="shade" style="background:${t.bg}"><div class="dot" style="background:${t.dot}"></div></div>
+          <b>${t.n}</b>
+        </button>`).join("")}</div>
+      <div class="bgrow">
+        <label class="btn-line" for="bgin" style="display:block;text-align:center;margin-top:0">${bg.photo?"换一张照片 / 动图":"上传自己的照片 / 动图"}</label>
+        <input id="bgin" type="file" accept="image/*" hidden>
+        <div class="muted">JPG、PNG、GIF 都可以，动图会一直循环播放。建议 12MB 以内，太大了手机上会卡。</div>
+        ${bg.photo?`
+        <div class="slider"><div class="lab">压暗</div><input id="scrim" type="range" min="0.45" max="0.95" step="0.05" value="${bg.scrim}"><div class="lab">${Math.round(Number(bg.scrim)*100)}%</div></div>
+        <div class="muted">照片太亮时把「压暗」往右拉，字才看得清。</div>
+        <button class="btn-line" data-act="bgclear">去掉背景图</button>`:""}
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-hd"><h2>30 天轨迹</h2><div class="note">已完成 ${cc}</div></div>
+      <div class="grid30">${Array.from({length:30},(_,k)=>{const d=k+1;return `<div class="g30${dayDone(d)?" done":""}${d===day?" now":""}">${d}</div>`;}).join("")}</div>
+    </section>
+    <section class="sec">
+      <div class="sec-hd"><h2>第 ${week} 周复盘</h2><div class="note">一周一次就够</div></div>
+      <textarea id="rv" placeholder="这周听到的最意外的一句话是什么？&#10;你现在最不确定的是什么？">${AP().review["w"+week]||""}</textarea>
+      <button class="save" data-act="save">保存这一周的复盘</button>
+      <div class="mini">复盘只写给自己看。写得越具体，下个月回看越有用。</div>
+    </section>    <section class="sec">
+      <div class="sec-hd"><h2>放到桌面 / 发给朋友</h2><div class="note">这份链接谁都能打开</div></div>
+      <div class="btn-line" data-act="copylink" style="text-align:center">复制页面链接</div>
+      <div class="mini">iPhone：用 Safari 打开 → 底部「分享」→ 添加到主屏幕。<br>安卓：用 Chrome 打开 → 右上角菜单 → 添加到主屏幕。<br>在微信里打开的话，先点右上角「···」选「在浏览器打开」，再加桌面。</div>
+      <div class="mini">朋友打开后，数据存在他自己的手机里，和你的互不影响。</div>
+    </section>
+    <section class="sec">
+      <div class="sec-hd"><h2>重置</h2></div>
+      <div class="mini">这里删的是这台设备上的全部数据，所有计划一起没。只想换方向的话，用上面「开始一个新计划」，旧的那份会留着。</div>
+      <button class="btn-line" data-act="reset">清除我的数据</button>
+    </section>
+  </div>${tabbar("me")}`;
+}
+
+function render(){
+  applyBg();
+  const v=(location.hash||"#/today").replace("#/","");
+  if(!S.booted) return boot();
+  if(v==="start") return onboard();
+  if(v==="path") return path();
+  if(v==="mine") return mine();
+  if(v==="planet") return planet();
+  if(v==="me") return me();
+  return today();
+}
+
+/* ===== 自编计划：自己排的任务，按年 / 月 / 日 ===== */
+const MSCOPE=[["day","按日"],["month","按月"],["year","按年"]];
+const isoDay=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");};
+const isoMonth=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");};
+function mineLabel(it){
+  if(it.scope==="year") return (it.due||"今年")+" 年";
+  if(it.scope==="month"){const q=(it.due||"").split("-");return q.length===2?(+q[0])+" 年 "+(+q[1])+" 月":"未定月份";}
+  const q=(it.due||"").split("-");return q.length===3?(+q[1])+" 月 "+(+q[2])+" 日":"未定日期";
+}
+function mine(){
+  const p=AP(), list=(p.mine||[]).slice(), ms=S.ms||"day";
+  const GRP=[["day","按日"],["month","按月"],["year","按年"]];
+  const sorted=g=>list.filter(x=>x.scope===g).sort((x,y)=>(x.due||"").localeCompare(y.due||""));
+  const secs=GRP.map(([k,n])=>{
+    const items=sorted(k); if(!items.length) return "";
+    return `<section class="sec"><div class="sec-hd"><h2>${n}</h2><div class="note">${items.filter(x=>x.done).length}/${items.length}</div></div>
+      ${items.map(it=>`<div class="mrow${it.done?" on":""}">
+        <button class="mbox" data-act="togglemine" data-id="${it.id}">${it.done?"✓":""}</button>
+        <div class="mt"><div class="mtitle">${esc(it.title)}</div><div class="mtmeta">${mineLabel(it)}</div></div>
+        <button class="lnk" data-act="delmine" data-id="${it.id}">删除</button>
+      </div>`).join("")}</section>`;
+  }).join("");
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">我的节奏 · 第 ${currentDay()} 天</div>
+      <h1>你自己排的事</h1>
+      <div class="sub">系统的 30 天不动。这里放你自己安排的任务，按年、按月、按日都行。</div>
+    </div></div>
+    <section class="sec">
+      <div class="sec-hd"><h2>加一条</h2><div class="note">先选颗粒度</div></div>
+      <div class="mseg">${MSCOPE.map(([k,n])=>`<button class="${ms===k?"on":""}" data-act="mscope" data-v="${k}">${n}</button>`).join("")}</div>
+      <div class="mform">
+        <input type="text" id="mtitle" placeholder="${ms==="year"?"比如：这一年把店开成两家":ms==="month"?"比如：这个月把证照和卫生许可办下来":"比如：今天把营业执照的材料准备好"}">
+        ${ms==="day"?`<input type="date" id="mdue" value="${S.mday||isoDay()}">`
+          :ms==="month"?`<div class="mrow2"><input type="number" id="myear" value="${S.myear||new Date().getFullYear()}" min="2020" max="2100"><select id="mmon">${[1,2,3,4,5,6,7,8,9,10,11,12].map(m=>`<option value="${m}"${m===(+S.mmon||new Date().getMonth()+1)?" selected":""}>${m} 月</option>`).join("")}</select></div>`
+          :`<input type="number" id="mdue" value="${S.myear||new Date().getFullYear()}" min="2020" max="2100" placeholder="哪一年">`}
+        <button class="btn-line" data-act="addmine">加上这条</button>
+      </div>
+      <div class="mini">想不起写什么也没关系，写完一条就会显示在下面，随时能删。</div>
+    </section>
+    ${secs||`<section class="sec"><div class="note" style="padding:18px 0">还没有自己排的任务。</div></section>`}
+    <div class="btn-line" data-act="tab" data-v="path" style="text-align:center;margin-top:26px">回到 30 天路径</div>
+  </div>${tabbar("path")}`;
+}
+
+function fallbackCopy(t){
+  try{
+    const ta=document.createElement("textarea");
+    ta.value=t; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+  }catch(e){}
+}
+
+/* ===== 交互 ===== */
+app.addEventListener("click",e=>{
+  const el=e.target.closest("[data-act]");
+  if(!el) return;
+  const act=el.dataset.act;
+  if(act==="tab"){S.justDone=0;save();location.hash="#/"+el.dataset.v;render();return;}
+  if(act==="task"){toggle(+el.dataset.d,+el.dataset.i);return;}
+  if(act==="day"){S.open=S.open===+el.dataset.d?0:+el.dataset.d;save();render();return;}
+  if(act==="mscope"){S.ms=el.dataset.v;save();render();return;}
+  if(act==="addmine"){
+    const p=AP(), t=(document.getElementById("mtitle")||{}).value||"";
+    const sc=S.ms||"day";
+    let due="";
+    if(sc==="month"){
+      const y=((document.getElementById("myear")||{}).value||"").trim();
+      const m=((document.getElementById("mmon")||{}).value||"").trim();
+      due=(y||new Date().getFullYear())+"-"+String(m||1).padStart(2,"0");
+    }else{
+      due=((document.getElementById("mdue")||{}).value||"").trim();
+    }
+    if(!t.trim()){alert("先写一句要做的事。");return;}
+    if(sc!=="year"&&!due){alert("选一个日期。");return;}
+    if(sc==="day") S.mday=due;
+    if(sc==="month"){const q=due.split("-");S.myear=+q[0];S.mmon=+q[1];}
+    if(sc==="year") S.myear=+due||S.myear;
+    p.mine.push({id:"m"+Date.now().toString(36)+Math.random().toString(36).slice(2,4),
+      title:t.trim().slice(0,60),scope:sc,due:sc==="year"?(due||String(new Date().getFullYear())):due,done:false,created:Date.now()});
+    save();render();return;
+  }
+  if(act==="togglemine"){
+    const p=AP(), it=p.mine.find(x=>x.id===el.dataset.id);
+    if(it){it.done=!it.done;save();render();}
+    return;
+  }
+  if(act==="delmine"){
+    const p=AP(), it=p.mine.find(x=>x.id===el.dataset.id);
+    if(!it) return;
+    if(!confirm("删掉「"+it.title+"」？")) return;
+    p.mine=p.mine.filter(x=>x.id!==it.id);save();render();return;
+  }
+  if(act==="boot-start"){S.booted=true;save();location.hash="#/start";S.step=0;render();return;}
+  if(act==="boot-skip"){S.booted=true;save();location.hash="#/today";render();return;}
+  if(act==="chip"){AP().ans[el.dataset.k]=el.dataset.v;save();render();return;}
+  if(act==="next"){
+    if(S.step<QS.length-1){S.step++;save();render();return;}
+    const pn=AP();
+    pn.name=planName(pn.ans,S.plans.filter(x=>x.id!==pn.id&&x.ans.field===pn.ans.field).length);
+    S.onboarded=true;S.showDiag=true;S.step=0;save();location.hash="#/today";render();return;
+  }
+  if(act==="back"){if(S.step>0){S.step--;save();render();}return;}
+  if(act==="savediag"){S.showDiag=false;save();render();return;}
+  if(act==="re-onb"){S.step=0;S.showDiag=false;save();location.hash="#/start";render();return;}
+  if(act==="save"){
+    const ta=document.getElementById("rv");
+    if(ta){const week=DAYS[currentDay()-1].w;AP().review["w"+week]=ta.value;save();}
+    el.textContent="已保存";el.style.color="#6FD9BE";el.style.borderColor="rgba(111,217,190,.4)";return;
+  }
+  if(act==="newplan"){
+    const p=AP();
+    if(!Object.keys(p.ans).length&&!Object.keys(p.done).length){
+      S.onboarded=false;S.step=0;S.showDiag=false;S.justDone=0;S.open=0;
+      save();location.hash="#/start";render();return;
+    }
+    if(!confirm("开始一个新计划？\n\n「"+p.name+"」会存进「我的计划」，之后随时能翻回来，不会清掉。")) return;
+    p.closed=true;p.closedAt=Date.now();
+    const np=newPlan();S.plans.push(np);S.activeId=np.id;
+    S.onboarded=false;S.step=0;S.showDiag=false;S.justDone=0;S.open=0;
+    save();location.hash="#/start";render();return;
+  }
+  if(act==="renameplan"){
+    const p=S.plans.find(x=>x.id===el.dataset.id);
+    if(!p) return;
+    const v=prompt("给这份计划起个名字",p.name);
+    if(v&&v.trim()){p.name=v.trim().slice(0,20);save();render();}
+    return;
+  }
+  if(act==="delplan"){
+    const p=S.plans.find(x=>x.id===el.dataset.id);
+    if(!p) return;
+    if(!confirm("删除「"+p.name+"」？这份的打卡和复盘会一起没，其他计划不受影响。")) return;
+    S.plans=S.plans.filter(x=>x.id!==p.id);
+    if(!S.plans.length){const np=newPlan();S.plans=[np];S.activeId=np.id;S.onboarded=false;S.step=0;}
+    else if(!S.plans.find(x=>x.id===S.activeId)){S.activeId=S.plans[S.plans.length-1].id;}
+    save();render();return;
+  }
+  if(act==="switchplan"){
+    const p=S.plans.find(x=>x.id===el.dataset.id);
+    if(!p) return;
+    S.activeId=p.id;
+    S.onboarded=Object.keys(p.ans).length>0;
+    S.justDone=0;S.open=0;S.showDiag=false;
+    if(p.closed&&pCompleted(p)<30) p.closed=false;
+    save();location.hash="#/today";render();return;
+  }
+  if(act==="copylink"){
+    const u=location.href;
+    const done=()=>alert("链接已复制，可以直接发给朋友：\n\n"+u);
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(u).then(done).catch(()=>{fallbackCopy(u);done();});
+    }else{fallbackCopy(u);done();}
+    return;
+  }
+  if(act==="reset"){
+    if(confirm("删除这台设备上的全部数据？"+(S.plans.length>1?"（共 "+S.plans.length+" 份计划）":"")+"所有打卡和复盘都会一起消失，不可恢复。")){
+      try{localStorage.removeItem(KEY)}catch(err){}
+      idbDel().catch(()=>{});
+      if(bgURL){URL.revokeObjectURL(bgURL);bgURL=null;}
+      S=DEF();location.hash="#/today";render();
+    }
+    return;
+  }
+  if(act==="group"){alert("原型阶段还没有群。这里会放一个真实的群二维码。");return;}
+  if(act==="theme"){S.bg=Object.assign(bgState(),{theme:el.dataset.v});save();applyBg();render();return;}
+  if(act==="bgclear"){
+    idbDel().catch(()=>{});
+    try{localStorage.removeItem(BGDATA_KEY);}catch(e){}
+    if(bgURL&&bgObj){URL.revokeObjectURL(bgURL);}
+    bgURL=null;
+    S.bg=Object.assign(bgState(),{photo:false});
+    save();applyBg();render();return;
+  }
+});
+
+app.addEventListener("change",e=>{
+  if(e.target.id==="scrim"){S.bg=Object.assign(bgState(),{scrim:parseFloat(e.target.value)});save();return;}
+  if(e.target.id==="bgin"){handleUpload(e.target.files&&e.target.files[0]);}
+});
+
+app.addEventListener("input",e=>{
+  if(e.target.id==="qa"){
+    const k=e.target.dataset.k, v=e.target.value;
+    if(v.trim()) AP().ans[k]=v; else delete AP().ans[k];
+    save();
+    const btn=document.querySelector("[data-act='next']");
+    if(btn) btn.disabled=!v.trim();
+    return;
+  }
+  if(e.target.id==="scrim"){
+    const scrim=document.getElementById("bgscrim");
+    if(scrim) scrim.style.opacity=e.target.value;
+    const lab=e.target.nextElementSibling;
+    if(lab&&lab.classList.contains("lab")) lab.textContent=Math.round(parseFloat(e.target.value)*100)+"%";
+  }
+});
+
+window.addEventListener("hashchange",render);
+loadBgImage();
+render();
+
+</script>
+</body>
+</html>
