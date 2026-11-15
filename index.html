@@ -227,7 +227,7 @@ textarea.ans:focus{outline:1px solid var(--accLine)}
 
 /* ---------- 底部导航 ---------- */
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:8;background:rgba(7,13,19,.9);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
-.tabbar .inner{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);padding:9px 14px calc(9px + env(safe-area-inset-bottom))}
+.tabbar .inner{max-width:460px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:9px 14px calc(9px + env(safe-area-inset-bottom))}
 .tab{background:none;border:0;padding:6px 0 2px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;color:var(--dim2);font-family:var(--sans);font-size:10.5px;letter-spacing:.02em}
 .tab svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.4}
 .tab.on{color:var(--amber)}
@@ -267,6 +267,63 @@ textarea.ans:focus{outline:1px solid var(--accLine)}
 .boot .secondary{background:none;border:1px solid var(--line);color:var(--dim)}
 .boot .foot{margin-top:28px;font-size:10.5px;color:var(--dim2);line-height:1.7}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== 证明 / 选择器 / 笔记 / 统计 ===== */
+.pf-need{font-size:11.5px;color:var(--dim2, #8a97a3);letter-spacing:.02em;margin-top:6px}
+.pf-mini{font-size:11.5px;color:#6FD9BE;margin-top:6px;line-height:1.6}
+.pf-dot{display:block;width:9px;height:9px;border-radius:50%;border:1px solid var(--dotIdle);margin:auto}
+.proof{position:fixed;inset:0;z-index:30;background:rgba(3,7,11,.72);backdrop-filter:blur(6px);display:flex;align-items:flex-end}
+.proof-box{width:100%;max-width:520px;margin:0 auto;background:var(--panel, #0C1520);border:1px solid var(--line);border-bottom:none;border-radius:16px 16px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+.proof-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.proof-hd b{display:block;font-size:14px;letter-spacing:.02em;color:var(--ink)}
+.proof-hd span{display:block;font-size:12px;color:var(--muted,#8a97a3);margin-top:5px;line-height:1.6}
+.proof-body textarea,.proof-body input[type=number]{width:100%;background:var(--inputBg,rgba(255,255,255,.04));border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:11px 12px;font:inherit;font-size:14px;line-height:1.7}
+.pf-k{font-size:12px;color:var(--muted,#8a97a3);margin-bottom:8px}
+.pf-txt{font-size:14px;line-height:1.8;color:var(--ink);white-space:pre-wrap}
+.pf-meta{font-size:12px;color:var(--muted,#8a97a3);margin-top:8px}
+.pf-row{margin-top:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pf-row label{font-size:12px;color:var(--muted,#8a97a3)}
+.pf-row input[type=number]{width:150px}
+.pf-pick{display:inline-block;padding:9px 13px;border:1px dashed var(--line);border-radius:9px;font-size:12.5px;color:var(--ink)}
+.pf-photo{margin-top:12px}
+.pf-photo img{width:100%;max-height:38vh;object-fit:cover;border-radius:10px;display:block}
+.pf-photo .lnk{margin-top:8px}
+.pf-go{width:100%;margin-top:16px;padding:13px;background:var(--amber);color:#0A0F14;border:none;border-radius:11px;font-size:14.5px;font-weight:600;letter-spacing:.02em}
+.pf-undo{width:100%;margin-top:16px;padding:12px;background:transparent;border:1px solid var(--line);color:#e0837f;border-radius:10px;font-size:13px}
+.mini{font-size:11.5px;color:var(--muted,#7f8b97);line-height:1.8;margin-top:12px}
+.pick{position:fixed;inset:0;z-index:28;background:rgba(3,7,11,.75);display:flex;align-items:flex-end}
+.pick-box{width:100%;max-width:520px;margin:0 auto;background:var(--panel,#0C1520);border-radius:16px 16px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));max-height:86vh;display:flex;flex-direction:column}
+.pick-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.pick-hd b{display:block;font-size:15px}
+.pick-hd span{display:block;font-size:11.5px;color:var(--muted,#8a97a3);margin-top:4px}
+.pick-body{overflow:auto;margin-top:12px;padding-bottom:6px}
+.pick-gn{font-size:11.5px;letter-spacing:.14em;color:var(--amber);margin:16px 0 8px}
+.pick-items{display:flex;flex-wrap:wrap;gap:8px}
+.pick-i{padding:7px 11px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);font-size:12.5px}
+.pick-i.on{border-color:var(--amber);color:var(--amber)}
+.pick-open{display:block;width:100%;margin-top:14px;padding:11px;border:1px dashed var(--line);border-radius:10px;background:transparent;color:var(--ink);font-size:13px}
+.sound-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:12.5px;color:var(--muted,#8a97a3);border-bottom:1px solid var(--line)}
+.sw2{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--ink);font-size:12px}
+.sw2 i{width:22px;height:12px;border-radius:999px;background:var(--amber);position:relative;display:inline-block}
+.sw2 i:after{content:"";position:absolute;top:2px;right:2px;width:8px;height:8px;border-radius:50%;background:#0A0F14}
+.sw2.off i{background:rgba(255,255,255,.18)}
+.sw2.off i:after{right:auto;left:2px}
+.back{background:transparent;border:none;color:var(--muted,#8a97a3);font-size:12.5px;padding:0 0 4px}
+.nitem{border-bottom:1px solid var(--line);padding:16px 0}
+.nhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.nhead b{font-size:14.5px}
+.nhead span{font-size:11.5px;color:var(--muted,#7f8b97);white-space:nowrap}
+.nbody{font-size:13.5px;line-height:1.8;margin-top:8px;white-space:pre-wrap;color:var(--ink)}
+.rrow{display:flex;gap:10px;font-size:13px;line-height:1.8;margin-top:6px}
+.rrow i{flex:0 0 38px;font-style:normal;font-size:11.5px;color:var(--muted,#7f8b97);padding-top:2px}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.statgrid .sg{background:var(--panel,#0C1520);padding:14px 12px}
+.statgrid b{display:block;font-size:22px;font-weight:500;color:var(--amber)}
+.statgrid span{display:block;font-size:11px;color:var(--muted,#7f8b97);margin-top:4px}
+.stat-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12.5px}
+.stat-table th{font-weight:400;font-size:11px;letter-spacing:.04em;color:var(--muted,#7f8b97);text-align:left;padding:8px 4px;border-bottom:1px solid var(--line)}
+.stat-table td{padding:6px 4px;border-bottom:1px solid rgba(255,255,255,.06);color:var(--ink)}
+.stat-table tr.done td{color:var(--amber)}
 </style>
 <style id="theme-vars">
 /* ===== 主题变量：默认「深空」 ===== */
@@ -583,6 +640,134 @@ service:[
 [4,"写下个月的三件事","只写三件；一周内能验证；定检查日期"],
 [4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个回头找你的人"]
 ],
+edu:[
+[1,"说清你教谁、教到哪","写下你教谁、学完能做什么，一句话；列 3 个同类课程；念给 3 个人听，问他们想不想学"],
+[1,"找 3 个正卡住的人","问他们上次怎么自学、卡在哪一步；不要推销课程；记原话"],
+[1,"把卡点排个序","把 3 个人说的门槛写成 5 条；按出现次数排序；最上面那条就是你的第一节课"],
+[1,"再找 2 人验证那个卡点","只问「这一步你当时怎么过去的」；如果都说绕不过去，说明课有用"],
+[1,"用学员的话写课名","课程名改成他们说过的说法；删掉所有行业黑话；给 2 个老学员看"],
+[1,"看同类课的大纲和差评","找 3 个同类课，记下课时、价格；只读差评；抄 3 句抱怨"],
+[1,"第一次复盘","几个人说「我现在就想学」；最扎心的一句是什么；下周先联系谁"],
+[2,"定一个能数的目标","写下「一周内 5 个人愿意等开学」；写在手机首页；不达标不往下走"],
+[2,"写一页课程说明","学完会做什么、几节课、多久、多少钱；写清不教什么；发给 3 个人"],
+[2,"让 10 个人看这一页","每人只问一句「你会报名吗」；记下谁犹豫；问清是价格还是时间"],
+[2,"改掉让人犹豫的那一条","只改价格说明或课时承诺；同一页再发一遍；看报名的人有没有变多"],
+[2,"圈出最想学的 5 个人","按「现在就要用」排；写下怎么开口；先联系前 2 个"],
+[2,"写三句话的邀约","你现在卡在 __ 吗；我用 __ 节课带你过；这周开一班，名额 __ 个"],
+[2,"第二次复盘","几个答应、几个真交钱；没交的人说了什么；决定先改哪一条"],
+[3,"只开一节课","别做整套体系；就教最卡的那一步；30–60 分钟讲完"],
+[3,"用微信群加文档开课","不买平台、不录精装视频；今天就能开第一期；人越少越好带"],
+[3,"亲手带第 1 个学员做完","看他卡在哪；记下你解释了几遍；记下他哪句说「原来是这样」"],
+[3,"只改那一处","作业太难或讲太快，只改一个；同样内容再讲一次"],
+[3,"收第一笔学费","说清课时、交付物、能不能退；走能留痕的方式；记下对方付款前的犹豫"],
+[3,"算一遍你的账","一节课备多久；一期带几个人；单价多少才够这个时间"],
+[3,"第三次复盘","几个人交作业、几个人掉队；掉队发生在第几分钟；下周先修哪里"],
+[4,"找 3 个愿意续下一期的","问「下一步你想学什么」；给一个明确的下期主题；记下谁真报了"],
+[4,"写教学 SOP 5 步","从招生到结课作业；每步一句完成标准；照着开第二期"],
+[4,"砍掉最耗时的备课环节","讲义模板化、作业模板化、答疑集中挑一个；试一期看省多少时间"],
+[4,"写「不做清单」","不做证书、不做多班型、不承诺包就业；每条一句为什么"],
+[4,"找一个助教","批作业或答疑交出去一样；写清标准；先试一期"],
+[4,"把这个月的账算清","收入、平台费、你的备课小时；折算时薪；和上班比一比"],
+[4,"决定：加课、换人群，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周内能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个学完给你反馈的人"]
+],
+make:[
+[1,"说清你做什么、给谁用","写下做什么、什么人会用、和市面上差在哪；列 3 个同类；给 3 个用过的人看"],
+[1,"只读同类差评","找同类卖得动的商品，只读 1 星和 2 星；抄 10 条原话；圈出重复的词"],
+[1,"算一件的真实成本","材料、工时、损耗、包装；算出一件的成本价；低于成本的部分标红"],
+[1,"问 5 个买过的人","上次花多少钱、最在意手感还是耐用；不要问「你觉得我做得怎么样」；记原话"],
+[1,"用手艺人的话改介绍","删掉「匠心」「纯手工」这类空话；只写材料、尺寸、能用多久；给 2 个人看"],
+[1,"比三家原料供应商","问起订量、能不能小批拿、多久到；把条件写成一张表；先别囤料"],
+[1,"第一次复盘","哪句话最打动人；现在最不确定的是款式还是价格；下周先验证哪个"],
+[2,"定一个能数的目标","写下「一周内做 5 件、3 个人真的拿走」；写在手机首页"],
+[2,"先做 3 件样品","不求完美，求能交付；同一款做 3 件；记下每件差在哪"],
+[2,"让 5 个人上手","递到手里，看他怎么用；第一句评价记下来；不要解释工艺"],
+[2,"记下被嫌弃的那一件","问清是尺寸、颜色还是重量；把这句原话写进改进清单"],
+[2,"圈出最可能下单的 5 个人","按「已经在用同类」排；写下怎么开口；先联系前 2 个"],
+[2,"写三句话的报价","我给你做 __；多久出货；多少钱、能不能改"],
+[2,"第二次复盘","几个人付了定金；没付的人卡在价格还是等待时间；决定先改哪一条"],
+[3,"只做一个款","别开系列、别做多色；就做最能交付的那一个；其他先记下来"],
+[3,"小批量做 5 件","按实际工时做，不加班赶；记下良品率；不合格的留着别卖"],
+[3,"亲手交付第一件","当面给或用能追踪的快递；记下从下单到到手用了几天"],
+[3,"只改最影响手感和耐用的一处","别改外观；只改一处；再给同一个人用两周"],
+[3,"收第一笔钱","写明发货时间、返修规则；走能留痕的方式；记下对方第一反应"],
+[3,"算一遍你的账","一件几小时、良品率多少、一天能做几件；材料占售价几成"],
+[3,"第三次复盘","几件退货、问题集中在哪道工序；哪件最好卖；下周先扩还是先修"],
+[4,"找 3 个复购或转介绍","问老客户身边还有谁要；给一个明确的介绍理由；记下谁真介绍了"],
+[4,"写制作 SOP 5 步","从收单到发货；每步一句完成标准；照着再做 3 件"],
+[4,"把最慢的工序想办法","模板化、买个小工具、找代工挑一个；试一次看省多少时间"],
+[4,"写「不做清单」","不接急单、不做低价爆款、不接超出能力的定制；每条一句为什么"],
+[4,"找一个帮手","写清他做哪道工序、怎么验收；先试一周"],
+[4,"把这个月的账算清","材料、工时、退货、收入；折算时薪；和上班比一比"],
+[4,"决定：提价、换款，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个回头找你的人"]
+],
+food:[
+[1,"说清你卖什么吃的、谁买","写下卖什么、谁买、凭什么放心，一句话；列 3 个同类；给 2 个老客尝"],
+[1,"算一份的真实成本","原料、包装、损耗、配送；算出一份的成本；低于成本的先标红"],
+[1,"问 5 个买家最担心什么","新鲜、卫生、配送、保质期；不要问「好不好吃」；记原话"],
+[1,"把每个顾虑想一个证明","保质期写清楚、发货拍视频、赔付写明白；挑最要紧的两条先用"],
+[1,"用买家的话改介绍","别写「原生态」「无添加」这类空话；写清产地、几天到、怎么保存"],
+[1,"看同类商品的差评","找 3 个同类，只读 1 星和 2 星；抄 3 条；记下他们最后买了什么"],
+[1,"第一次复盘","几个人说「看着就想买」；最担心的是贵还是坏；下周先解决哪个"],
+[2,"定一个能数的目标","写下「一周内 10 份真实成交」；不许自己下单凑数；写在手机首页"],
+[2,"写一页卖货说明","卖什么、多少钱、几天到、坏了怎么赔；写清不发货的地区；发给 3 个人"],
+[2,"让 10 个人看这一页","只问一句「你敢买吗」；记下谁犹豫；问清是价格还是信任"],
+[2,"做一次 10 份的小批量预售","先收钱后做；记下几个人真付；统计每个人问的是保质期还是价格"],
+[2,"圈出最可能复购的 5 个人","按「家里常吃」排；写下怎么联系；先私下问前 2 个"],
+[2,"写三句话的下单消息","卖什么、几天到、坏了怎么赔；一句话说清，不要长图"],
+[2,"第二次复盘","几单、几单退、退的原因；最冷的那次拒绝说了什么；决定先改包装还是时效"],
+[3,"只留一个单品","别做组合装、别做新品；就卖最能出量的那一个"],
+[3,"把包装和保鲜定死","用什么盒、要不要冰袋、几点前发；写下来照着做 5 份"],
+[3,"亲手发第一单","自己打包、自己送或寄；记下打包几分钟、路上多久"],
+[3,"只改最影响品质的一处","口味、分量、包装挑一个；别同时改；再让同一个客户尝"],
+[3,"收第一笔钱","写明坏损赔付；走能留痕的方式；记下对方最在意的那句话"],
+[3,"算一遍你的账","一份毛利、一天能出几份、损耗率多少；配送占几成"],
+[3,"第三次复盘","差评集中在口味还是物流；哪批坏得多；下周先修哪一环"],
+[4,"找 3 个每周固定买的人","做周订或月订；给一个明确的小优惠；记下他们真正在意的是省事还是便宜"],
+[4,"写发货 SOP 5 步","接单、备料、包装、发货、赔付；每步一句完成标准；照着做 5 单"],
+[4,"砍掉最贵的一环","冷链、包装、配送挑一个；试更便宜的做法一周；记下有没有掉单"],
+[4,"写「不做清单」","不做跨省生鲜、不做低价引流、不接当天急单；每条一句为什么"],
+[4,"找一个帮手打包","写清几点到、怎么装、错怎么算；先试一周"],
+[4,"把这个月的账算清","原料、运费、赔付、收入；折算时薪；和上班比一比"],
+[4,"决定：扩品、换渠道，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周内能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个回头下单的人"]
+],
+run:[
+[1,"说清你替谁跑什么","写下接什么单、多远、多久到、多少钱；列 3 个同类平台；问 3 个用过的人"],
+[1,"记下他们现在的抱怨","等太久、加价、找不到人；记原话；记下他们现在用哪个平台"],
+[1,"算一趟的成本和极限","时间、油或电、停车、能顺路带几单；算出一趟的底价"],
+[1,"问 5 个商户或住户","最急的一次是什么事、当时找谁、花了多少；只听不推销"],
+[1,"用他们的话写服务名","别写「同城配送」，写清你送什么、多久到；给 2 个人看"],
+[1,"看同行的收费和差评","找 3 个同行，记起步价和超时规则；只读差评；抄 3 条"],
+[1,"第一次复盘","几个人说「我这确实需要」；最急的场景是什么；下周先盯哪个片区"],
+[2,"定一个能数的目标","写下「一周内 10 单」；写在手机首页；超时率也要记"],
+[2,"写一页接单说明","接什么、不接什么、多久到、超时怎么赔；发给 3 个群或商户"],
+[2,"发出去一次","发到 3 个小区群或商户群，一天只发一次；留电话；别刷屏"],
+[2,"记下三种反应","几个问价、几个直接下单、几个嫌贵；把嫌贵的追问一句为什么"],
+[2,"圈出 5 个可能长期下单的商户","按「每天都发」排；写下怎么谈；先谈前 2 个"],
+[2,"写三句话的接单回复","要送什么、多久到、多少钱；一句话回完，别让人等"],
+[2,"第二次复盘","几单、几单超时、为什么超时；哪条路线最顺；决定先改哪一环"],
+[3,"只接一种单","比如只做 3 公里内的文件和生鲜；其他先不接；把时效做稳"],
+[3,"定死时效与赔付","什么情况算超时、赔多少；写进接单说明；别含糊"],
+[3,"亲手跑第一趟全程","自己跑，计时、记路线；记下等待和找地址各花多久"],
+[3,"只改最费时的一环","路线、等餐、联系客户挑一个；试一天看能多跑几单"],
+[3,"收第一笔钱，别打折","报价明确；走能留痕的方式；记下客户付款前的顾虑"],
+[3,"算一遍你的账","一趟几分钟、一天能跑几趟、单价多少才够油电和时间"],
+[3,"第三次复盘","超时几次、客户最不满哪点；哪类单最赚钱；下周先扩哪块"],
+[4,"找 3 个固定商户","谈周结或月结；写清对账方式；记下谁真的签了"],
+[4,"写接单到交付 5 步","接单、取件、路线、送达、回执；每步一句完成标准"],
+[4,"砍掉最耗时的一环","等餐、找地址、绕路挑一个；试一个替代办法一周"],
+[4,"写「不做清单」","不接跨城、不接超重、不垫钱、不接深夜；每条一句为什么"],
+[4,"找一个同行搭班","写清怎么分单、怎么分钱；先搭三天"],
+[4,"把这个月的账算清","油电、赔付、平台抽成、收入；折算时薪；和上班比一比"],
+[4,"决定：扩范围、涨价，还是停","继续的三条证据；反对的三条证据；一个明确答案"],
+[4,"写下个月的三件事","只写三件；一周能验证；定检查日期"],
+[4,"留一页给下个月的自己","写一句你相信的话；写一个还没解决的问题；写一个固定找你的人"]
+],
 other:[
 [1,"写下你的创业假设","把你写的那句话改成 20 字以内：谁 + 什么麻烦 + 你怎么解；写下你现在最不确定的三件事；把这句话发给自己，明天再看一遍"],
 [1,"找出你的用户聚集在哪","列出 3 个{users}可能出现的地方；从{where}里先挑 10 个具体的人；记进一张表，不要只留在脑子里"],
@@ -624,10 +809,397 @@ const WEEK_TITLE = {
  4:"收到钱之后，决定继续还是换"
 };
 
+/* ===== 行业库：常见行当，每个都挂到一套 30 天 ===== */
+/* 每条 = [行当, 这一行的「一个单位」, 客户一般在哪] */
+/* ===== 行业库：常见行当，每个都挂到一套 30 天 ===== */
+/* 每条 = [行当, 这一行的「一个单位」, 客户一般在哪] */
+const IND_GROUPS=[
+ {g:"餐饮 · 小吃", fam:"local", items:[
+  ["早餐店","一份早餐","写字楼门口和小区出入口"],
+  ["包子铺","一笼包子","早高峰路口和菜市场旁"],
+  ["面馆","一碗面","附近工地和老小区"],
+  ["快餐盒饭","一份盒饭","写字楼和外卖平台"],
+  ["奶茶店","一杯奶茶","商场和学校周边"],
+  ["咖啡店","一杯咖啡","写字楼一层和园区"],
+  ["烧烤摊","一桌烧烤","夜市和大学城"],
+  ["卤味熟食","一斤卤味","小区门口和菜市场"],
+  ["火锅店","一桌客人","商圈和社区综合体"],
+  ["烘焙面包","一个面包","社区门口和线上社群"],
+  ["小吃摊","一份小吃","校门口和步行街"],
+  ["私房菜","一桌饭","老客的微信群"],
+  ["饺子馆","一份饺子","小区和菜市场旁"],
+  ["麻辣烫","一份麻辣烫","学校与写字楼周边"],
+  ["米线店","一碗米线","夜市和步行街"],
+  ["煲仔饭","一份煲仔饭","写字楼和外卖平台"],
+  ["轻食沙拉","一份沙拉","健身人群和写字楼"],
+  ["甜品店","一份甜品","商场和年轻女性客群"],
+  ["日料店","一桌客人","商圈和写字楼"],
+  ["串串香","一桌客人","夜市和社区"],
+  ["螺蛳粉","一碗粉","外卖平台和学生"],
+  ["凉皮凉面","一份凉皮","夏天的小区和夜市"],
+  ["烧腊店","一份烧腊","菜市场和写字楼"],
+  ["早餐外卖","一份早餐","周边三公里的上班族"],
+  ["食堂承包","一天餐标","工厂和园区"],
+  ["团餐配送","一份团餐","小公司和培训机构"],
+  ["夜市摊位","一份小吃","夜市客流"],
+  ["糖水铺","一碗糖水","南方社区和夜市"],
+  ["炸鸡汉堡","一份套餐","学生和外卖平台"],
+  ["茶饮外卖","一杯饮料","周边写字楼"]]},
+ {g:"零售 · 门店", fam:"local", items:[
+  ["便利店","一次消费","小区门口和写字楼楼下"],
+  ["生鲜超市","一次采购","小区三公里内"],
+  ["水果店","一份水果","小区门口和写字楼下"],
+  ["母婴店","一次购买","附近有小孩的家庭"],
+  ["服装店","一件衣服","商场和街边客流"],
+  ["五金建材","一单材料","附近装修的工地和业主"],
+  ["药店","一次购药","周边慢病老人和居民"],
+  ["烟酒店","一次购买","街边熟客和宴席需求"],
+  ["文具店","一次采购","附近学校和家长"],
+  ["花店","一束花","节日和周边写字楼"],
+  ["眼镜店","一副眼镜","附近学生和上班族"],
+  ["手机维修","一次维修","周边居民的换屏换电池"],
+  ["手机配件","一件配件","手机店和线上平台"],
+  ["鞋店","一双鞋","商场和社区"],
+  ["内衣店","一件内衣","社区女性客群"],
+  ["童装店","一套童装","附近小区的家长"],
+  ["家纺店","一套家纺","新居和婚庆客户"],
+  ["厨具店","一件厨具","餐馆和新装修家庭"],
+  ["宠物用品","一件用品","小区里养宠的人"],
+  ["渔具店","一件渔具","周边钓友"],
+  ["烟茶店","一斤茶","送礼和熟客"],
+  ["粮油店","一袋米","小区和餐馆"],
+  ["调味品店","一批调料","小餐馆和家庭"],
+  ["保健品店","一盒","中老年客群"],
+  ["进口零食","一包零食","年轻客群和线上"],
+  ["文具批发","一批货","学校和小店"],
+  ["彩票店","一次购买","街边客流"],
+  ["打印复印店","一张纸","学生和小公司"],
+  ["照相馆","一套照片","证件照和婚纱客群"],
+  ["二手回收","一次回收","搬家住户和小店"]]},
+ {g:"生活服务", fam:"local", items:[
+  ["美甲美睫","一次服务","周边写字楼和小区女性"],
+  ["理发店","一次剪发","门口三公里的熟客"],
+  ["洗衣店","一次洗衣","小区和周边租客"],
+  ["家政保洁","一次上门","双职工家庭和租客"],
+  ["搬家服务","一趟搬家","周边租客和刚买房的"],
+  ["装修队","一单工程","新交付的小区"],
+  ["汽修洗车","一次保养","周边车主和网约车司机"],
+  ["宠物店","一次服务","小区里养宠的人"],
+  ["宠物寄养","一晚寄养","节假日要出门的养宠人"],
+  ["宠物洗澡","一次洗澡","养狗养猫的家庭"],
+  ["开锁换锁","一次上门","被锁在门外的住户"],
+  ["按摩推拿","一次推拿","久坐的上班族和老人"],
+  ["月子中心","一位客户","孕晚期的家庭"],
+  ["月嫂服务","一单服务","待产和坐月子的家庭"],
+  ["育儿嫂","一单服务","双职工有娃家庭"],
+  ["老人陪护","一天陪护","有高龄父母的双职工"],
+  ["钟点工","一小时","小区家庭"],
+  ["家电清洗","一次清洗","小区家庭和租户"],
+  ["空调安装","一次安装","新装修和新买空调的住户"],
+  ["水电维修","一次上门","老小区住户"],
+  ["疏通管道","一次上门","老小区和餐馆"],
+  ["防水补漏","一次上门","顶层和老旧住户"],
+  ["门窗安装","一单安装","装修中的住户"],
+  ["窗帘定制","一套窗帘","新装修和搬家客户"],
+  ["贴膜改色","一辆车","年轻车主"],
+  ["轮胎服务","一次更换","周边车主"],
+  ["电动车维修","一次维修","外卖骑手和居民"],
+  ["婚庆布置","一场布置","准备结婚的年轻人"],
+  ["摄影跟拍","一场跟拍","婚礼和活动客户"],
+  ["活动场地","一场活动","社团和亲子家庭"],
+  ["舞蹈工作室","一节课","附近年轻女性"],
+  ["琴行","一节课","学琴的孩子和家长"],
+  ["台球厅","一小时","年轻客群"],
+  ["棋牌室","一小时","中老年熟客"],
+  ["社区团购","一单团购","小区群里的住户"],
+  ["回收旧衣","一公斤","小区住户"]]},
+ {g:"电商 · 卖货", fam:"ecom", items:[
+  ["淘宝店","一单成交","平台搜索和同类差评区"],
+  ["拼多多店","一单成交","低价人群和拼单群"],
+  ["抖音小店","一单成交","刷视频的人"],
+  ["直播带货","一场成交","直播间里的老粉"],
+  ["跨境电商","一单出口","海外同类平台买家"],
+  ["一件代发","一单成交","不想囤货的小卖家"],
+  ["二手转卖","一件转卖","同城和二手平台"],
+  ["农产品网销","一箱","想买土特产的城市人"],
+  ["定制礼品","一批订单","企业采购和节日送礼"],
+  ["工厂直销","一批货","批发商和小店主"],
+  ["微信小店","一单成交","朋友圈和老客"],
+  ["视频号小店","一单成交","视频号观众"],
+  ["闲鱼号","一件成交","同城和兴趣买家"],
+  ["独立站","一单成交","搜索过来的海外客户"],
+  ["亚马逊店","一单成交","海外买家"],
+  ["Temu 店","一单成交","海外低价人群"],
+  ["美妆代购","一单","信任你的老客"],
+  ["母婴代购","一单","有娃家庭"],
+  ["球鞋转卖","一双","鞋圈玩家"],
+  ["潮玩转卖","一件","盲盒和机甲玩家"],
+  ["数码二手","一台","学生和预算有限的人"],
+  ["图书转卖","一本","备考和爱读书的人"],
+  ["鲜花网销","一束","节日和异地送礼"],
+  ["零食网店","一箱","年轻客群"],
+  ["定制服装","一件","要合身或要图案的人"]]},
+ {g:"内容 · 账号", fam:"content", items:[
+  ["短视频账号","一条视频","同类视频的评论区"],
+  ["小红书博主","一篇笔记","同类笔记下的收藏用户"],
+  ["公众号","一篇文章","已经关注你的读者"],
+  ["播客","一期节目","同类播客的听众"],
+  ["知识区UP主","一条长视频","搜索这个问题的人"],
+  ["直播主播","一场直播","固定时段来看的人"],
+  ["摄影账号","一组作品","想拍照的同城用户"],
+  ["美食探店","一条探店","同城的吃货"],
+  ["游戏解说","一条视频","同款游戏的玩家"],
+  ["剪辑代做","一条成片","要发内容的同行"],
+  ["文案代写","一篇稿","要发内容的商家"],
+  ["表情包账号","一套图","聊天用户"],
+  ["壁纸账号","一组图","换壁纸的人"],
+  ["影视剪辑号","一条视频","追剧的人"],
+  ["情感号","一条内容","深夜刷手机的人"],
+  ["职场号","一条内容","刚工作的年轻人"],
+  ["本地生活号","一条内容","同城吃喝玩乐的人"],
+  ["招聘信息号","一条招聘","求职者和小店"],
+  ["二手信息号","一条信息","同城买卖的人"],
+  ["宠物账号","一条视频","养宠的人"],
+  ["知识付费号","一门小课","被问题卡住的人"],
+  ["公众号代运营","一个月","没时间写的小老板"],
+  ["短视频代运营","一个月","要做账号的商家"],
+  ["直播代播","一场","没时间播的店主"],
+  ["AI 内容号","一条内容","对新工具好奇的人"]]},
+ {g:"软件 · 工具", fam:"tool", items:[
+  ["小程序","一次使用","正在用表格硬扛的人"],
+  ["APP","一次使用","同类工具的差评用户"],
+  ["SaaS 系统","一个账号","小团队和门店老板"],
+  ["网站建站","一个站点","要上线的小生意"],
+  ["AI 工具","一次生成","被重复劳动困住的人"],
+  ["插件脚本","一次安装","同行的重度用户"],
+  ["数据服务","一份报告","要做决策的小老板"],
+  ["自动化工具","一条流程","每天重复操作的人"],
+  ["企业系统","一套部署","有流程痛点的公司"],
+  ["小游戏","一次游玩","社交平台上的轻度玩家"],
+  ["微信机器人","一套","社群运营者"],
+  ["爬虫服务","一份数据","做市场分析的人"],
+  ["表单工具","一次提交","要收集信息的组织"],
+  ["预约系统","一个门店","要排班的美业门店"],
+  ["收银系统","一个门店","开店的商家"],
+  ["点餐小程序","一个门店","餐饮店"],
+  ["会员系统","一个门店","复购型门店"],
+  ["报表工具","一个账号","每周要交报表的人"],
+  ["电子签工具","一次签署","要签合同的小团队"],
+  ["简历工具","一次导出","找工作的人"],
+  ["在线课程平台","一个账号","要卖课的老师"],
+  ["记账工具","一个账本","小店主和自由职业者"],
+  ["翻译插件","一次翻译","要看外文资料的人"],
+  ["图片处理工具","一张图","要出图的商家"],
+  ["桌面小工具","一次使用","每天重复操作的人"]]},
+ {g:"教育 · 知识", fam:"edu", items:[
+  ["学科辅导","一节课","附近的学生和家长"],
+  ["成人英语","一期课","职场要用的上班族"],
+  ["编程培训","一期课","想转行的年轻人"],
+  ["考证培训","一期班","报名季的考生"],
+  ["考研辅导","一期课","备考的学生"],
+  ["技能课（剪辑/设计）","一期课","接单和自媒体从业者"],
+  ["亲子早教","一节课","0–6 岁孩子的家庭"],
+  ["书法绘画","一节课","想让孩子静下来的家长"],
+  ["留学咨询","一单咨询","准备出国的家庭"],
+  ["职业规划","一次咨询","工作三年左右的人"],
+  ["雅思托福","一期课","要出国的学生"],
+  ["四六级辅导","一期课","在校大学生"],
+  ["会计实操","一期课","刚入职的出纳"],
+  ["教师资格证","一期班","要考编的年轻人"],
+  ["公务员考试","一期班","备考的应届生"],
+  ["普通话培训","一期课","要考证书的人"],
+  ["少儿编程","一节课","附近小学的家长"],
+  ["钢琴陪练","一节课","学琴的孩子"],
+  ["舞蹈培训","一节课","少儿和成人学员"],
+  ["游泳培训","一期课","暑期孩子和家长"],
+  ["健身教练培训","一期班","想考证的健身爱好者"],
+  ["口才演讲","一期课","要上台的职场人"],
+  ["写作训练营","一期营","想写点东西的人"],
+  ["家庭教育课","一期课","有青春期孩子的家长"],
+  ["老年兴趣班","一节课","社区退休人群"]]},
+ {g:"手艺 · 制造", fam:"make", items:[
+  ["木作家具","一件作品","要定制家具的业主"],
+  ["皮具手作","一个包","喜欢真皮小物的人"],
+  ["陶艺","一批器物","茶室和小众买手"],
+  ["首饰制作","一件首饰","要定制礼物的人"],
+  ["裁缝定制","一件衣服","身形不合标准码的人"],
+  ["印刷物料","一批印刷","开店要做物料的商家"],
+  ["3D 打印","一件打样","要快速验证结构的人"],
+  ["机械加工","一批零件","有图纸的小厂"],
+  ["家具定制","一套柜子","新房装修的业主"],
+  ["文创周边","一批周边","做活动的品牌和小店"],
+  ["手工皂","一批皂","注重成分的消费者"],
+  ["香薰蜡烛","一批蜡烛","送礼和居家客群"],
+  ["编织毛线","一件成品","喜欢手工的年轻女性"],
+  ["刺绣定制","一件绣品","要定制纪念品的人"],
+  ["模型制作","一个模型","手办和沙盘爱好者"],
+  ["广告标识","一套标识","新开店和园区"],
+  ["招牌制作","一块招牌","开新店的小老板"],
+  ["亚克力加工","一批件","展陈和小店"],
+  ["注塑打样","一批样品","做硬件的小团队"],
+  ["五金加工","一批件","维修和装修的客户"],
+  ["焊接加工","一批件","工地和小厂"],
+  ["改衣修补","一件衣服","小区住户和上班族"],
+  ["鞋包维修","一件","有品牌包鞋的客户"],
+  ["钟表维修","一只表","中老年和收藏客"],
+  ["乐器维修","一次维修","琴行和乐手"]]},
+ {g:"食品 · 农业", fam:"food", items:[
+  ["家庭农场","一箱菜","城里想买放心菜的会员"],
+  ["蔬菜种植","一份蔬菜","小区团购和菜市场"],
+  ["养殖","一批肉蛋","要稳定货源的小餐馆"],
+  ["食品加工","一批成品","小超市和社区团购"],
+  ["烘焙代工","一批点心","咖啡店和公司茶歇"],
+  ["酱料调味","一瓶酱","爱吃辣的家庭和小店"],
+  ["预制菜","一份菜","没时间做饭的上班族"],
+  ["茶叶","一份茶","送礼和日常喝的人"],
+  ["蜂蜜","一瓶蜜","注重养生的家庭"],
+  ["土特产","一箱特产","在外地想吃家乡味的人"],
+  ["水果种植","一箱水果","社区团购和果切店"],
+  ["中药材种植","一批药材","药材收购商和诊所"],
+  ["菌菇种植","一箱菌菇","餐馆和菜市场"],
+  ["禽蛋供应","一批蛋","早餐店和小超市"],
+  ["水产养殖","一批水产","餐馆和菜市场"],
+  ["牛肉干加工","一批","零食客和特产店"],
+  ["腊味制作","一批腊味","年货客和特产店"],
+  ["手工面条","一批面","面馆和家庭"],
+  ["豆腐作坊","一批豆腐","菜市场和餐馆"],
+  ["泡菜腌菜","一批","餐馆和家庭"],
+  ["坚果炒货","一批","年货和零食客"],
+  ["咖啡豆烘焙","一批豆","咖啡店和爱好者"],
+  ["精酿啤酒","一批酒","酒吧和年轻人"],
+  ["鲜花种植","一批花","花店和婚礼"],
+  ["苗木花卉","一批苗","园林和业主"]]},
+ {g:"同城 · 跑腿", fam:"run", items:[
+  ["同城跑腿","一趟","每天发货的小商户"],
+  ["快递代收","一件代收","小区里上班不在家的人"],
+  ["生鲜配送","一趟配送","社区团购的团长"],
+  ["搬家运输","一趟运输","换租的年轻人"],
+  ["货运","一趟货运","要发大件的商户"],
+  ["校园代取","一件代取","宿舍里的学生"],
+  ["宠物接送","一趟接送","要带宠物出门的人"],
+  ["冷链配送","一趟配送","卖生鲜和冻品的小店"],
+  ["外卖跑单","一单","商圈里的餐饮店"],
+  ["代排队","一次","医院和热门门店"],
+  ["代买菜","一单","上班没空的人"],
+  ["接送机","一趟","出差和旅游的人"],
+  ["包车服务","一天","周边游和商务客"],
+  ["电动车租赁","一天","外卖骑手和游客"],
+  ["行李寄存","一天","游客和搬家的人"],
+  ["夜间配送","一趟","夜市和酒吧"],
+  ["文件急送","一趟","小公司和律所"],
+  ["鲜花配送","一趟","花店和节日订单"],
+  ["大件上楼","一趟","买家电家具的住户"],
+  ["搬家打包","一单","换租和搬家的家庭"]]},
+ {g:"健康 · 医疗", fam:"service", items:[
+  ["中医理疗","一次调理","久坐肩颈痛的上班族"],
+  ["口腔诊所","一位患者","周边家庭和体检人群"],
+  ["眼科视光","一副镜片","学生和长期看屏幕的人"],
+  ["心理咨询","一次咨询","长期压力大的人"],
+  ["康复训练","一次训练","术后和运动损伤的人"],
+  ["营养餐定制","一周餐","减脂和控制血糖的人"],
+  ["健身私教","一节课","办了卡却不敢练的人"],
+  ["瑜伽馆","一节课","附近想改善体态的女性"],
+  ["体检代理","一单","单位团检和家庭体检"],
+  ["推拿正骨","一次","司机和久坐人群"],
+  ["针灸","一次","慢痛和调理人群"],
+  ["艾灸馆","一次","女性和中老年"],
+  ["视力矫正","一次训练","近视的孩子家长"],
+  ["助听器验配","一副","听力下降的老人"],
+  ["月子餐配送","一天","产后家庭"],
+  ["减脂营","一期","想减重的人"],
+  ["体态矫正","一次","含胸驼背的上班族"],
+  ["运动康复","一次","跑者和球友"],
+  ["宠物医疗","一次","养宠家庭"],
+  ["上门护理","一次","术后和卧床老人"],
+  ["陪诊服务","一次","异地就医的家庭"],
+  ["健康管理","一个月","体检异常的中年人"],
+  ["戒烟辅导","一期","长期吸烟者"],
+  ["睡眠改善","一期","失眠的上班族"],
+  ["产后修复","一次","产后女性"]]},
+ {g:"专业 · 企业服务", fam:"service", items:[
+  ["平面设计","一张稿","开店要做物料的小老板"],
+  ["文案写作","一篇稿","要发内容的商家和博主"],
+  ["翻译","一份译文","要出海的小公司"],
+  ["法律咨询","一次咨询","遇到合同纠纷的小老板"],
+  ["财税代理","一个月","刚注册公司的创业者"],
+  ["商标注册","一件商标","要做品牌的小店"],
+  ["摄影摄像","一场拍摄","要拍产品图的小商家"],
+  ["活动策划","一场活动","开店和做发布会的品牌"],
+  ["婚礼策划","一场婚礼","准备结婚的新人"],
+  ["房产中介","一单成交","要租要买的同城客户"],
+  ["保险代理","一单成交","刚成家的年轻家庭"],
+  ["旅游定制","一单行程","想省心出游的家庭"],
+  ["会计代账","一个月","小规模和个体户"],
+  ["工商注册","一单","要开公司的创业者"],
+  ["社保代缴","一个月","自由职业和小团队"],
+  ["招聘服务","一个岗位","急着招人的小店"],
+  ["劳务派遣","一批人","用工波动大的工厂"],
+  ["培训外包","一场","要做内训的公司"],
+  ["企业咨询","一个项目","增长停滞的小公司"],
+  ["品牌命名","一单","要注册品牌的人"],
+  ["包装设计","一套","要上架的产品"],
+  ["电商代运营","一个月","不会运营的店主"],
+  ["广告投放","一个账户","要买流量的小店"],
+  ["短视频拍摄","一条","要发内容的商家"],
+  ["直播间搭建","一套","要开播的门店"],
+  ["展会搭建","一场","要参展的品牌"],
+  ["礼仪模特","一场","活动和展会"],
+  ["司仪主持","一场","婚礼和年会"],
+  ["乐队演出","一场","酒吧和商业活动"],
+  ["宠物殡葬","一次服务","养宠家庭"],
+  ["保洁外包","一个月","写字楼和小店"],
+  ["安保服务","一个月","园区和小店"],
+  ["设备租赁","一天","活动和工地"],
+  ["办公耗材","一批","小公司和门店"],
+  ["企业团建","一场","十人以上团队"]]},
+ {g:"文体 · 娱乐", fam:"local", items:[
+  ["健身房","一张月卡","附近上班族和居民"],
+  ["羽毛球馆","一小时场地","周边球友和公司团建"],
+  ["游泳馆","一次入场","周边家庭和孩子"],
+  ["桌游吧","一场","年轻客群和朋友聚会"],
+  ["剧本杀店","一场","周末聚会的年轻人"],
+  ["密室逃脱","一场","情侣和朋友团"],
+  ["电竞馆","一小时","学生和年轻玩家"],
+  ["影棚租赁","一天","要拍产品图的商家"],
+  ["化妆师","一次妆造","新娘和活动客户"],
+  ["写真馆","一套写真","年轻女性和亲子"],
+  ["纹身店","一幅","有明确图案需求的客人"],
+  ["研学营地","一期营","有孩子的家庭"]]},
+ {g:"汽车 · 运输", fam:"local", items:[
+  ["洗车店","一次洗车","周边车主"],
+  ["汽车贴膜","一辆车","新车车主"],
+  ["汽车改装","一辆车","爱玩车的年轻人"],
+  ["租车行","一天","出差和自驾游客"],
+  ["代驾","一单","饭局和夜归车主"],
+  ["汽车陪练","一小时","刚拿驾照的新手"],
+  ["二手车行","一台成交","预算有限的买家"],
+  ["货车运输","一趟","要发大件的商户"],
+  ["工程机械租赁","一天","工地和施工队"],
+  ["充电桩安装","一个桩","买了电车的住户"],
+  ["旅游包车","一天","团队出游和公司"],
+  ["校车服务","一天","有孩子的双职工家庭"]]},
+ {g:"社区 · 民生", fam:"local", items:[
+  ["社区团购团长","一单团购","小区群里的住户"],
+  ["废品回收","一公斤","小区住户和小店"],
+  ["旧物寄卖","一件","搬家住户和年轻客群"],
+  ["自助洗衣","一次","租客和学生"],
+  ["社区食堂","一份餐","小区老人和上班族"],
+  ["托育中心","一个月","双职工有娃家庭"],
+  ["四点半课堂","一次","放学后没人接的孩子"],
+  ["宠物殡葬","一次服务","养宠家庭"],
+  ["殡葬服务","一场","有白事需求的家庭"],
+  ["劳务中介","一个人","要找工作的务工者"],
+  ["社区理发","一次","小区老人"],
+  ["上门做饭","一次","没时间做饭的家庭"]]},
+ {g:"还没定型", fam:"other", items:[
+  ["还没想清楚","一件事","离你最近的 10 个人"],
+  ["想先小规模试","一次尝试","身边愿意配合你的人"]]},
+];
+
 /* ===== 行业初判（按你填的词做规则匹配，不是真行业报告） ===== */
 const JRULES=[
  {k:"本地 / 门店生意", key:"local",
-  ks:["门店","实体店","开店","摆摊","餐饮","小吃","奶茶","咖啡","美甲","理发","健身","家政","宠物店","装修","汽修","生鲜","水果","饭店","早餐","面馆","洗衣","社区","小区","同城","本地","上门"],
+  ks:["门店","实体店","开店","摆摊","餐饮","小吃","奶茶","咖啡","美甲","理发","健身","家政","宠物店","装修","汽修","水果","饭店","早餐","面馆","洗衣","社区","小区","同城","本地","上门"],
   note:"本地生意靠复购和转介绍，拉新最贵。",
   where:"你店门口三公里内的人，和已经来过的老客",
   why:"先找已经认识你的人，成交最快、成本最低。",
@@ -654,6 +1226,34 @@ const JRULES=[
   why:"已经在用笨办法的人，才是真的有需求的人。",
   first:"找到 3 个正在用笨办法的人，看他们现在到底怎么解决。",
   risk:"别先写代码，先用表格或文档手工交付一遍。"},
+ {k:"教育 / 知识", key:"edu",
+  ks:["课程","培训","辅导","家教","教学","学员","考证","考研","英语","编程课","早教","书法","留学","职业规划","知识付费"],
+  note:"教培靠的是「他学完能不能真的做到」，不是课有多全。",
+  where:"正在被这一步卡住、又找不到人教的人",
+  why:"卡住的人才会付钱，觉得有趣的人不会。",
+  first:"找 3 个卡在同一步的人，问他们上次怎么自学、花了多久。",
+  risk:"别先做整套体系、别先录精装课，先带一个人走完一节。"},
+ {k:"手艺 / 制造", key:"make",
+  ks:["手作","木作","皮具","陶艺","首饰","裁缝","印刷","3D打印","加工","制造","家具","文创","定制","手工"],
+  note:"手作的难点不是做得好，是「一件要几小时、卖多少钱才不亏」。",
+  where:"已经在用同类东西、并且在意手感耐用的人",
+  why:"用过同类的人才知道差在哪，没买过的人只会说好看。",
+  first:"算一件的材料和工时成本，再问 3 个买过同类的人上次花多少钱。",
+  risk:"别先开系列、别先囤料，先做 3 件能交付的样品。"},
+ {k:"食品 / 农产品", key:"food",
+  ks:["农产品","种植","养殖","果园","蔬菜","农场","食品加工","烘焙","酱料","预制菜","茶叶","蜂蜜","冷链","土特产"],
+  note:"吃的生意，信任比口味更贵：能不能放心、坏了谁赔。",
+  where:"家里常做饭、又怕买到不新鲜的人",
+  why:"复购来自放心，一次坏损就能毁掉一群客户。",
+  first:"问 5 个买家最担心什么，把赔付规则先写明白。",
+  risk:"别先做跨省生鲜、别先囤货，先 10 份小批量预售。"},
+ {k:"同城 / 跑腿", key:"run",
+  ks:["跑腿","配送","快递","同城","搬家","运输","货运","代取","接送","外卖跑单"],
+  note:"跑腿拼的是时效和回头客，不是单价高。",
+  where:"每天都要发东西的小商户，和临时有急事的住户",
+  why:"商户的单是稳定的，散客的单靠运气。",
+  first:"算清一趟的时间和油电成本，再问 5 个商户最急的一次是什么事。",
+  risk:"别先垫钱、别接跨城，先把 3 公里内的时效做稳。"},
  {k:"服务 / 手艺", key:"service",
   ks:["课程","咨询","培训","辅导","代做","设计","剪辑","写作","外包","接单","家教","摄影","手作","维修","私教","教练","策划","陪","跑腿"],
   note:"服务生意最容易起步，今天就能接第一单。",
@@ -668,14 +1268,36 @@ const OTHER={k:"还没定型", key:"other",
   why:"先找最容易找到的人，验证成本最低。",
   first:"把这件事写成一句别人能听懂的话，念给 3 个人听。",
   risk:"别急着定方向，先把「给谁、解决什么」说清楚。"};
+const FAMD={};
+JRULES.forEach(r=>{FAMD[r.key]=r;});
 function judge(){
   const a=AP().ans;
   const txt=[a.field,a.goal,a.users,a.assets].filter(Boolean).join(" ");
+  let ind=null, bl=0;
+  IND_GROUPS.forEach(g=>{(g.items||[]).forEach(it=>{
+    const n=it[0];
+    if(n.length>bl && txt.indexOf(n)>=0){bl=n.length; ind={k:n,fam:g.fam,u:it[1],w:it[2]};}
+  });});
+  if(ind){
+    const d=FAMD[ind.fam]||OTHER;
+    return {k:ind.k,key:ind.fam,u:ind.u,where:ind.w,note:d.note,why:d.why,first:d.first,risk:d.risk};
+  }
   let best=null,bs=0;
   JRULES.forEach(r=>{const sc=r.ks.filter(k=>txt.indexOf(k)>=0).length; if(sc>bs){bs=sc;best=r;}});
-  return best||OTHER;
+  if(best) return {k:best.k,key:best.key,u:"一单",where:best.where,note:best.note,why:best.why,first:best.first,risk:best.risk};
+  return OTHER;
 }
 /* 当前行业对应的一套 30 天 */
+/* 每一行原本是三件事写在一句里，这里拆成三件独立任务 */
+Object.keys(PATHS).forEach(k=>{
+  PATHS[k]=PATHS[k].map(r=>{
+    if(r.length>=5&&r[3]&&r[4]) return r;
+    const parts=String(r[2]).split("；").map(x=>x.trim()).filter(Boolean);
+    while(parts.length<3) parts.push("记下这条做成什么样、卡在哪");
+    if(parts.length>3){ parts[2]=parts.slice(2).join("；"); parts.length=3; }
+    return [r[0],r[1],parts[0],parts[1],parts[2]];
+  });
+});
 function dlist(){
   const p=PATHS[judge().key]||PATHS.other;
   return p.map((r,i)=>({w:r[0],d:i+1,t:r[1],a:[r[2],r[3],r[4]]}));
@@ -687,6 +1309,7 @@ function fill(t){
     .replace(/{field}/g,esc(a.field||"你选的这个行业"))
     .replace(/{users}/g,esc(a.users||"你的目标人群"))
     .replace(/{where}/g,esc(j.where))
+    .replace(/{unit}/g,esc(j.u||"一单"))
     .replace(/{first}/g,esc(j.first));
 }
 
@@ -735,7 +1358,7 @@ const PEOPLE = [
 
 /* ===== 状态 ===== */
 const KEY="cyxq_proto_v1";
-const DEF=()=>({booted:false,onboarded:false,step:0,ans:{},done:{},review:{},showDiag:false,justDone:0,open:0,openDiag:false,bg:{theme:"space",photo:false,scrim:.80}});
+const DEF=()=>({booted:false,onboarded:false,step:0,ans:{},done:{},review:{},showDiag:false,justDone:0,open:0,openDiag:false,pick:false,proof:null,sound:true,bg:{theme:"space",photo:false,scrim:.80}});
 let S=(()=>{try{const r=localStorage.getItem(KEY);return r?Object.assign(DEF(),JSON.parse(r)):DEF()}catch(e){return DEF()}})();
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 const app=document.getElementById("app");
@@ -766,7 +1389,18 @@ const fmtDate=ts=>{const t=new Date(ts||Date.now());return t.getFullYear()+"."+(
   delete S.ans; delete S.done; delete S.review;
   save();
 })();
-(S.plans||[]).forEach(p=>{if(!Array.isArray(p.mine)) p.mine=[];});
+(S.plans||[]).forEach(p=>{
+  if(!Array.isArray(p.mine)) p.mine=[];
+  if(!Array.isArray(p.notes)) p.notes=[];
+  if(!Array.isArray(p.research)) p.research=[];
+  // 旧版：打勾存的是 true，没有证明。补成一条可回看的记录，不丢进度。
+  Object.keys(p.done||{}).forEach(d=>{
+    const row=p.done[d]; if(!Array.isArray(row)) return;
+    for(let i=0;i<3;i++){
+      if(row[i]===true) row[i]={at:Date.now(),txt:"旧版本打的勾，当时还没有证明功能",num:null,img:false,legacy:true};
+    }
+  });
+});
 S.onboarded=Object.keys(AP().ans).length>0;
 
 
@@ -797,6 +1431,15 @@ let bgObj=false;
 async function idbGet(){
   const db=await idbOpen();
   return new Promise((res,rej)=>{const t=db.transaction("kv","readonly");const q=t.objectStore("kv").get("bg");q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);});
+}
+function idbKvPut(k,v){
+  return idbOpen().then(db=>new Promise((res,rej)=>{const t=db.transaction("kv","readwrite");t.objectStore("kv").put(v,k);t.oncomplete=()=>res(true);t.onerror=()=>rej(t.error);}));
+}
+function idbKvGet(k){
+  return idbOpen().then(db=>new Promise((res,rej)=>{const t=db.transaction("kv","readonly");const q=t.objectStore("kv").get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);}));
+}
+function idbKvDel(k){
+  return idbOpen().then(db=>new Promise((res,rej)=>{const t=db.transaction("kv","readwrite");t.objectStore("kv").delete(k);t.oncomplete=()=>res(true);t.onerror=()=>rej(t.error);}));
 }
 async function idbDel(){
   const db=await idbOpen();
@@ -887,10 +1530,81 @@ const ICON={
  today:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="2.6"/></svg>',
  path:'<svg viewBox="0 0 24 24"><path d="M12 3.5v17"/><circle cx="12" cy="6.5" r="1.9"/><circle cx="12" cy="17.5" r="1.9"/></svg>',
  planet:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.8"/><ellipse cx="12" cy="12" rx="10" ry="3.6" transform="rotate(-18 12 12)"/></svg>',
+ mine:'<svg viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h10"/><circle cx="18.5" cy="17.5" r="2.2"/></svg>',
  me:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3"/><path d="M4.6 20.6c1.5-3.9 4-5.9 7.4-5.9s5.9 2 7.4 5.9"/></svg>'
 };
 
 /* ===== 逻辑 ===== */
+/* ===== 完成证明：不提交证明就打不了勾 ===== */
+let pfImg=null;
+let pfDraft={txt:"",num:""};
+const STAT_RE=/数|算|多少|几个|几位|金额|成本|毛利|流水|单价|人数|次数|时长|分钟|小时|利润|比例|几单/;
+const needNum=t=>STAT_RE.test(String(t||""));
+function proofOf(d,i){const p=AP();const v=p.done&&p.done[d]&&p.done[d][i];return (v&&typeof v==="object")?v:null;}
+function proofKey(d,i){return "proof:"+AP().id+":"+d+"-"+i;}
+function taskText(d,i){const L=dlist();return fill((L[d-1]||{a:[]}).a[i]||"");}
+function openProof(d,i){S.proof={d,i};pfImg=null;pfDraft={txt:"",num:""};save();render();}
+function closeProof(){S.proof=null;pfImg=null;pfDraft={txt:"",num:""};save();render();}
+function mineProofPanel(){
+  const it=(AP().mine||[]).find(x=>x.id===S.proof.mine); if(!it) return "";
+  if(it.done&&it.proof){
+    return `<div class="proof"><div class="proof-box">
+      <div class="proof-hd"><div><b>${esc(it.title)}</b><span>${esc(mineLabel(it))}</span></div><button class="lnk" data-act="pfclose">关闭</button></div>
+      <div class="proof-body">
+        <div class="pf-k">你提交的证明</div>
+        <p class="pf-txt">${esc(it.proof.txt||"—")}</p>
+        <div class="pf-meta">提交时间：${fmtDate(it.proof.at)}</div>
+        ${it.proof.img?`<div class="pf-photo"><img data-pfimg="mine-${it.id}" alt="完成凭证"></div>`:""}
+        <button class="pf-undo" data-act="pfmundo">撤销完成（证明会一起删掉）</button>
+      </div></div></div>`;
+  }
+  return `<div class="proof"><div class="proof-box">
+    <div class="proof-hd"><div><b>${esc(it.title)}</b><span>写一句你实际做了什么，才给打勾</span></div><button class="lnk" data-act="pfclose">关闭</button></div>
+    <div class="proof-body">
+      <div class="pf-k">完成证明</div>
+      <textarea id="pfTxt" rows="4" placeholder="例：把营业执照的材料交到窗口，拿到受理回执，编号 A123。">${esc(pfDraft.txt)}</textarea>
+      <div class="pf-row pf-file">
+        <label class="pf-pick" for="pfimg">${pfImg?"换一张照片":"加一张照片（可选）"}</label>
+        <input id="pfimg" type="file" accept="image/*" hidden>
+      </div>
+      ${pfImg?`<div class="pf-photo"><img src="${pfImg}" alt="预览"><button class="lnk" data-act="pfrmimg">去掉这张</button></div>`:""}
+      <button class="pf-go" data-act="pfminesubmit">提交证明，打勾完成</button>
+      <div class="mini">至少 8 个字，或者一张照片。没有证明就不能打勾。</div>
+    </div></div></div>`;
+}
+function proofPanel(){
+  const o=S.proof; if(!o) return "";
+  if(o.mine) return mineProofPanel();
+  const {d,i}=o, pp=proofOf(d,i), task=taskText(d,i), need=needNum(task);
+  if(pp){
+    return `<div class="proof"><div class="proof-box">
+      <div class="proof-hd"><div><b>D${d} · 第 ${i+1} 件</b><span>${esc(task)}</span></div><button class="lnk" data-act="pfclose">关闭</button></div>
+      <div class="proof-body">
+        <div class="pf-k">你提交的证明</div>
+        <p class="pf-txt">${esc(pp.txt||"—")}</p>
+        ${pp.num!=null?`<div class="pf-meta">数字：<b>${esc(String(pp.num))}</b></div>`:""}
+        <div class="pf-meta">提交时间：${fmtDate(pp.at)}</div>
+        ${pp.img?`<div class="pf-photo"><img data-pfimg="${d}-${i}" alt="完成凭证"></div>`:""}
+        <button class="pf-undo" data-act="pfundo">撤销完成（证明会一起删掉）</button>
+      </div>
+    </div></div>`;
+  }
+  return `<div class="proof"><div class="proof-box">
+    <div class="proof-hd"><div><b>D${d} · 第 ${i+1} 件</b><span>${esc(task)}</span></div><button class="lnk" data-act="pfclose">关闭</button></div>
+    <div class="proof-body">
+      <div class="pf-k">写清楚你做了什么（谁、几个人、做了什么、结果）</div>
+      <textarea id="pfTxt" rows="4" placeholder="例：问了楼下早餐店老板，他说周末客流掉一半，因为对面开了新店。记下他原话三句。">${esc(pfDraft.txt)}</textarea>
+      ${need?`<div class="pf-row"><label for="pfNum">这条要数字（几个 / 多少钱 / 多久）</label><input id="pfNum" type="number" step="any" value="${esc(pfDraft.num)}" placeholder="填一个数"></div>`:""}
+      <div class="pf-row pf-file">
+        <label class="pf-pick" for="pfimg">${pfImg?"换一张照片":"加一张照片（可选，拍了现场更算数）"}</label>
+        <input id="pfimg" type="file" accept="image/*" hidden>
+      </div>
+      ${pfImg?`<div class="pf-photo"><img src="${pfImg}" alt="预览"><button class="lnk" data-act="pfrmimg">去掉这张</button></div>`:""}
+      <button class="pf-go" data-act="pfsubmit">提交证明，打勾完成</button>
+      <div class="mini">文字至少 8 个字，或者有一张照片；这条要数字就必须填。没有证明就不能打勾。</div>
+    </div>
+  </div></div>`;
+}
 const isDone=(d,i)=>pDone(AP(),d,i);
 const dayDone=d=>pDayDone(AP(),d);
 function completedCount(){return pCompleted(AP());}
@@ -937,7 +1651,7 @@ function diagLines(){
 
 /* ===== 视图 ===== */
 function tabbar(v){
-  const T=[["today","今天"],["path","路径"],["me","我的"]];
+  const T=[["today","今天"],["path","路径"],["mine","自编"],["me","我的"]];
   return `<nav class="tabbar"><div class="inner">${T.map(([k,n])=>
     `<button class="tab${v===k?" on":""}" data-act="tab" data-v="${k}">${ICON[k]}<span>${n}</span></button>`).join("")}</div></nav>`;
 }
@@ -962,6 +1676,20 @@ function boot(){
   </div>`;
 }
 
+/* ===== 行业选择器 ===== */
+const IND_COUNT=IND_GROUPS.reduce((n,g)=>n+g.items.length,0);
+function pickHTML(){
+  const cur=String((AP().ans||{}).field||"");
+  return `<div class="pick" id="pick">
+    <div class="pick-box">
+      <div class="pick-hd"><div><b>挑一行</b><span>${IND_COUNT} 个常见行当，找不到就直接写</span></div><button class="lnk" data-act="pickclose">关闭</button></div>
+      <div class="pick-body">
+        ${IND_GROUPS.map(g=>`<div class="pick-g"><div class="pick-gn">${esc(g.g)}</div>
+          <div class="pick-items">${g.items.map(it=>`<button class="pick-i${cur.indexOf(it[0])>=0?" on":""}" data-act="pick" data-v="${esc(it[0])}">${esc(it[0])}</button>`).join("")}</div></div>`).join("")}
+      </div>
+    </div>
+  </div>`;
+}
 function onboard(){
   const i=S.step, q=QS[i], cur=AP().ans[q.k]||"";
   const can=String(cur).trim().length>0;
@@ -971,11 +1699,13 @@ function onboard(){
     <h2>${q.t}</h2>
     <textarea class="ans" id="qa" data-k="${q.k}" rows="3" placeholder="${esc(q.ph)}">${esc(cur)}</textarea>
     ${q.ex?`<div class="chips">${q.ex.map(x=>`<button class="chip" data-act="chip" data-k="${q.k}" data-v="${esc(x)}">${esc(x)}</button>`).join("")}</div>`:""}
+    ${q.k==="field"?`<button class="pick-open" data-act="picker">从 ${IND_COUNT} 个行当里挑一个</button>`:""}
     <div class="hint">${q.hint}</div>
     <div class="foot">
       ${i>0?`<button class="ghost" data-act="back">上一个</button>`:""}
       <button class="go" data-act="next" ${can?"":"disabled"}>${i===QS.length-1?"生成我的路径":"下一个"}</button>
     </div>
+    ${S.pick?pickHTML():""}
   </div>`;
 }
 
@@ -1006,12 +1736,15 @@ function today(){
       <div class="txt"><b>第 ${S.justDone} 天，完成了</b>累计 ${cc} 天。下一组已经放在下面。</div></div>`:""}
     <section class="sec">
       <div class="sec-hd"><h2>今日任务</h2><div class="note">${doneN} / 3</div></div>
-      <div class="tasks">${d.a.map((t,i)=>`
-        <div class="task${isDone(day,i)?" on":""}" data-act="task" data-d="${day}" data-i="${i}">
+      <div class="tasks">${d.a.map((t,i)=>{const pp=proofOf(day,i);
+        return `<div class="task${pp?" on":""}" data-act="task" data-d="${day}" data-i="${i}">
           <div class="no">${i+1}</div>
-          <div class="body"><p>${fill(t)}</p></div>
-          <div class="box">${CHECK}</div>
-        </div>`).join("")}</div>
+          <div class="body"><p>${fill(t)}</p>
+            ${pp?`<div class="pf-mini">已提交：${esc((pp.txt||"").slice(0,46))}${pp.num!=null?" · 数字 "+esc(String(pp.num)):""}${pp.img?" · 有照片":""}</div>`
+               :`<div class="pf-need">要提交证明才能打勾</div>`}
+          </div>
+          <div class="box">${pp?CHECK:'<span class="pf-dot"></span>'}</div>
+        </div>`;}).join("")}</div>
     </section>
     <p class="mini" style="margin-top:26px;line-height:1.8">做完这三件就可以关掉了。这里不打算占用你更多时间。</p>`;
   }
@@ -1117,6 +1850,7 @@ function me(){
       <div class="profile">${rows.map(([k,v])=>`<div class="prow"><div class="k">${k}</div><div class="v">${esc(v)}</div></div>`).join("")}</div>
       ${S.onboarded?"":`<div class="btn-line" data-act="re-onb" style="text-align:center">去做一次问诊</div>`}
     </section>
+    ${meEntries()}
     <section class="sec">
       <div class="sec-hd"><h2>背景</h2><div class="note">不习惯纯黑就换一个</div></div>
       <div class="themes">${THEMES.map(t=>`
@@ -1152,7 +1886,22 @@ function me(){
   </div>${tabbar("me")}`;
 }
 
+function loadProofPhotos(){
+  document.querySelectorAll("img[data-pfimg]").forEach(async img=>{
+    const k="proof:"+AP().id+":"+img.getAttribute("data-pfimg");
+    try{ const u=await idbKvGet(k); if(u&&!img.getAttribute("src")) img.src=u; }catch(e){}
+  });
+}
 function render(){
+  renderView();
+  loadProofPhotos();
+  mountProof();
+}
+function mountProof(){
+  const old=document.querySelector(".proof"); if(old) old.remove();
+  if(S.proof&&proofPanel()){ document.body.insertAdjacentHTML("beforeend",proofPanel()); loadProofPhotos(); }
+}
+function renderView(){
   applyBg();
   const v=(location.hash||"#/today").replace("#/","");
   if(!S.booted) return boot();
@@ -1161,6 +1910,11 @@ function render(){
   if(v==="mine/new") return mineNew();
   if(v==="mine") return mine();
   if(v==="planet") return planet();
+  if(v==="notes/new") return notesNew();
+  if(v==="notes") return notes();
+  if(v==="stats") return stats();
+  if(v==="research/new") return researchNew();
+  if(v==="research") return research();
   if(v==="me") return me();
   return today();
 }
@@ -1203,12 +1957,31 @@ function cdTick(){
     if(st.endAt-Date.now()<=0){
       st.running=false; st.left=0;
       const it=(AP().mine||[]).find(x=>x.id===id);
-      if(it){ it.left=0; it.done=true; save(); }
+      if(it){ it.left=0; save(); }
       paintCd(id);
       cheer(it?it.title:"");
-    } else paintCd(id);
+    } else {
+      const sec=Math.ceil(Math.max(0,(st.endAt-Date.now())/1000));
+      if(sec!==st.lastSec){ st.lastSec=sec; tickSound(); }
+      paintCd(id);
+    }
   });
   if(!any && cdLoop){clearInterval(cdLoop);cdLoop=null;}
+}
+let actx=null;
+function tickSound(){
+  if(S.sound===false) return;
+  try{
+    if(!actx) actx=new (window.AudioContext||window.webkitAudioContext)();
+    if(actx.state==="suspended") actx.resume();
+    const o=actx.createOscillator(), g=actx.createGain();
+    o.type="triangle"; o.frequency.value=1040;
+    const t=actx.currentTime;
+    g.gain.setValueAtTime(0.05,t);
+    g.gain.exponentialRampToValueAtTime(0.0008,t+0.07);
+    o.connect(g); g.connect(actx.destination);
+    o.start(t); o.stop(t+0.08);
+  }catch(e){}
 }
 function ensureLoop(){ if(cdLoop) return; cdLoop=setInterval(cdTick,200); }
 function cheer(title){
@@ -1216,7 +1989,7 @@ function cheer(title){
   const w=document.createElement("div");
   w.className="cheer";
   w.innerHTML=`<div class="cheer-box"><div class="cm">✦</div><h3>你很棒，继续加油！</h3>
-    <p>「${esc(title||"这一条")}」时间到了，已经帮你记成完成。</p>
+    <p>「${esc(title||"这一条")}」时间到了。写下你实际做了什么，才给打勾。</p>
     <button class="cheer-btn" data-act="cheerclose">知道了</button></div>`;
   w.addEventListener("click",e=>{
     if(e.target===w||(e.target.closest&&e.target.closest('[data-act="cheerclose"]'))) closeCheer();
@@ -1248,10 +2021,11 @@ function mineRow(it){
       <button class="mbtn" data-act="cdreset" data-id="${it.id}">重置</button>
     </div>` : "";
   return `<div class="mrow${it.done?" on":""}">
-    <button class="mbox" data-act="togglemine" data-id="${it.id}">${it.done?"✓":""}</button>
+    <button class="mbox" data-act="mproof" data-id="${it.id}">${it.done?"✓":""}</button>
     <div class="mt">
       <div class="mtitle">${esc(it.title)}</div>
       <div class="mtmeta">${mineLabel(it)}${it.sec?" · 时长 "+fmtDur(it.sec):""}</div>
+      ${it.done&&it.proof?`<div class="pf-mini">已提交：${esc((it.proof.txt||"").slice(0,46))}${it.proof.img?" · 有照片":""}</div>`:(it.done?"":`<div class="pf-need">打勾前要写一句做了什么</div>`)}
       ${dur}
     </div>
     <button class="lnk" data-act="delmine" data-id="${it.id}">删除</button>
@@ -1273,9 +2047,12 @@ function mine(){
       <h1>你自己排的事</h1>
       <div class="sub">系统那 30 天不动。这里只放你自己安排的事，${total?"已完成 "+donen+" / "+total:"一条都还没有"}。</div>
     </div><button class="lnk" data-act="tab" data-v="mine/new" style="margin-top:2px">加一条</button></div>
+    <div class="sound-row"><span>倒计时跳秒声</span>
+      <button class="sw2${S.sound===false?" off":""}" data-act="sound"><i></i>${S.sound===false?"关":"开"}</button>
+    </div>
     ${secs||`<section class="sec"><div class="note" style="padding:18px 0">还没有自己排的任务。点右上角「加一条」开始排。</div></section>`}
     <div class="mini" style="margin-top:22px">排了时长的那几条，点「开始」就会倒计时，旁边的沙漏跟着漏，漏完会提醒你。</div>
-  </div>${tabbar("path")}`;
+  </div>${tabbar("mine")}`;
   list.forEach(it=>{ if(it.sec) paintCd(it.id); });
 }
 
@@ -1305,7 +2082,138 @@ function mineNew(){
       </div>
       <div class="mini">不填时长也行，那样就是一条普通待办；填了就多一个倒计时和沙漏。</div>
     </section>
-  </div>${tabbar("path")}`;
+  </div>${tabbar("mine")}`;
+}
+
+/* ===== 笔记 / 统计表 / 市场调研 ===== */
+const nowTs=()=>Date.now();
+const nid=()=>"n"+Math.random().toString(36).slice(2,8);
+function proofStats(){
+  const p=AP(); let cnt=0,img=0,days=0;
+  for(let d=1;d<=30;d++){
+    if(pDayDone(p,d)) days++;
+    for(let i=0;i<3;i++){
+      const v=p.done&&p.done[d]&&p.done[d][i];
+      if(v&&typeof v==="object"){cnt++; if(v.img)img++;}
+    }
+  }
+  const mine=(p.mine||[]), md=mine.filter(x=>x.done).length;
+  return {cnt,img,days,mine:mine.length,mineDone:md,notes:(p.notes||[]).length,res:(p.research||[]).length};
+}
+function meEntries(){
+  return `<section class="sec">
+    <div class="sec-hd"><h2>自己记的东西</h2><div class="note">都在这一份计划里</div></div>
+    <button class="btn-line" data-act="tab" data-v="notes" style="text-align:center">笔记（${(AP().notes||[]).length} 条）</button>
+    <button class="btn-line" data-act="tab" data-v="stats" style="text-align:center">统计表（30 天进度 + 证明）</button>
+    <button class="btn-line" data-act="tab" data-v="research" style="text-align:center">市场调研（${(AP().research||[]).length} 条）</button>
+    <div class="mini">笔记、调研都跟着这份计划走，换计划不会串。</div>
+  </section>`;
+}
+function notes(){
+  const p=AP(); const list=(p.notes||[]).slice().sort((a,b)=>b.at-a.at);
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">笔记 · 第 ${currentDay()} 天</div>
+      <h1>随手记下的事</h1>
+      <div class="sub">${list.length?"共 "+list.length+" 条，最近的在最上面":"一条都还没有。今天听到的一句话也值得记。"}</div>
+    </div><button class="lnk" data-act="tab" data-v="notes/new" style="margin-top:2px">写一条</button></div>
+    <button class="back" data-act="tab" data-v="me">返回我的</button>
+    ${list.length?`<section class="sec">${list.map(n=>`<div class="nitem">
+      <div class="nhead"><b>${esc(n.title||"未命名")}</b><span>${fmtDate(n.at)}</span></div>
+      <p class="nbody">${esc(n.body||"")}</p>
+      <button class="lnk del" data-act="delnote" data-id="${n.id}">删除</button>
+    </div>`).join("")}</section>`:`<section class="sec"><div class="note" style="padding:18px 0">还没有笔记。</div></section>`}
+  </div>${tabbar("me")}`;
+}
+function notesNew(){
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">笔记 · 新的一条</div>
+      <h1>记一句话</h1>
+      <div class="sub">听到的原话、算出来的数、突然想通的一件事，都可以。</div>
+    </div></div>
+    <button class="back" data-act="tab" data-v="notes">返回列表</button>
+    <section class="sec">
+      <div class="mform">
+        <input type="text" id="noteTitle" placeholder="标题，比如：早餐店老板说的那句话">
+        <textarea id="noteBody" rows="6" placeholder="正文。写具体：谁说的、当时什么情况、你当时的反应。"></textarea>
+        <button class="btn-line" data-act="savenote">保存，回列表</button>
+      </div>
+    </section>
+  </div>${tabbar("me")}`;
+}
+function research(){
+  const p=AP(); const list=(p.research||[]).slice().sort((a,b)=>b.at-a.at);
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">市场调研 · 第 ${currentDay()} 天</div>
+      <h1>问过的人，说过的话</h1>
+      <div class="sub">${list.length?"共 "+list.length+" 条":"一条都还没有。第一条从身边最像客户的那个人开始。"}</div>
+    </div><button class="lnk" data-act="tab" data-v="research/new" style="margin-top:2px">加一条</button></div>
+    <button class="back" data-act="tab" data-v="me">返回我的</button>
+    ${list.length?`<section class="sec">${list.map(r=>`<div class="nitem">
+      <div class="nhead"><b>${esc(r.obj||"未填对象")}</b><span>${fmtDate(r.at)}</span></div>
+      <div class="rrow"><i>渠道</i><span>${esc(r.ch||"—")}</span></div>
+      <div class="rrow"><i>原话</i><span>${esc(r.quote||"—")}</span></div>
+      <div class="rrow"><i>报价</i><span>${esc(r.price||"—")}</span></div>
+      <div class="rrow"><i>结论</i><span>${esc(r.verdict||"—")}</span></div>
+      <button class="lnk del" data-act="delres" data-id="${r.id}">删除</button>
+    </div>`).join("")}</section>`:`<section class="sec"><div class="note" style="padding:18px 0">还没有调研记录。</div></section>`}
+  </div>${tabbar("me")}`;
+}
+function researchNew(){
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">市场调研 · 新的一条</div>
+      <h1>记一次真实对话</h1>
+      <div class="sub">只记真的发生过的：谁、在哪问的、他原话怎么说的。</div>
+    </div></div>
+    <button class="back" data-act="tab" data-v="research">返回列表</button>
+    <section class="sec">
+      <div class="mform">
+        <input type="text" id="rObj" placeholder="调研对象，比如：楼下早餐店老板">
+        <input type="text" id="rCh" placeholder="渠道，比如：当面聊 / 微信群 / 电话">
+        <textarea id="rQuote" rows="4" placeholder="他原话怎么说（尽量照抄，别改成书面语）"></textarea>
+        <input type="text" id="rPrice" placeholder="他现在的花费或报价，比如：一份 6 元，一天卖 200 份">
+        <textarea id="rVerdict" rows="3" placeholder="你的结论：这说明什么？下一步要验证什么？"></textarea>
+        <button class="btn-line" data-act="saveres">保存，回列表</button>
+      </div>
+    </section>
+  </div>${tabbar("me")}`;
+}
+function stats(){
+  const p=AP(), st=proofStats();
+  const rows=Array.from({length:30},(_,k)=>{
+    const d=k+1, day=p.done[d]||[];
+    let n=0,img=0; day.forEach(v=>{if(v&&typeof v==="object"){n++; if(v.img) img++;}});
+    const done=[0,1,2].filter(i=>pDone(p,d,i)).length;
+    return `<tr class="${pDayDone(p,d)?"done":""}"><td>D${d}</td><td>${done}/3</td><td>${n}</td><td>${img||"—"}</td><td>${pDayDone(p,d)?"已完成":"未完成"}</td></tr>`;
+  }).join("");
+  app.innerHTML=`<div class="shell">
+    <div class="top"><div>
+      <div class="meta">统计表 · 第 ${currentDay()} 天</div>
+      <h1>你这 30 天的实数</h1>
+      <div class="sub">只算真的提交了证明的。没提交的不进表。</div>
+    </div></div>
+    <button class="back" data-act="tab" data-v="me">返回我的</button>
+    <section class="sec">
+      <div class="sec-hd"><h2>汇总</h2><div class="note">${fmtDate(p.created)} 起</div></div>
+      <div class="statgrid">
+        <div class="sg"><b>${st.days}</b><span>完成天数 / 30</span></div>
+        <div class="sg"><b>${st.cnt}</b><span>提交的证明</span></div>
+        <div class="sg"><b>${st.img}</b><span>其中带照片</span></div>
+        <div class="sg"><b>${st.mineDone}/${st.mine}</b><span>自编完成</span></div>
+        <div class="sg"><b>${st.notes}</b><span>笔记</span></div>
+        <div class="sg"><b>${st.res}</b><span>调研记录</span></div>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-hd"><h2>逐日</h2><div class="note">证明 = 文字/数字/照片</div></div>
+      <table class="stat-table"><colgroup><col style="width:16%"><col style="width:22%"><col style="width:20%"><col style="width:20%"><col style="width:22%"></colgroup>
+        <thead><tr><th>天</th><th>完成</th><th>证明</th><th>照片</th><th>状态</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+    </section>
+  </div>${tabbar("me")}`;
 }
 
 function fallbackCopy(t){
@@ -1317,12 +2225,84 @@ function fallbackCopy(t){
 }
 
 /* ===== 交互 ===== */
-app.addEventListener("click",e=>{
+document.addEventListener("click",e=>{
   const el=e.target.closest("[data-act]");
   if(!el) return;
   const act=el.dataset.act;
   if(act==="tab"){S.justDone=0;save();location.hash="#/"+el.dataset.v;render();return;}
-  if(act==="task"){toggle(+el.dataset.d,+el.dataset.i);return;}
+  if(act==="task"){openProof(+el.dataset.d,+el.dataset.i);return;}
+  if(act==="pfclose"){closeProof();return;}
+  if(act==="sound"){S.sound=S.sound===false;save();render();return;}
+  if(act==="savenote"){
+    const t=((document.getElementById("noteTitle")||{}).value||"").trim();
+    const b=((document.getElementById("noteBody")||{}).value||"").trim();
+    if(!t&&!b){alert("标题或正文写一个吧。");return;}
+    const p=AP(); p.notes=p.notes||[];
+    p.notes.push({id:nid(),title:t||"未命名",body:b,at:nowTs()});
+    save(); location.hash="#/notes"; render(); return;
+  }
+  if(act==="delnote"){
+    if(!confirm("删掉这条笔记？")) return;
+    const p=AP(); p.notes=(p.notes||[]).filter(n=>n.id!==el.dataset.id); save(); render(); return;
+  }
+  if(act==="saveres"){
+    const g=id=>((document.getElementById(id)||{}).value||"").trim();
+    const obj=g("rObj"), ch=g("rCh"), quote=g("rQuote"), price=g("rPrice"), verdict=g("rVerdict");
+    if(!obj||!(quote||verdict)){alert("至少写清对象，和他说了什么或你的结论。");return;}
+    const p=AP(); p.research=p.research||[];
+    p.research.push({id:nid(),obj:obj,ch:ch,quote:quote,price:price,verdict:verdict,at:nowTs()});
+    save(); location.hash="#/research"; render(); return;
+  }
+  if(act==="delres"){
+    if(!confirm("删掉这条调研记录？")) return;
+    const p=AP(); p.research=(p.research||[]).filter(r=>r.id!==el.dataset.id); save(); render(); return;
+  }
+  if(act==="mproof"){
+    const it=(AP().mine||[]).find(x=>x.id===el.dataset.id); if(!it) return;
+    if(it.done){ S.proof={mine:it.id}; pfImg=null; save(); render(); return; }
+    S.proof={mine:it.id}; pfImg=null; save(); render(); return;
+  }
+  if(act==="pfmundo"){
+    const it=(AP().mine||[]).find(x=>x.id===S.proof.mine); if(!it) return;
+    if(!confirm("撤销这条完成？提交的证明会一起删掉。")) return;
+    it.done=false; delete it.proof;
+    idbKvDel("proof:"+AP().id+":mine-"+it.id).catch(()=>{});
+    S.proof=null; save(); render(); return;
+  }
+  if(act==="pfminesubmit"){
+    const it=(AP().mine||[]).find(x=>x.id===S.proof.mine); if(!it) return;
+    const elx=document.getElementById("pfTxt");
+    const txt=(elx?elx.value:pfDraft.txt||"").trim();
+    if(txt.length<8 && !pfImg){alert("写一句实际做了什么，至少 8 个字；或者拍一张照片。");return;}
+    it.done=true; it.proof={at:Date.now(),txt:txt.slice(0,300),img:!!pfImg};
+    if(pfImg) idbKvPut("proof:"+AP().id+":mine-"+it.id,pfImg).catch(()=>{});
+    pfImg=null; pfDraft={txt:"",num:""}; S.proof=null; save(); render(); return;
+  }
+  if(act==="pfrmimg"){pfImg=null;render();return;}
+  if(act==="pfundo"){
+    const o=S.proof; if(!o) return;
+    if(!confirm("撤销这条完成？提交的证明会一起删掉。")) return;
+    const p=AP(); p.done[o.d]=p.done[o.d]||[false,false,false];
+    p.done[o.d][o.i]=false;
+    idbKvDel(proofKey(o.d,o.i)).catch(()=>{});
+    S.proof=null; S.justDone=0; save(); render(); return;
+  }
+  if(act==="pfsubmit"){
+    const o=S.proof; if(!o) return;
+    const {d,i}=o, task=taskText(d,i), need=needNum(task);
+    const ta=document.getElementById("pfTxt");
+    const txt=(ta?ta.value:pfDraft.txt||"").trim();
+    const ni=document.getElementById("pfNum");
+    const raw=(ni?ni.value:pfDraft.num||"").trim();
+    if(txt.length<8 && !pfImg){alert("写清你做了什么，至少 8 个字；或者拍一张照片当证明。");return;}
+    if(need && (raw==="" || isNaN(Number(raw)))){alert("这条要填一个数字：几个、多少钱、多久，都算。");return;}
+    const p=AP(); p.done[d]=p.done[d]||[false,false,false];
+    p.done[d][i]={at:Date.now(),txt:txt.slice(0,300),num:(ni&&raw!==""?Number(raw):null),img:!!pfImg};
+    if(pfImg) idbKvPut(proofKey(d,i),pfImg).catch(()=>{});
+    pfImg=null; S.proof=null;
+    if(dayDone(d)){S.justDone=d;S.showDiag=false;}
+    save(); render(); return;
+  }
   if(act==="day"){S.open=S.open===+el.dataset.d?0:+el.dataset.d;save();render();return;}
   if(act==="mscope"){S.ms=el.dataset.v;save();render();return;}
   if(act==="addmine"){
@@ -1381,6 +2361,9 @@ app.addEventListener("click",e=>{
   if(act==="boot-start"){S.booted=true;save();location.hash="#/start";S.step=0;render();return;}
   if(act==="boot-skip"){S.booted=true;save();location.hash="#/today";render();return;}
   if(act==="chip"){AP().ans[el.dataset.k]=el.dataset.v;save();render();return;}
+  if(act==="picker"){S.pick=true;save();render();return;}
+  if(act==="pickclose"){S.pick=false;save();render();return;}
+  if(act==="pick"){AP().ans.field=el.dataset.v;S.pick=false;save();render();return;}
   if(act==="next"){
     if(S.step<QS.length-1){S.step++;save();render();return;}
     const pn=AP();
@@ -1459,12 +2442,20 @@ app.addEventListener("click",e=>{
   }
 });
 
-app.addEventListener("change",e=>{
+document.addEventListener("change",e=>{
+  if(e.target.id==="pfTxt"){pfDraft.txt=e.target.value;return;}
+  if(e.target.id==="pfNum"){pfDraft.num=e.target.value;return;}
   if(e.target.id==="scrim"){S.bg=Object.assign(bgState(),{scrim:parseFloat(e.target.value)});save();return;}
   if(e.target.id==="bgin"){handleUpload(e.target.files&&e.target.files[0]);}
+  if(e.target.id==="pfimg"){
+    const f=e.target.files&&e.target.files[0]; if(!f) return;
+    fileToDataURL(f,1000,0.62).then(u=>{pfImg=u;render();}).catch(()=>alert("这张图读不了，换一张试试。"));
+  }
 });
 
-app.addEventListener("input",e=>{
+document.addEventListener("input",e=>{
+  if(e.target.id==="pfTxt"){pfDraft.txt=e.target.value;return;}
+  if(e.target.id==="pfNum"){pfDraft.num=e.target.value;return;}
   if(e.target.id==="qa"){
     const k=e.target.dataset.k, v=e.target.value;
     if(v.trim()) AP().ans[k]=v; else delete AP().ans[k];
